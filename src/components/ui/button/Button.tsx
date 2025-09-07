@@ -7,8 +7,8 @@ interface MrButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     variant?: ButtonVariantKey;
 }
 
-const baseStyles =
-    "h-12 px-4 py-2 rounded-xl font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-0 focus:ring-offset-0 cursor-pointer";
+const baseStyles = `h-12 px-4 py-2 rounded-xl font-medium transition-colors disabled:opacity-50 
+disabled:cursor-not-allowed focus:outline-none focus:ring-0 focus:ring-offset-0 cursor-pointer`;
 
 const variants: Record<ButtonVariantKey, string> = {
     primary: "bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500",

@@ -11,6 +11,7 @@ export function isSignUpMode(mode: AuthModeKey) {
 
 export function getAuthModeLabel(mode: AuthModeKey) {
     if (isSignInMode(mode)) return "Sign In";
+
     if (isSignUpMode(mode)) return "Sign Up";
 
     return "";

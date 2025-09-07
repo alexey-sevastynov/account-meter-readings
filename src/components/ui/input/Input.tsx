@@ -9,8 +9,10 @@ interface MRInputProps extends InputHTMLAttributes<HTMLInputElement> {
     variant?: InputVariantKey;
 }
 
-const baseStyles =
-    "peer w-full h-full rounded-xl border px-4 text-gray-900 bg-white placeholder-transparent focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed flex items-center autofill:bg-white autofill:shadow-[inset_0_0_0px_1000px_white] autofill:[-webkit-text-fill-color:theme(colors.gray.900)]";
+const baseStyles = `peer w-full h-full rounded-xl border px-4 text-gray-900 bg-white 
+placeholder-transparent focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed 
+flex items-center autofill:bg-white autofill:shadow-[inset_0_0_0px_1000px_white] 
+autofill:[-webkit-text-fill-color:theme(colors.gray.900)]`;
 
 const variants: Record<InputVariantKey, string> = {
     primary: "border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500",
