@@ -9,7 +9,7 @@ interface MrAuthFormFieldsProps {
 export function MrAuthFormFields({ authMode }: MrAuthFormFieldsProps) {
     return (
         <>
-            {isSignUpMode(authMode) && <MRInput type="text" label="Username" className="w-full" />}
+            {isSignUpMode(authMode) && <MRInput type="text" label="User name" className="w-full" />}
             <MRInput type="email" label="Email" className="w-full" />
             <MRInput type="password" label="Password" className="w-full" />
             {isSignUpMode(authMode) && (
