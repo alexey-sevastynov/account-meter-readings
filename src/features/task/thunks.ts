@@ -5,7 +5,7 @@ import { getAll } from "@/services/crud-service";
 import { apiEndpointNames } from "@/enums/services/api-endpoint-name";
 
 export const getAllTasks = createAsyncThunk<Task[], void, { rejectValue: AxiosError }>(
-    "task/getAll",
+    "allTasks",
     async () => {
         const allTasks = await getAll<Task>(apiEndpointNames.tasks);
 

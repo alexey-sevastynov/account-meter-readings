@@ -9,18 +9,6 @@ export function isSignUpMode(mode: AuthModeKey) {
     return mode === authModeKeys.signUp;
 }
 
-export function getAuthModeLabel(mode: AuthModeKey) {
-    if (isSignInMode(mode)) return "Sign In";
-
-    if (isSignUpMode(mode)) return "Sign Up";
-
-    return "";
-}
-
-export function getAuthModeToggleLabel(mode: AuthModeKey) {
-    return isSignInMode(mode) ? "Sign Up" : "Sign In";
-}
-
 export function toggleAuthMode(setAuthMode: VoidFunc<AuthModeKey>, currentAuthMode: AuthModeKey) {
     setAuthMode(getToggledAuthMode(currentAuthMode));
 }
