@@ -13,6 +13,7 @@ import { SignUpFormValues } from "@/components/auth/types/sign-up-form-values";
 export function MrAuthFormSignUp() {
     const dispatch = useAppDispatch();
     const errorMessage = useAppSelector((state) => state.auth.error);
+    const isLoading = useAppSelector((state) => state.auth.isLoading);
 
     const {
         control,
@@ -71,7 +72,7 @@ export function MrAuthFormSignUp() {
                 <MrNotificationMessage message={errorMessage.message} type={notificationMessageKeys.error} />
             )}
 
-            <MrButton text="Sign Up" type="submit" className="w-full" />
+            <MrButton text="Sign Up" type="submit" className="w-full" loading={isLoading} />
         </form>
     );
 }

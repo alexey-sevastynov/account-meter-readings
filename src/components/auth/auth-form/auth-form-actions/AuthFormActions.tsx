@@ -2,7 +2,6 @@ import { MrButton } from "@/components/ui/button/Button";
 import { buttonVariantKeys } from "@/enums/ui/button-variant-key";
 import { AuthModeKey } from "@/components/auth/enums/auth-mode-key";
 import { isSignInMode } from "@/components/auth/auth-form/AuthForm.funcs";
-import { MrLink } from "@/components/ui/link/Link";
 import { VoidFuncNoParam } from "@/types/getter-setter-functions";
 import { getAuthModeToggleLabel } from "@/components/auth/auth-form/auth-form-actions/authFormActions.funcs";
 
@@ -14,11 +13,14 @@ interface MrAuthFormActionsProps {
 export function MrAuthFormActions({ authMode, toggleAuthMode }: MrAuthFormActionsProps) {
     return (
         <>
-            {isSignInMode(authMode) && (
+            {/* TODO: Implement "Forgot password?" functionality for Sign In mode */}
+
+            {/* {isSignInMode(authMode) && (
                 <div className="mt-4 text-right">
                     <MrLink href="#">Forgot password?</MrLink>
                 </div>
-            )}
+            )} */}
+
             <p className="mt-6 text-center text-gray-600">
                 {isSignInMode(authMode) ? "Don’t have an account?" : "Already have an account?"}
                 <MrButton

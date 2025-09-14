@@ -7,11 +7,15 @@ import { MrAuthFormHeader } from "@/components/auth/auth-form/auth-form-header/A
 import { MrAuthFormActions } from "@/components/auth/auth-form/auth-form-actions/AuthFormActions";
 import { MrAuthFormSignIn } from "@/components/auth/auth-form/auth-form-sign-in/AuthFormSignIn";
 import { MrAuthFormSignUp } from "@/components/auth/auth-form/auth-form-sign-up/AuthFormSignUp";
+import { useAppDispatch } from "@/hooks/use-app-dispatch";
+import { clearAuthError } from "@/features/auth/slice";
 
 export function MrAuthForm() {
+    const dispatch = useAppDispatch();
     const [authMode, setAuthMode] = useState<AuthModeKey>(authModeKeys.signIn);
 
     const onToggleAuthMode = useCallback(() => {
+        dispatch(clearAuthError());
         toggleAuthMode(setAuthMode, authMode);
     }, [authMode]);
 

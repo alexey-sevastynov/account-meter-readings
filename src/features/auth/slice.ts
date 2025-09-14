@@ -32,9 +32,12 @@ const authSlice = createSlice({
             state.isLoading = false;
             state.error = null;
         },
+        clearAuthError(state) {
+            state.error = null;
+        },
     },
     extraReducers: authExtraReducers,
 });
 
-export const { signOut } = authSlice.actions;
+export const { signOut, clearAuthError } = authSlice.actions;
 export default authSlice.reducer;
