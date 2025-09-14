@@ -13,6 +13,7 @@ import { SignInFormValues } from "@/components/auth/types/sign-in-form-values";
 export function MrAuthFormSignIn() {
     const dispatch = useAppDispatch();
     const errorMessage = useAppSelector((state) => state.auth.error);
+    const isLoading = useAppSelector((state) => state.auth.isLoading);
 
     const {
         control,
@@ -48,7 +49,12 @@ export function MrAuthFormSignIn() {
                 <MrNotificationMessage message={errorMessage.message} type={notificationMessageKeys.error} />
             )}
 
-            <MrButton text="Sign In" type="submit" className="w-full" />
+            <MrButton
+                text="Sign In"
+                type="submit"
+                className="w-full flex items-center justify-center space-x-2"
+                loading={isLoading}
+            />
         </form>
     );
 }

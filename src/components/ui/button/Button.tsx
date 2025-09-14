@@ -1,10 +1,12 @@
 import { ButtonHTMLAttributes } from "react";
+import { ClipLoader } from "react-spinners";
 import { cn } from "@/lib/cn";
 import { ButtonVariantKey, buttonVariantKeys } from "@/enums/ui/button-variant-key";
 
 interface MrButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     text: string;
     variant?: ButtonVariantKey;
+    loading?: boolean;
 }
 
 const baseStyles = `h-12 px-4 py-2 rounded-xl font-medium transition-colors disabled:opacity-50 
@@ -18,10 +20,21 @@ const variants: Record<ButtonVariantKey, string> = {
     link: "bg-transparent text-blue-600 hover:underline focus:ring-0 focus:ring-offset-0",
 };
 
-export function MrButton({ text, variant = buttonVariantKeys.primary, className, ...props }: MrButtonProps) {
+export function MrButton({
+    text,
+    variant = buttonVariantKeys.primary,
+    className,
+    loading = false,
+    ...props
+}: MrButtonProps) {
     return (
-        <button className={cn(baseStyles, variants[variant], className)} {...props}>
-            {text}
+        <button
+            className={cn(baseStyles, variants[variant], className)}
+            disabled={loading || props.disabled}
+            {...props}
+        >
+            {loading && <ClipLoader size={20} color="#fff" />}
+            <span>{!loading && text}</span>
         </button>
     );
 }
