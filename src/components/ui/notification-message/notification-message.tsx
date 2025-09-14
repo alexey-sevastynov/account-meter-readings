@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { cn } from "@/lib/cn";
 import { NotificationMessageKey, notificationMessageKeys } from "@/enums/ui/notification-message-key";
 import { VoidFuncNoParam } from "@/types/getter-setter-functions";
+import { timing } from "@/constants/timing";
 
 interface MrNotificationMessageProps {
     message: string;
@@ -14,7 +15,7 @@ export function MrNotificationMessage({
     message,
     type = notificationMessageKeys.info,
     onClose,
-    autoClose = 5000,
+    autoClose = timing.fiveSecondsInMilliseconds,
 }: MrNotificationMessageProps) {
     const [visible, setVisible] = useState(true);
     const [hovered, setHovered] = useState(false);

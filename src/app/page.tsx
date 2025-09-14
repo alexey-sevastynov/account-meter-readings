@@ -1,30 +1,22 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
 import { useAppSelector } from "@/hooks/use-app-selector";
 import { useAppDispatch } from "@/hooks/use-app-dispatch";
 import { MrButton } from "@/components/ui/button/Button";
 import { signOut } from "@/features/auth/slice";
-import { routeKeys } from "@/enums/url/route-key";
 import { buildRoutePath } from "@/utils/build-route-path";
+import { routeKeys } from "@/enums/url/route-key";
 
 export default function HomePage() {
     const router = useRouter();
     const dispatch = useAppDispatch();
-    const token = useAppSelector((state) => state.auth.token);
     const userName = useAppSelector((state) => state.auth.userName);
-    const routePath = buildRoutePath(routeKeys.signIn);
-
-    useEffect(() => {
-        if (!token) {
-            router.replace(routePath);
-        }
-    }, [token, router, routePath]);
+    const redirectToSignInPath = buildRoutePath(routeKeys.signIn);
 
     const onLogout = () => {
         dispatch(signOut());
-        router.replace(routePath);
+        router.replace(redirectToSignInPath);
     };
 
     return (
