@@ -7,10 +7,10 @@ export async function getAll<T>(endpoint: ApiEndpointName) {
     return data;
 }
 
-export async function createOne<T>(endpoint: ApiEndpointName, body: T) {
-    const { data } = await apiClient.post<T>(endpoint, body);
+export async function createOne<TRequest, TResponse = TRequest>(endpoint: ApiEndpointName, body: TRequest) {
+    const response = await apiClient.post(endpoint, body);
 
-    return data;
+    return response.data as TResponse;
 }
 
 export async function getOne<T>(endpoint: ApiEndpointName, id: string) {
