@@ -8,13 +8,14 @@ const redirectToHomePath = buildRoutePath(routeKeys.home);
 
 export function middleware(request: NextRequest) {
     const token = request.cookies.get(cookieKeys.token)?.value;
+    const isVerifiedMail = request.cookies.get(cookieKeys.isVerified)?.value === "true";
     const pathname = request.nextUrl.pathname;
 
-    if (shouldRedirectToSignIn(token, pathname)) {
+    if (shouldRedirectToSignIn(pathname, isVerifiedMail, token)) {
         return performRedirect(redirectToSignInPath, request);
     }
 
-    if (shouldRedirectToHome(token, pathname)) {
+    if (shouldRedirectToHome(pathname, isVerifiedMail, token)) {
         return performRedirect(redirectToHomePath, request);
     }
 
@@ -39,10 +40,10 @@ function isPublicPath(pathname: string) {
     return publicPaths.includes(pathname);
 }
 
-function shouldRedirectToSignIn(token: string | undefined, pathname: string) {
-    return !token && !isPublicPath(pathname);
+function shouldRedirectToSignIn(pathname: string, isVerifiedMail: boolean, token?: string) {
+    return (!token || !isVerifiedMail) && !isPublicPath(pathname);
 }
 
-function shouldRedirectToHome(token: string | undefined, pathname: string) {
-    return token && isPublicPath(pathname);
+function shouldRedirectToHome(pathname: string, isVerifiedMail: boolean, token?: string) {
+    return token && isVerifiedMail && isPublicPath(pathname);
 }

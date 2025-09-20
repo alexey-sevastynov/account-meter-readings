@@ -21,6 +21,8 @@ export const signIn = createAsyncThunk<AuthResponse, SignInDto, WithRejectValue>
             });
 
             setCookie(cookieKeys.token, response.token);
+            setCookie(cookieKeys.userName, response.userName);
+            setCookie(cookieKeys.isVerified, String(!!response.isVerified));
 
             return response;
         } catch (error: unknown) {
@@ -43,6 +45,7 @@ export const signUp = createAsyncThunk<AuthResponse, SignUpDto, WithRejectValue>
             });
 
             setCookie(cookieKeys.token, response.token);
+            setCookie(cookieKeys.userName, response.userName);
 
             return response;
         } catch (error: unknown) {

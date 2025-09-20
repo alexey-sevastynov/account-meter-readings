@@ -13,6 +13,7 @@ import { SignUpFormValues } from "@/components/auth/types/sign-up-form-values";
 export function MrAuthFormSignUp() {
     const dispatch = useAppDispatch();
     const errorMessage = useAppSelector((state) => state.auth.error);
+    const token = useAppSelector((state) => state.auth.token);
     const isLoading = useAppSelector((state) => state.auth.isLoading);
 
     const {
@@ -70,6 +71,14 @@ export function MrAuthFormSignUp() {
 
             {errorMessage?.message && (
                 <MrNotificationMessage message={errorMessage.message} type={notificationMessageKeys.error} />
+            )}
+
+            {token && !errorMessage && (
+                <MrNotificationMessage
+                    message="Registration successful! Please check your email to confirm your account."
+                    type={notificationMessageKeys.info}
+                    autoClose={0}
+                />
             )}
 
             <MrButton text="Sign Up" type="submit" className="w-full" loading={isLoading} />

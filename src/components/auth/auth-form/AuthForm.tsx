@@ -17,7 +17,7 @@ export function MrAuthForm() {
     const onToggleAuthMode = useCallback(() => {
         dispatch(clearAuthError());
         toggleAuthMode(setAuthMode, authMode);
-    }, [authMode]);
+    }, [authMode, dispatch]);
 
     return (
         <div className="flex items-center justify-center min-h-screen bg-gray-100">

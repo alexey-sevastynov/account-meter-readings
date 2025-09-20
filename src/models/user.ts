@@ -10,6 +10,7 @@ export interface User extends BaseResource {
     password: string;
     userRole: UserRoleKey;
     userStatus: UserStatusKey;
+    isVerified: boolean;
     addresses?: Address[];
     blockReason?: string;
     firstName?: string;
