@@ -9,6 +9,7 @@ import { MrNotificationMessage } from "@/components/ui/notification-message/noti
 import { notificationMessageKeys } from "@/enums/ui/notification-message-key";
 import { MrValidatedInput } from "@/components/shared/validated-input/ValidatedInput";
 import { SignInFormValues } from "@/components/auth/types/sign-in-form-values";
+import { MrPasswordInput } from "@/components/shared/password-input/PasswordInput";
 
 export function MrAuthFormSignIn() {
     const dispatch = useAppDispatch();
@@ -36,14 +37,7 @@ export function MrAuthFormSignIn() {
                 rules={{ required: "Email is required" }}
             />
 
-            <MrValidatedInput
-                name="password"
-                control={control}
-                errors={errors}
-                label="Password"
-                type="password"
-                rules={{ required: "Password is required", minLength: { value: 8, message: "Min length 8" } }}
-            />
+            <MrPasswordInput name="password" control={control} errors={errors} />
 
             {errorMessage?.message && (
                 <MrNotificationMessage message={errorMessage.message} type={notificationMessageKeys.error} />
