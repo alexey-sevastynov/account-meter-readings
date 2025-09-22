@@ -1,6 +1,7 @@
 "use client";
 
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
 import { login } from "@/components/auth/auth-form/auth-form-sign-in/authFormSignIn.funcs";
 import { MrButton } from "@/components/ui/button/Button";
 import { useAppDispatch } from "@/hooks/use-app-dispatch";
@@ -10,9 +11,11 @@ import { notificationMessageKeys } from "@/enums/ui/notification-message-key";
 import { MrValidatedInput } from "@/components/shared/validated-input/ValidatedInput";
 import { SignInFormValues } from "@/components/auth/types/sign-in-form-values";
 import { MrPasswordInput } from "@/components/shared/password-input/PasswordInput";
+import { redirectToHome } from "@/utils/navigation";
 
 export function MrAuthFormSignIn() {
     const dispatch = useAppDispatch();
+    const router = useRouter();
     const errorMessage = useAppSelector((state) => state.auth.error);
     const isLoading = useAppSelector((state) => state.auth.isLoading);
 
@@ -24,6 +27,7 @@ export function MrAuthFormSignIn() {
 
     const onSubmit = (data: SignInFormValues) => {
         login(dispatch, data);
+        redirectToHome(router);
     };
 
     return (
