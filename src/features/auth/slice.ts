@@ -28,6 +28,8 @@ const authSlice = createSlice({
     reducers: {
         signOut: (state) => {
             removeCookie(cookieKeys.token);
+            removeCookie(cookieKeys.userName);
+            removeCookie(cookieKeys.isVerified);
 
             state.userId = null;
             state.userName = null;

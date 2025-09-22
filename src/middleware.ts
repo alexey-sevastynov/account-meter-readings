@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { cookieKeys } from "@/utils/cookie/cookie-key";
-import { buildRoutePath } from "@/utils/build-route-path";
+import { buildRoutePath } from "@/utils/navigation";
 import { routeKeys } from "@/enums/url/route-key";
 
 const redirectToSignInPath = buildRoutePath(routeKeys.signIn);
