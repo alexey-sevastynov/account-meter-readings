@@ -33,7 +33,7 @@ export function MrNotificationMessage({
         }, autoClose);
 
         return () => clearTimeout(timer);
-    }, [hovered, autoClose]);
+    }, [hovered, autoClose, handleClose]);
 
     const typeClasses: Record<NotificationMessageKey, { bg: string; text: string; border: string }> = {
         info: { bg: "bg-blue-100", text: "text-blue-700", border: "border-blue-300" },

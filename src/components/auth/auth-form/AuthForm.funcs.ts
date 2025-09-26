@@ -13,6 +13,14 @@ export function toggleAuthMode(setAuthMode: VoidFunc<AuthModeKey>, currentAuthMo
     setAuthMode(getToggledAuthMode(currentAuthMode));
 }
 
+export function getAuthModeLabel(mode: AuthModeKey) {
+    if (isSignInMode(mode)) return "Sign In";
+
+    if (isSignUpMode(mode)) return "Sign Up";
+
+    return "";
+}
+
 function getToggledAuthMode(currentMode: AuthModeKey) {
     return isSignInMode(currentMode) ? authModeKeys.signUp : authModeKeys.signIn;
 }
