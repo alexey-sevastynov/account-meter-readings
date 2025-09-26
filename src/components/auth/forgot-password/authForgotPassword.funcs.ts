@@ -2,11 +2,7 @@ import { apiEndpointNames } from "@/enums/services/api-endpoint-name";
 import { NotificationMessageKey, notificationMessageKeys } from "@/enums/ui/notification-message-key";
 import { createOne } from "@/services/crud-service";
 import { VoidFunc } from "@/types/getter-setter-functions";
-
-interface ForgotPasswordResponse {
-    success: boolean;
-    notificationMessage: string;
-}
+import { PasswordActionResponse } from "@/components/auth/types/passport-action-response";
 
 export async function sendResetRequest<FormValues>(
     data: FormValues,
@@ -17,7 +13,7 @@ export async function sendResetRequest<FormValues>(
     setIsLoading(true);
 
     try {
-        const response = await createOne<FormValues, ForgotPasswordResponse>(
+        const response = await createOne<FormValues, PasswordActionResponse>(
             apiEndpointNames.forgotPasswordRequest,
             data
         );
