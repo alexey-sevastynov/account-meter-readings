@@ -6,7 +6,7 @@ import { useAppSelector } from "@/hooks/use-app-selector";
 import { MrAuthForm } from "@/components/auth/auth-form/AuthForm";
 import { redirectToHome } from "@/utils/navigation";
 
-export default function AuthPage() {
+export default function SignInPage() {
     const router = useRouter();
     const token = useAppSelector((state) => state.auth.token);
 

@@ -1,8 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { authExtraReducers } from "@/features/auth/extra-reducers";
 import { ApiError } from "@/types/api-error/api-error-type";
-import { removeCookie } from "@/utils/cookie/cookies";
-import { cookieKeys } from "@/utils/cookie/cookie-key";
+import { clearAuthCookies } from "@/utils/cookie/auth-cookies";
 
 export interface AuthState {
     userId: string | null;
@@ -27,9 +26,7 @@ const authSlice = createSlice({
     initialState,
     reducers: {
         signOut: (state) => {
-            removeCookie(cookieKeys.token);
-            removeCookie(cookieKeys.userName);
-            removeCookie(cookieKeys.isVerified);
+            clearAuthCookies();
 
             state.userId = null;
             state.userName = null;

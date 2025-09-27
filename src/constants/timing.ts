@@ -4,4 +4,5 @@ export const timing = {
     tenMinutesInSeconds: 10 * 60,
     thirtyDaysInSeconds: 30 * 24 * 60 * 60,
     fiveSecondsInMilliseconds: 5000,
+    delayBeforeRedirectInMilliseconds: 100,
 } as const;

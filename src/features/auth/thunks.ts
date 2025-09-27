@@ -5,8 +5,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { convertToApiError } from "@/lib/api-error";
 import { AuthResponse } from "@/features/auth/types/auth-response";
 import { WithRejectValue } from "@/features/auth/types/with-reject-value";
-import { setCookie } from "@/utils/cookie/cookies";
-import { cookieKeys } from "@/utils/cookie/cookie-key";
+import { setAuthCookies } from "@/utils/cookie/auth-cookies";
 
 type SignInDto = Pick<User, "email" | "password">;
 type SignUpDto = Pick<User, "email" | "password" | "firstName" | "lastName" | "userName" | "phoneNumber">;
@@ -20,9 +19,7 @@ export const signIn = createAsyncThunk<AuthResponse, SignInDto, WithRejectValue>
                 password: signInDto.password,
             });
 
-            setCookie(cookieKeys.token, response.token);
-            setCookie(cookieKeys.userName, response.userName);
-            setCookie(cookieKeys.isVerified, String(!!response.isVerified));
+            setAuthCookies(response.token, response.userName, !!response.isVerified);
 
             return response;
         } catch (error: unknown) {
@@ -43,9 +40,6 @@ export const signUp = createAsyncThunk<AuthResponse, SignUpDto, WithRejectValue>
                 firstName: undefined,
                 lastName: undefined,
             });
-
-            setCookie(cookieKeys.token, response.token);
-            setCookie(cookieKeys.userName, response.userName);
 
             return response;
         } catch (error: unknown) {

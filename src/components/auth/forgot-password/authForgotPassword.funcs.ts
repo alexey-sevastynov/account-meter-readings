@@ -3,6 +3,7 @@ import { NotificationMessageKey, notificationMessageKeys } from "@/enums/ui/noti
 import { createOne } from "@/services/crud-service";
 import { VoidFunc } from "@/types/getter-setter-functions";
 import { PasswordActionResponse } from "@/components/auth/types/passport-action-response";
+import { convertToApiError } from "@/lib/api-error";
 
 export async function sendResetRequest<FormValues>(
     data: FormValues,
@@ -27,8 +28,10 @@ export async function sendResetRequest<FormValues>(
         }
 
         setIsLoading(false);
-    } catch {
-        setNotificationMessage("Something went wrong. Please try again.");
+    } catch (error: unknown) {
+        const apiError = convertToApiError(error);
+
+        setNotificationMessage(apiError.message);
         setNotificationTypeMessage(notificationMessageKeys.error);
         setIsLoading(false);
     }
