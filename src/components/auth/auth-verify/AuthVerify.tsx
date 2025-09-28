@@ -6,6 +6,7 @@ import { VerifyStatusKey, verifyStatusKeys } from "@/components/auth/enums/verif
 import { verifyEmail } from "@/components/auth/auth-verify/authVerify.funcs";
 import { MrButton } from "@/components/ui/button/Button";
 import { redirectToHome } from "@/utils/navigation";
+import MrAuthLayout from "@/components/auth/auth-layout/AuthLayout";
 
 interface MrAuthVerifyProps {
     token: string;
@@ -33,30 +34,28 @@ export default function MrAuthVerify({ token }: MrAuthVerifyProps) {
     };
 
     return (
-        <div className="flex items-center justify-center min-h-screen bg-gray-100 px-4">
-            <div className="max-w-md w-full bg-white shadow-xl rounded-2xl p-8 text-center">
-                {status === verifyStatusKeys.pending && (
-                    <div className="flex flex-col items-center space-y-4">
-                        <p className="text-gray-600">Verifying your email...</p>
-                    </div>
-                )}
+        <MrAuthLayout>
+            {status === verifyStatusKeys.pending && (
+                <div className="flex flex-col items-center space-y-4">
+                    <p className="text-gray-600">Verifying your email...</p>
+                </div>
+            )}
 
-                {status === verifyStatusKeys.success && (
-                    <div className="flex flex-col items-center space-y-6">
-                        <div className="text-5xl">🎉</div>
-                        <p className="text-xl font-semibold text-green-600">Mail successfully verified!</p>
-                        <MrButton text="Move to Home page" onClick={goToHomePage} />
-                    </div>
-                )}
+            {status === verifyStatusKeys.success && (
+                <div className="flex flex-col items-center space-y-6">
+                    <div className="text-5xl">🎉</div>
+                    <p className="text-xl font-semibold text-green-600">Mail successfully verified!</p>
+                    <MrButton text="Move to Home page" onClick={goToHomePage} />
+                </div>
+            )}
 
-                {status === verifyStatusKeys.error && (
-                    <div className="flex flex-col items-center space-y-6">
-                        <div className="text-5xl">⚠️</div>
-                        <p className="text-xl font-semibold text-red-600">Mail verification error</p>
-                        <MrButton text="Move to Home page" onClick={goToHomePage} />
-                    </div>
-                )}
-            </div>
-        </div>
+            {status === verifyStatusKeys.error && (
+                <div className="flex flex-col items-center space-y-6">
+                    <div className="text-5xl">⚠️</div>
+                    <p className="text-xl font-semibold text-red-600">Mail verification error</p>
+                    <MrButton text="Move to Home page" onClick={goToHomePage} />
+                </div>
+            )}
+        </MrAuthLayout>
     );
 }

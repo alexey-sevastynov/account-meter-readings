@@ -14,6 +14,7 @@ import {
     isNotificationSuccess,
     sendResetPassword,
 } from "@/components/auth/reset-password/resetPassword.funcs";
+import MrAuthLayout from "@/components/auth/auth-layout/AuthLayout";
 
 interface FormValues {
     password: string;
@@ -53,44 +54,42 @@ export function MrResetPassword({ token }: MrResetPasswordProps) {
     };
 
     return (
-        <div className="flex items-center justify-center min-h-screen bg-gray-100 px-4">
-            <div className="max-w-md w-full bg-white shadow-xl rounded-2xl p-8 text-center">
-                <MrTitle>Reset Password</MrTitle>
-                <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-                    <MrPasswordInput name="password" control={control} errors={errors} />
-                    <MrPasswordInput
-                        name="confirmPassword"
-                        control={control}
-                        errors={errors}
-                        label="Confirm Password"
-                        rules={{
-                            required: "Confirm your password",
-                            validate: (value: string) => value === password || "Passwords do not match",
-                        }}
+        <MrAuthLayout>
+            <MrTitle>Reset Password</MrTitle>
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+                <MrPasswordInput name="password" control={control} errors={errors} />
+                <MrPasswordInput
+                    name="confirmPassword"
+                    control={control}
+                    errors={errors}
+                    label="Confirm Password"
+                    rules={{
+                        required: "Confirm your password",
+                        validate: (value: string) => value === password || "Passwords do not match",
+                    }}
+                />
+                {notificationMessage && (
+                    <MrNotificationMessage message={notificationMessage} type={notificationTypeMessage} />
+                )}
+                {isNotificationSuccess(notificationTypeMessage) && (
+                    <MrButton
+                        text="Go to sign in page"
+                        type="button"
+                        variant={buttonVariantKeys.outline}
+                        onClick={goToSignInPage}
+                        className="w-full"
                     />
-                    {notificationMessage && (
-                        <MrNotificationMessage message={notificationMessage} type={notificationTypeMessage} />
-                    )}
-                    {isNotificationSuccess(notificationTypeMessage) && (
-                        <MrButton
-                            text="Go to sign in page"
-                            type="button"
-                            variant={buttonVariantKeys.outline}
-                            onClick={goToSignInPage}
-                            className="w-full"
-                        />
-                    )}
-                    {!isNotificationSuccess(notificationTypeMessage) && (
-                        <MrButton
-                            text="Send reset link"
-                            type="submit"
-                            disabled={isLoading}
-                            className="w-full flex items-center justify-center space-x-2"
-                            loading={isLoading}
-                        />
-                    )}
-                </form>
-            </div>
-        </div>
+                )}
+                {!isNotificationSuccess(notificationTypeMessage) && (
+                    <MrButton
+                        text="Send reset link"
+                        type="submit"
+                        disabled={isLoading}
+                        className="w-full flex items-center justify-center space-x-2"
+                        loading={isLoading}
+                    />
+                )}
+            </form>
+        </MrAuthLayout>
     );
 }

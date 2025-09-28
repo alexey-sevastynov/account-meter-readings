@@ -11,6 +11,7 @@ import { buttonVariantKeys } from "@/enums/ui/button-variant-key";
 import { useRouter } from "next/navigation";
 import { redirectToSignIn } from "@/utils/navigation";
 import { sendResetRequest } from "@/components/auth/forgot-password/authForgotPassword.funcs";
+import MrAuthLayout from "@/components/auth/auth-layout/AuthLayout";
 
 interface FormValues {
     email: string;
@@ -39,39 +40,37 @@ export function MrForgotPassword() {
     };
 
     return (
-        <div className="flex items-center justify-center min-h-screen bg-gray-100 px-4">
-            <div className="w-full max-w-md p-8 bg-white rounded-2xl shadow-lg">
-                <MrTitle>Forgot Password</MrTitle>
-                <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-                    <MrValidatedInput
-                        name="email"
-                        control={control}
-                        errors={errors}
-                        label="Email"
-                        type="email"
-                        rules={{ required: "Email is required" }}
+        <MrAuthLayout>
+            <MrTitle>Forgot Password</MrTitle>
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+                <MrValidatedInput
+                    name="email"
+                    control={control}
+                    errors={errors}
+                    label="Email"
+                    type="email"
+                    rules={{ required: "Email is required" }}
+                />
+                {notificationMessage && (
+                    <MrNotificationMessage message={notificationMessage} type={notificationTypeMessage} />
+                )}
+                <div className="flex gap-3">
+                    <MrButton
+                        text="Cancel"
+                        type="button"
+                        variant={buttonVariantKeys.outline}
+                        onClick={goToSignInPage}
+                        className="w-full"
                     />
-                    {notificationMessage && (
-                        <MrNotificationMessage message={notificationMessage} type={notificationTypeMessage} />
-                    )}
-                    <div className="flex gap-3">
-                        <MrButton
-                            text="Cancel"
-                            type="button"
-                            variant={buttonVariantKeys.outline}
-                            onClick={goToSignInPage}
-                            className="w-full"
-                        />
-                        <MrButton
-                            text="Send reset link"
-                            type="submit"
-                            disabled={isLoading}
-                            className="w-full flex items-center justify-center space-x-2"
-                            loading={isLoading}
-                        />
-                    </div>
-                </form>
-            </div>
-        </div>
+                    <MrButton
+                        text="Send reset link"
+                        type="submit"
+                        disabled={isLoading}
+                        className="w-full flex items-center justify-center space-x-2"
+                        loading={isLoading}
+                    />
+                </div>
+            </form>
+        </MrAuthLayout>
     );
 }
