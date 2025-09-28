@@ -3,6 +3,7 @@ import { apiEndpointNames } from "@/enums/services/api-endpoint-name";
 import { NotificationMessageKey, notificationMessageKeys } from "@/enums/ui/notification-message-key";
 import { VoidFunc } from "@/types/getter-setter-functions";
 import { PasswordActionResponse } from "@/components/auth/types/passport-action-response";
+import { convertToApiError } from "@/lib/api-error";
 
 interface ResetPasswordPayload {
     token: string;
@@ -33,8 +34,10 @@ export async function sendResetPassword(
         }
 
         setIsLoading(false);
-    } catch {
-        setNotificationMessage("Something went wrong. Please try again.");
+    } catch (error: unknown) {
+        const apiError = convertToApiError(error);
+
+        setNotificationMessage(apiError.message);
         setNotificationTypeMessage(notificationMessageKeys.error);
         setIsLoading(false);
     }

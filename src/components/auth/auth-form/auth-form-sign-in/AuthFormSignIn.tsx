@@ -12,6 +12,7 @@ import { MrValidatedInput } from "@/components/shared/validated-input/ValidatedI
 import { SignInFormValues } from "@/components/auth/types/sign-in-form-values";
 import { MrPasswordInput } from "@/components/shared/password-input/PasswordInput";
 import { redirectToHome } from "@/utils/navigation";
+import { timing } from "@/constants/timing";
 
 export function MrAuthFormSignIn() {
     const dispatch = useAppDispatch();
@@ -29,6 +30,12 @@ export function MrAuthFormSignIn() {
         const response = await login(dispatch, data);
 
         if (response.meta.requestStatus === "fulfilled") {
+            // TODO: Temporarily added a delay before redirecting
+            // to ensure cookies are saved and middleware works correctly.
+            // This should be properly handled later via server-side redirect
+            // or guaranteed cookie setting.
+            await new Promise((resolve) => setTimeout(resolve, timing.fiveSecondsInMilliseconds));
+
             redirectToHome(router);
         }
     };
