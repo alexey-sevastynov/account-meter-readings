@@ -9,10 +9,12 @@ interface MRInputProps extends InputHTMLAttributes<HTMLInputElement> {
     variant?: InputVariantKey;
 }
 
-const baseStyles = `peer w-full h-full rounded-xl border px-4 text-gray-900 bg-white 
-placeholder-transparent focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed 
+const baseStyles = `
+peer w-full h-full rounded-xl border px-4 text-gray-900 bg-white 
+focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed 
 flex items-center autofill:bg-white autofill:shadow-[inset_0_0_0px_1000px_white] 
-autofill:[-webkit-text-fill-color:theme(colors.gray.900)]`;
+autofill:[-webkit-text-fill-color:theme(colors.gray.900)] transition-colors duration-200
+`;
 
 const variants: Record<InputVariantKey, string> = {
     primary: "border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500",
@@ -26,12 +28,13 @@ export function MRInput({
     variant = inputVariantKeys.primary,
     value: externalValue,
     onChange,
+    placeholder,
     ...props
 }: MRInputProps) {
     const [internalValue, setInternalValue] = useState("");
     const [isFocused, setIsFocused] = useState(false);
 
-    const value = externalValue ? externalValue : internalValue;
+    const value = externalValue ?? internalValue;
     const hasValue = Boolean(value);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -60,6 +63,7 @@ export function MRInput({
                 onChange={handleChange}
                 onFocus={handleFocus}
                 onBlur={handleBlur}
+                placeholder={isFocused ? placeholder : ""}
                 className={cn(baseStyles, variants[variant], className)}
             />
             {label && <MrFloatingLabel label={label} isFocused={isFocused} hasValue={hasValue} />}

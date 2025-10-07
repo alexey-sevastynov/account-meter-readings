@@ -49,6 +49,7 @@ export function MrAuthFormSignIn() {
                 label="Email"
                 type="email"
                 rules={{ required: "Email is required" }}
+                placeholder="johndoe@example.com"
             />
 
             <MrPasswordInput name="password" control={control} errors={errors} />

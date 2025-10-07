@@ -50,6 +50,7 @@ export function MrForgotPassword() {
                     label="Email"
                     type="email"
                     rules={{ required: "Email is required" }}
+                    placeholder="johndoe@email.com"
                 />
                 {notificationMessage && (
                     <MrNotificationMessage message={notificationMessage} type={notificationTypeMessage} />

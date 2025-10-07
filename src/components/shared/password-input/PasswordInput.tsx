@@ -12,6 +12,7 @@ interface MrPasswordInputProps<TFormValues extends FieldValues> {
     errors: FieldErrors<TFormValues>;
     label?: string;
     rules?: object;
+    placeholder?: string;
 }
 
 const defaultRules = {
@@ -25,6 +26,7 @@ export function MrPasswordInput<TFormValues extends FieldValues>({
     errors,
     label = "Password",
     rules = defaultRules,
+    placeholder = "••••••••",
 }: MrPasswordInputProps<TFormValues>) {
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
@@ -38,6 +40,7 @@ export function MrPasswordInput<TFormValues extends FieldValues>({
                 type={isPasswordVisible ? "text" : "password"}
                 rules={rules}
                 inputClassName="pr-10 relative"
+                placeholder={placeholder}
             />
             <button
                 type="button"
