@@ -12,6 +12,7 @@ export interface ValidatedInputProps<TFormValues extends FieldValues> {
     type?: string;
     rules?: object;
     inputClassName?: string;
+    placeholder?: string;
 }
 
 export function MrValidatedInput<TFormValues extends FieldValues>({
@@ -22,6 +23,7 @@ export function MrValidatedInput<TFormValues extends FieldValues>({
     type = "text",
     rules = {},
     inputClassName,
+    placeholder,
 }: ValidatedInputProps<TFormValues>) {
     const errorMessage = errors[name]?.message as string;
 
@@ -38,6 +40,7 @@ export function MrValidatedInput<TFormValues extends FieldValues>({
                         type={type}
                         label={label}
                         variant={errorMessage ? inputVariantKeys.error : inputVariantKeys.primary}
+                        placeholder={placeholder}
                     />
                 )}
             />

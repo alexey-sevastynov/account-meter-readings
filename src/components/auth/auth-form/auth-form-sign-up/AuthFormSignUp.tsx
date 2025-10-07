@@ -38,6 +38,7 @@ export function MrAuthFormSignUp() {
                 label="User Name"
                 type="text"
                 rules={{ required: "User name is required" }}
+                placeholder="Your name"
             />
             <MrValidatedInput
                 name="email"
@@ -46,6 +47,7 @@ export function MrAuthFormSignUp() {
                 label="Email"
                 type="email"
                 rules={{ required: "Email is required" }}
+                placeholder="your@email.com"
             />
             <MrPasswordInput name="password" control={control} errors={errors} />
             <MrPasswordInput
