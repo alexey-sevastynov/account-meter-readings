@@ -22,7 +22,7 @@ export function MrAuthForm() {
 
     return (
         <MrAuthLayout>
-            <MrTitle>{getAuthModeLabel(authMode)}</MrTitle>
+            <MrTitle className="text-black">{getAuthModeLabel(authMode)}</MrTitle>
             {isSignInMode(authMode) ? <MrAuthFormSignIn /> : <MrAuthFormSignUp />}
             <MrAuthFormActions authMode={authMode} toggleAuthMode={onToggleAuthMode} />
         </MrAuthLayout>

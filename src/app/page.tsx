@@ -8,14 +8,21 @@ import { signOut } from "@/features/auth/slice";
 import { getCookie } from "@/utils/cookie/cookies";
 import { cookieKeys } from "@/utils/cookie/cookie-key";
 import { redirectToSignIn } from "@/utils/navigation";
+import { useTheme } from "@/components/providers/theme-provider/ThemeProvider";
+import { MrTitle } from "@/components/ui/title/Title";
+import { MrText } from "@/components/ui/text/Text";
+import { themeModes } from "@/enums/theme-mode";
+import { buttonVariantKeys } from "@/enums/ui/button-variant-key";
 
 export default function HomePage() {
     const router = useRouter();
     const dispatch = useAppDispatch();
     const [userName, setUserName] = useState<string>();
+    const { theme, setTheme } = useTheme();
 
     useEffect(() => {
         const name = getCookie(cookieKeys.userName);
+
         setUserName(name);
     }, []);
 
@@ -25,15 +32,28 @@ export default function HomePage() {
     };
 
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-            <div className="w-full max-w-md p-8 bg-white rounded-2xl shadow-xl flex flex-col items-center">
-                <h1 className="text-2xl font-bold mb-4">Welcome to Home, {userName}!</h1>
-                <p className="mb-6 text-gray-600">You are successfully logged in.</p>
-                <MrButton
-                    text="Logout"
-                    onClick={onLogout}
-                    className="bg-red-500 hover:bg-red-600 text-white w-full"
-                />
+        <div className="flex min-h-screen flex-col items-center justify-center">
+            <div className="flex w-full max-w-md flex-col items-center rounded-2xl p-8">
+                <MrTitle>Welcome to Home, {userName}!</MrTitle>
+                <MrText>You are successfully logged in.</MrText>
+
+                <div className="flex w-full flex-col space-y-4">
+                    <div className="flex flex-col space-y-3">
+                        <div className="flex items-center justify-between">
+                            <MrText>
+                                Current theme: <span className="font-semibold capitalize">{theme}</span>
+                            </MrText>
+                        </div>
+
+                        <div className="flex space-x-2">
+                            <MrButton text="Light" onClick={() => setTheme(themeModes.light)} />
+                            <MrButton text="Dark" onClick={() => setTheme(themeModes.dark)} />
+                            <MrButton text="System" onClick={() => setTheme(themeModes.system)} />
+                        </div>
+                    </div>
+
+                    <MrButton text="Logout" onClick={onLogout} variant={buttonVariantKeys.danger} />
+                </div>
             </div>
         </div>
     );

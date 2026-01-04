@@ -2,11 +2,16 @@
 
 import { store } from "@/app/store";
 import { Provider } from "react-redux";
+import { ThemeProvider } from "@/components/providers/theme-provider/ThemeProvider";
 
 interface MrProvidersProps {
     children: React.ReactNode;
 }
 
 export function MrProviders({ children }: MrProvidersProps) {
-    return <Provider store={store}>{children}</Provider>;
+    return (
+        <ThemeProvider>
+            <Provider store={store}>{children}</Provider>
+        </ThemeProvider>
+    );
 }

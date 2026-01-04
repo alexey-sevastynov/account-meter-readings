@@ -37,7 +37,7 @@ export default [
             "plugin:react/recommended",
             "plugin:react/jsx-runtime",
             "plugin:react-hooks/recommended",
-            "eslint-config-prettier"
+            "eslint-config-prettier",
         )
         .map((config) => ({
             ...config,
@@ -93,10 +93,7 @@ export default [
             "default-case": "error",
             "max-len": [
                 "error",
-                {
-                    code: 120,
-                    ignorePattern: "^import\\s.+\\sfrom\\s.+;$",
-                },
+                { code: 120, ignorePattern: '^import\\s.+\\sfrom\\s.+;$|className="[^"]+"' },
             ],
             "@typescript-eslint/no-unsafe-return": "error",
             "@typescript-eslint/no-unsafe-assignment": "error",

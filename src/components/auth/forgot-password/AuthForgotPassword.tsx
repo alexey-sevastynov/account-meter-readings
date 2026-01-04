@@ -41,7 +41,7 @@ export function MrForgotPassword() {
 
     return (
         <MrAuthLayout>
-            <MrTitle>Forgot Password</MrTitle>
+            <MrTitle className="text-black">Forgot Password</MrTitle>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                 <MrValidatedInput
                     name="email"
@@ -67,7 +67,7 @@ export function MrForgotPassword() {
                         text="Send reset link"
                         type="submit"
                         disabled={isLoading}
-                        className="w-full flex items-center justify-center space-x-2"
+                        className="flex w-full items-center justify-center space-x-2"
                         loading={isLoading}
                     />
                 </div>

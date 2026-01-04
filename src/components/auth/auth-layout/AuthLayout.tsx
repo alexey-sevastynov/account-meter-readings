@@ -8,9 +8,9 @@ interface AuthLayoutProps {
 
 export default function MrAuthLayout({ children }: AuthLayoutProps) {
     return (
-        <div className="relative flex items-center justify-center min-h-screen px-4">
+        <div className="relative flex min-h-screen items-center justify-center px-4">
             <video
-                className="absolute inset-0 w-full h-full object-cover"
+                className="absolute inset-0 h-full w-full object-cover"
                 autoPlay
                 muted
                 loop
@@ -21,10 +21,7 @@ export default function MrAuthLayout({ children }: AuthLayoutProps) {
                 Your browser does not support the video tag.
             </video>
 
-            <div
-                className="relative max-w-md w-full bg-white backdrop-blur-2xl shadow-2xl rounded-3xl p-10 
-            text-center max-h-[calc(100vh-40px)] overflow-y-auto border border-white/20"
-            >
+            <div className="relative max-h-[calc(100vh-40px)] w-full max-w-md overflow-y-auto rounded-3xl border border-white/20 bg-white p-10 text-center shadow-2xl">
                 {children}
             </div>
         </div>

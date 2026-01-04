@@ -45,7 +45,7 @@ export function MrResetPassword({ token }: MrResetPasswordProps) {
             { token, newPassword: data.password },
             setNotificationMessage,
             setNotificationTypeMessage,
-            setIsLoading
+            setIsLoading,
         );
     };
 
@@ -55,7 +55,7 @@ export function MrResetPassword({ token }: MrResetPasswordProps) {
 
     return (
         <MrAuthLayout>
-            <MrTitle>Reset Password</MrTitle>
+            <MrTitle className="text-black">Reset Password</MrTitle>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                 <MrPasswordInput name="password" control={control} errors={errors} />
                 <MrPasswordInput
@@ -85,7 +85,7 @@ export function MrResetPassword({ token }: MrResetPasswordProps) {
                         text="Send reset link"
                         type="submit"
                         disabled={isLoading}
-                        className="w-full flex items-center justify-center space-x-2"
+                        className="flex w-full items-center justify-center space-x-2"
                         loading={isLoading}
                     />
                 )}
