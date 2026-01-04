@@ -16,11 +16,12 @@ export function MrAuthFormActions({ authMode, toggleAuthMode }: MrAuthFormAction
     return (
         <>
             {isSignInMode(authMode) && (
-                <div className="mt-4 text-right">
+                <div className="mt-2 text-right">
                     <MrLink href={routeKeys.forgotPassword}>Forgot password?</MrLink>
                 </div>
             )}
-            <p className="mt-6 text-center text-gray-600">
+
+            <p className="mt-8 text-center text-gray-600">
                 {isSignInMode(authMode) ? "Don’t have an account?" : "Already have an account?"}
                 <MrButton
                     variant={buttonVariantKeys.link}

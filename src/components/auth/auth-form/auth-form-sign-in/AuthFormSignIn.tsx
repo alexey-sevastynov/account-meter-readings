@@ -13,6 +13,9 @@ import { SignInFormValues } from "@/components/auth/types/sign-in-form-values";
 import { MrPasswordInput } from "@/components/shared/password-input/PasswordInput";
 import { redirectToHome } from "@/utils/navigation";
 import { timing } from "@/constants/timing";
+import { signInAsGuest } from "@/features/auth/thunks";
+import { buttonVariantKeys } from "@/enums/ui/button-variant-key";
+import { MrDivider } from "@/components/ui/divider/Divider";
 
 export function MrAuthFormSignIn() {
     const dispatch = useAppDispatch();
@@ -40,6 +43,14 @@ export function MrAuthFormSignIn() {
         }
     };
 
+    const onGuestLogin = async () => {
+        const response = await dispatch(signInAsGuest());
+
+        if (response.meta.requestStatus === "fulfilled") {
+            redirectToHome(router);
+        }
+    };
+
     return (
         <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
             <MrValidatedInput
@@ -58,12 +69,25 @@ export function MrAuthFormSignIn() {
                 <MrNotificationMessage message={errorMessage.message} type={notificationMessageKeys.error} />
             )}
 
-            <MrButton
-                text="Sign In"
-                type="submit"
-                className="w-full flex items-center justify-center space-x-2"
-                loading={isLoading}
-            />
+            <div>
+                <MrButton
+                    text="Sign In"
+                    type="submit"
+                    className="flex w-full items-center justify-center space-x-2"
+                    loading={isLoading}
+                />
+
+                <MrDivider text="OR" className="py-2" />
+
+                <MrButton
+                    text="Continue as Guest"
+                    variant={buttonVariantKeys.outline}
+                    type="button"
+                    className="flex w-full items-center justify-center space-x-2"
+                    onClick={onGuestLogin}
+                    loading={isLoading}
+                />
+            </div>
         </form>
     );
 }
