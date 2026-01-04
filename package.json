@@ -3,7 +3,9 @@
     "version": "0.1.0",
     "private": true,
     "scripts": {
-        "dev": "next dev --turbopack --port 3228",
+        "dev": "ts-node scripts/dev.ts",
+        "dev:local": "NEXT_PUBLIC_API_MODE=local ts-node scripts/dev.ts",
+        "dev:remote": "NEXT_PUBLIC_API_MODE=remote ts-node scripts/dev.ts",
         "build": "next build --turbopack",
         "start": "next start --port 3228",
         "lint": "eslint"
@@ -36,11 +38,13 @@
         "@types/node": "^20",
         "@types/react": "^19",
         "@types/react-dom": "^19",
+        "chalk": "^5.6.2",
         "eslint": "^9",
         "eslint-config-next": "15.5.2",
         "prettier": "^3.6.2",
         "prettier-plugin-tailwindcss": "^0.6.14",
         "tailwindcss": "^4",
+        "ts-node": "^10.9.2",
         "typescript": "^5"
     }
 }
