@@ -9,7 +9,6 @@ import { MrAuthFormSignUp } from "@/components/auth/auth-form/auth-form-sign-up/
 import { useAppDispatch } from "@/hooks/use-app-dispatch";
 import { clearAuthError } from "@/features/auth/slice";
 import { MrTitle } from "@/components/ui/title/Title";
-import MrAuthLayout from "@/components/auth/auth-layout/AuthLayout";
 
 export function MrAuthForm() {
     const dispatch = useAppDispatch();
@@ -21,10 +20,10 @@ export function MrAuthForm() {
     }, [authMode, dispatch]);
 
     return (
-        <MrAuthLayout>
+        <>
             <MrTitle className="text-black">{getAuthModeLabel(authMode)}</MrTitle>
             {isSignInMode(authMode) ? <MrAuthFormSignIn /> : <MrAuthFormSignUp />}
             <MrAuthFormActions authMode={authMode} toggleAuthMode={onToggleAuthMode} />
-        </MrAuthLayout>
+        </>
     );
 }

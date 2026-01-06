@@ -32,7 +32,7 @@ export default function HomePage() {
     };
 
     return (
-        <div className="flex min-h-screen flex-col items-center justify-center">
+        <div className="flex flex-col items-center justify-center">
             <div className="flex w-full max-w-md flex-col items-center rounded-2xl p-8">
                 <MrTitle>Welcome to Home, {userName}!</MrTitle>
                 <MrText>You are successfully logged in.</MrText>

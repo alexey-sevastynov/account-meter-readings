@@ -14,7 +14,6 @@ import {
     isNotificationSuccess,
     sendResetPassword,
 } from "@/components/auth/reset-password/resetPassword.funcs";
-import MrAuthLayout from "@/components/auth/auth-layout/AuthLayout";
 
 interface FormValues {
     password: string;
@@ -54,7 +53,7 @@ export function MrResetPassword({ token }: MrResetPasswordProps) {
     };
 
     return (
-        <MrAuthLayout>
+        <>
             <MrTitle className="text-black">Reset Password</MrTitle>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                 <MrPasswordInput name="password" control={control} errors={errors} />
@@ -90,6 +89,6 @@ export function MrResetPassword({ token }: MrResetPasswordProps) {
                     />
                 )}
             </form>
-        </MrAuthLayout>
+        </>
     );
 }

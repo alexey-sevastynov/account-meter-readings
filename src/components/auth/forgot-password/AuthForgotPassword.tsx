@@ -11,7 +11,6 @@ import { buttonVariantKeys } from "@/enums/ui/button-variant-key";
 import { useRouter } from "next/navigation";
 import { redirectToSignIn } from "@/utils/navigation";
 import { sendResetRequest } from "@/components/auth/forgot-password/authForgotPassword.funcs";
-import MrAuthLayout from "@/components/auth/auth-layout/AuthLayout";
 
 interface FormValues {
     email: string;
@@ -40,7 +39,7 @@ export function MrForgotPassword() {
     };
 
     return (
-        <MrAuthLayout>
+        <>
             <MrTitle className="text-black">Forgot Password</MrTitle>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                 <MrValidatedInput
@@ -72,6 +71,6 @@ export function MrForgotPassword() {
                     />
                 </div>
             </form>
-        </MrAuthLayout>
+        </>
     );
 }

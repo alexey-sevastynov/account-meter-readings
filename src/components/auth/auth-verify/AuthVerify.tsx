@@ -6,7 +6,6 @@ import { VerifyStatusKey, verifyStatusKeys } from "@/components/auth/enums/verif
 import { verifyEmail } from "@/components/auth/auth-verify/authVerify.funcs";
 import { MrButton } from "@/components/ui/button/Button";
 import { redirectToHome } from "@/utils/navigation";
-import MrAuthLayout from "@/components/auth/auth-layout/AuthLayout";
 
 interface MrAuthVerifyProps {
     token: string;
@@ -34,7 +33,7 @@ export default function MrAuthVerify({ token }: MrAuthVerifyProps) {
     };
 
     return (
-        <MrAuthLayout>
+        <>
             {status === verifyStatusKeys.pending && (
                 <div className="flex flex-col items-center space-y-4">
                     <p className="text-gray-600">Verifying your email...</p>
@@ -56,6 +55,6 @@ export default function MrAuthVerify({ token }: MrAuthVerifyProps) {
                     <MrButton text="Move to Home page" onClick={goToHomePage} />
                 </div>
             )}
-        </MrAuthLayout>
+        </>
     );
 }
