@@ -18,7 +18,7 @@ export default function HomePage() {
     const router = useRouter();
     const dispatch = useAppDispatch();
     const [userName, setUserName] = useState<string>();
-    const { theme, setTheme } = useTheme();
+    const theme = useTheme();
 
     useEffect(() => {
         const name = getCookie(cookieKeys.userName);
@@ -41,14 +41,15 @@ export default function HomePage() {
                     <div className="flex flex-col space-y-3">
                         <div className="flex items-center justify-between">
                             <MrText>
-                                Current theme: <span className="font-semibold capitalize">{theme}</span>
+                                Current theme:
+                                <span className="font-semibold capitalize">{theme.currentTheme}</span>
                             </MrText>
                         </div>
 
                         <div className="flex space-x-2">
-                            <MrButton text="Light" onClick={() => setTheme(themeModes.light)} />
-                            <MrButton text="Dark" onClick={() => setTheme(themeModes.dark)} />
-                            <MrButton text="System" onClick={() => setTheme(themeModes.system)} />
+                            <MrButton text="Light" onClick={() => theme.setTheme(themeModes.light)} />
+                            <MrButton text="Dark" onClick={() => theme.setTheme(themeModes.dark)} />
+                            <MrButton text="System" onClick={() => theme.setTheme(themeModes.system)} />
                         </div>
                     </div>
 

@@ -1,27 +1,38 @@
 import { ThemeMode, themeModes } from "@/enums/theme-mode";
 import { getDarkSchemeMedia } from "@/components/providers/theme-provider/color-scheme-media";
+import { isBrowser } from "@/lib/environments";
+import { getLocalStorageItem } from "@/utils/local-storage";
+import { localStorageKeys } from "@/enums/local-storage-key";
 
 export function isSystemTheme(theme: ThemeMode) {
     return theme === themeModes.system;
 }
 
-export function isDarkTheme(theme: ThemeMode) {
-    return theme === themeModes.dark;
-}
-
-export function isLightTheme(theme: ThemeMode) {
-    return theme === themeModes.light;
-}
-
 export function applyThemeToDocument(theme: ThemeMode) {
-    const darkSchemeMedia = getDarkSchemeMedia();
-    const isActiveDarkMode = isDarkTheme(theme) ?? (isSystemTheme(theme) && darkSchemeMedia?.matches);
+    if (!isBrowser()) return;
 
-    document.documentElement.classList.toggle(themeModes.dark, isActiveDarkMode);
+    const resolved = getResolvedTheme(theme);
+    const root = document.documentElement;
+
+    root.dataset.theme = resolved;
+    root.classList.remove(themeModes.light, themeModes.dark);
+    root.classList.add(resolved);
 }
 
-export function applySystemThemeIfNeeded(theme: ThemeMode) {
-    if (isSystemTheme(theme)) {
-        applyThemeToDocument(themeModes.system);
-    }
+export function getInitialTheme(defaultTheme: ThemeMode): ThemeMode {
+    if (!isBrowser()) return defaultTheme;
+
+    const storedTheme = getLocalStorageItem<ThemeMode>(localStorageKeys.theme);
+
+    return storedTheme ?? defaultTheme;
+}
+
+export function getResolvedTheme(theme: ThemeMode) {
+    if (!isSystemTheme(theme)) return theme;
+
+    if (!isBrowser()) return themeModes.light;
+
+    const isDarkThemeMode = getDarkSchemeMedia();
+
+    return isDarkThemeMode ? themeModes.dark : themeModes.light;
 }
