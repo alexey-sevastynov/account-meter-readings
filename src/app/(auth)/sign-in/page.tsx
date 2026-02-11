@@ -4,7 +4,8 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useAppSelector } from "@/hooks/use-app-selector";
 import { MrAuthForm } from "@/components/auth/auth-form/AuthForm";
-import { redirectToHome } from "@/utils/navigation";
+import { redirectTo } from "@/utils/navigation";
+import { routeKeys } from "@/enums/url/route-key";
 
 export default function SignInPage() {
     const router = useRouter();
@@ -12,7 +13,7 @@ export default function SignInPage() {
 
     useEffect(() => {
         if (token) {
-            redirectToHome(router);
+            redirectTo(router, routeKeys.home);
         }
     }, [token, router]);
 

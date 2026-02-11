@@ -11,11 +11,14 @@ import { notificationMessageKeys } from "@/enums/ui/notification-message-key";
 import { MrValidatedInput } from "@/components/shared/validated-input/ValidatedInput";
 import { SignInFormValues } from "@/components/auth/types/sign-in-form-values";
 import { MrPasswordInput } from "@/components/shared/password-input/PasswordInput";
-import { redirectToHome } from "@/utils/navigation";
+import { redirectTo } from "@/utils/navigation";
 import { timing } from "@/constants/timing";
 import { signInAsGuest } from "@/features/auth/thunks";
 import { buttonVariantKeys } from "@/enums/ui/button-variant-key";
 import { MrDivider } from "@/components/ui/divider/Divider";
+import { routeKeys } from "@/enums/url/route-key";
+import { isDev } from "@/lib/environments";
+import { MrLink } from "@/components/ui/link/Link";
 
 export function MrAuthFormSignIn() {
     const dispatch = useAppDispatch();
@@ -39,7 +42,7 @@ export function MrAuthFormSignIn() {
             // or guaranteed cookie setting.
             await new Promise((resolve) => setTimeout(resolve, timing.fiveSecondsInMilliseconds));
 
-            redirectToHome(router);
+            redirectTo(router, routeKeys.home);
         }
     };
 
@@ -47,7 +50,7 @@ export function MrAuthFormSignIn() {
         const response = await dispatch(signInAsGuest());
 
         if (response.meta.requestStatus === "fulfilled") {
-            redirectToHome(router);
+            redirectTo(router, routeKeys.home);
         }
     };
 
@@ -87,6 +90,16 @@ export function MrAuthFormSignIn() {
                     onClick={onGuestLogin}
                     loading={isLoading}
                 />
+
+                {/* TODO: Remove this template code */}
+                {isDev() && (
+                    <MrLink
+                        href={routeKeys.coffeeShop}
+                        className="flex w-full items-center justify-center space-x-2"
+                    >
+                        Go to Coffee Shop
+                    </MrLink>
+                )}
             </div>
         </form>
     );

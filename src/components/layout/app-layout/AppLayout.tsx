@@ -1,11 +1,12 @@
 "use client";
 
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { MrSidebar } from "@/components/app-shell/sidebar/Sidebar";
 import { MrToolbar } from "@/components/app-shell/toolbar/Toolbar";
+import { routeKeys } from "@/enums/url/route-key";
 import { useAppSelector } from "@/hooks/use-app-selector";
-import { redirectToSignIn } from "@/utils/navigation";
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { redirectTo } from "@/utils/navigation";
 
 interface AppLayoutProps {
     children: React.ReactNode;
@@ -17,7 +18,7 @@ export function MrAppLayout({ children }: AppLayoutProps) {
 
     useEffect(() => {
         if (token) {
-            redirectToSignIn(router);
+            redirectTo(router, routeKeys.signIn);
         }
     }, [token, router]);
 

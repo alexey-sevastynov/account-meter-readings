@@ -9,8 +9,9 @@ import { MrNotificationMessage } from "@/components/ui/notification-message/noti
 import { NotificationMessageKey } from "@/enums/ui/notification-message-key";
 import { buttonVariantKeys } from "@/enums/ui/button-variant-key";
 import { useRouter } from "next/navigation";
-import { redirectToSignIn } from "@/utils/navigation";
+import { redirectTo } from "@/utils/navigation";
 import { sendResetRequest } from "@/components/auth/forgot-password/authForgotPassword.funcs";
+import { routeKeys } from "@/enums/url/route-key";
 
 interface FormValues {
     email: string;
@@ -35,7 +36,7 @@ export function MrForgotPassword() {
     };
 
     const goToSignInPage = () => {
-        redirectToSignIn(router);
+        redirectTo(router, routeKeys.signIn);
     };
 
     return (

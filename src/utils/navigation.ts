@@ -1,14 +1,8 @@
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import { RouteKey, routeKeys } from "@/enums/url/route-key";
 
-export function redirectToHome(router: AppRouterInstance) {
-    const homePath = buildRoutePath(routeKeys.home);
-    router.replace(homePath);
-}
-
-export function redirectToSignIn(router: AppRouterInstance) {
-    const signInPath = buildRoutePath(routeKeys.signIn);
-    router.replace(signInPath);
+export function redirectTo(router: AppRouterInstance, path: string) {
+    router.replace(path);
 }
 
 export function buildRoutePath(first: RouteKey, ...rest: RouteKey[]) {

@@ -1,5 +1,18 @@
 import { ComponentType } from "react";
-import { Eye, EyeOff } from "lucide-react";
+import {
+    Eye,
+    EyeOff,
+    ChevronDown,
+    ChevronsUpDown,
+    ChevronUp,
+    GripVertical,
+    ChevronsLeft,
+    ChevronsRight,
+    Download,
+    X,
+    Filter,
+    Settings,
+} from "lucide-react";
 import { ColorName, colorNames } from "@/enums/ui/color-name";
 import { IconName, iconNames } from "@/enums/ui/icon-name";
 import { IconSize, iconSizes } from "@/enums/ui/icon-size";
@@ -16,6 +29,16 @@ interface IconComponentProps {
 const iconMap: Record<IconName, ComponentType<IconComponentProps>> = {
     eye: Eye,
     eyeOff: EyeOff,
+    chevronDown: ChevronDown,
+    chevronsUpDown: ChevronsUpDown,
+    chevronUp: ChevronUp,
+    gripVertical: GripVertical,
+    chevronsLeft: ChevronsLeft,
+    chevronsRight: ChevronsRight,
+    download: Download,
+    close: X,
+    filter: Filter,
+    settings: Settings,
 } as const;
 
 interface MrIconProps {

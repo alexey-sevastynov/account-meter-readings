@@ -7,16 +7,18 @@ import { MrButton } from "@/components/ui/button/Button";
 import { signOut } from "@/features/auth/slice";
 import { getCookie } from "@/utils/cookie/cookies";
 import { cookieKeys } from "@/utils/cookie/cookie-key";
-import { redirectToSignIn } from "@/utils/navigation";
+import { redirectTo } from "@/utils/navigation";
 import { useTheme } from "@/components/providers/theme-provider/ThemeProvider";
 import { MrTitle } from "@/components/ui/title/Title";
 import { MrText } from "@/components/ui/text/Text";
 import { themeModes } from "@/enums/theme-mode";
 import { buttonVariantKeys } from "@/enums/ui/button-variant-key";
+import { routeKeys } from "@/enums/url/route-key";
 
 export default function HomePage() {
     const router = useRouter();
     const dispatch = useAppDispatch();
+
     const [userName, setUserName] = useState<string>();
     const theme = useTheme();
 
@@ -28,11 +30,15 @@ export default function HomePage() {
 
     const onLogout = () => {
         dispatch(signOut());
-        redirectToSignIn(router);
+        redirectTo(router, routeKeys.signIn);
+    };
+
+    const goToCoffeeShop = () => {
+        redirectTo(router, routeKeys.coffeeShop);
     };
 
     return (
-        <div className="flex flex-col items-center justify-center">
+        <div className="flex flex-col">
             <div className="flex w-full max-w-md flex-col items-center rounded-2xl p-8">
                 <MrTitle>Welcome to Home, {userName}!</MrTitle>
                 <MrText>You are successfully logged in.</MrText>
@@ -53,6 +59,7 @@ export default function HomePage() {
                         </div>
                     </div>
 
+                    <MrButton text="Go to Coffee Shop" onClick={goToCoffeeShop} />
                     <MrButton text="Logout" onClick={onLogout} variant={buttonVariantKeys.danger} />
                 </div>
             </div>

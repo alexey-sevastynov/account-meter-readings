@@ -5,7 +5,8 @@ import { useRouter } from "next/navigation";
 import { VerifyStatusKey, verifyStatusKeys } from "@/components/auth/enums/verify-status-key";
 import { verifyEmail } from "@/components/auth/auth-verify/authVerify.funcs";
 import { MrButton } from "@/components/ui/button/Button";
-import { redirectToHome } from "@/utils/navigation";
+import { redirectTo } from "@/utils/navigation";
+import { routeKeys } from "@/enums/url/route-key";
 
 interface MrAuthVerifyProps {
     token: string;
@@ -29,7 +30,7 @@ export default function MrAuthVerify({ token }: MrAuthVerifyProps) {
     }, [token]);
 
     const goToHomePage = () => {
-        redirectToHome(router);
+        redirectTo(router, routeKeys.home);
     };
 
     return (

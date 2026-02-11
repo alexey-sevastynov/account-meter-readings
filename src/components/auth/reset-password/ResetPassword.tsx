@@ -7,13 +7,14 @@ import { MrButton } from "@/components/ui/button/Button";
 import { MrTitle } from "@/components/ui/title/Title";
 import { MrPasswordInput } from "@/components/shared/password-input/PasswordInput";
 import { buttonVariantKeys } from "@/enums/ui/button-variant-key";
-import { redirectToSignIn } from "@/utils/navigation";
+import { redirectTo } from "@/utils/navigation";
 import { NotificationMessageKey } from "@/enums/ui/notification-message-key";
 import { MrNotificationMessage } from "@/components/ui/notification-message/notification-message";
 import {
     isNotificationSuccess,
     sendResetPassword,
 } from "@/components/auth/reset-password/resetPassword.funcs";
+import { routeKeys } from "@/enums/url/route-key";
 
 interface FormValues {
     password: string;
@@ -49,7 +50,7 @@ export function MrResetPassword({ token }: MrResetPasswordProps) {
     };
 
     const goToSignInPage = () => {
-        redirectToSignIn(router);
+        redirectTo(router, routeKeys.signIn);
     };
 
     return (

@@ -1,11 +1,17 @@
-import { cn } from "@/lib/cn";
 import { ReactNode } from "react";
+import { cn } from "@/lib/cn";
+import { TextPosition } from "@/enums/ui/text-position";
 
 interface MrTextProps {
     children: ReactNode;
+    position?: TextPosition;
     className?: string;
 }
 
-export function MrText({ children, className }: MrTextProps) {
-    return <p className={cn("mb-4 text-center text-base leading-relaxed", className)}>{children}</p>;
+export function MrText({ children, position = "left", className }: MrTextProps) {
+    return (
+        <p className={cn("mb-4 text-base leading-relaxed", className, position && `text-${position}`)}>
+            {children}
+        </p>
+    );
 }
