@@ -7,7 +7,6 @@ import { VoidFunc } from "@/types/getter-setter-functions";
 import { setLocalStorageItem } from "@/utils/local-storage";
 import {
     getInitialTheme,
-    getResolvedTheme,
     applyThemeToDocument,
 } from "@/components/providers/theme-provider/theme-provider.funcs";
 
@@ -26,34 +25,15 @@ export function ThemeProvider({
     defaultTheme?: ThemeMode;
 }) {
     const [currentTheme, setCurrentTheme] = useState<ThemeMode>(() => getInitialTheme(defaultTheme));
-    const [isClientReady, setIsClientReady] = useState(false);
-
-    function applyTheme(theme: ThemeMode) {
-        const resolvedTheme = getResolvedTheme(theme);
-        document.documentElement.dataset.theme = resolvedTheme;
-        document.documentElement.classList.remove(themeModes.light, themeModes.dark);
-        document.documentElement.classList.add(resolvedTheme);
-    }
-
-    useEffect(() => {
-        setIsClientReady(true);
-        applyTheme(currentTheme);
-    }, []);
 
     useEffect(() => {
         applyThemeToDocument(currentTheme);
-    }, [currentTheme, isClientReady]);
-
-    useEffect(() => {
-        if (isClientReady) applyTheme(currentTheme);
-    }, [currentTheme, isClientReady]);
+    }, [currentTheme]);
 
     const setTheme = (newTheme: ThemeMode) => {
         setCurrentTheme(newTheme);
         setLocalStorageItem(localStorageKeys.theme, newTheme);
     };
-
-    if (!isClientReady) return null;
 
     return <ThemeContext.Provider value={{ currentTheme, setTheme }}>{children}</ThemeContext.Provider>;
 }

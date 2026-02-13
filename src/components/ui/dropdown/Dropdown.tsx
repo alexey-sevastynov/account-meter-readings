@@ -51,6 +51,9 @@ export function MrDropdownTrigger({ children, className }: { children: ReactNode
     if (!ctx) throw new Error("TdDropdownTrigger must be inside TdDropdown");
 
     return (
+        // TODO: Remove eslint-disable-next-line
+
+        // eslint-disable-next-line react-hooks/refs
         <div ref={ctx.triggerRef} onClick={ctx.toggleDropdown} className={cn("cursor-pointer", className)}>
             {children}
         </div>
@@ -62,10 +65,16 @@ export function MrDropdownContent({ children, className }: { children: ReactNode
 
     if (!ctx) throw new Error("TdDropdownContent must be inside TdDropdown");
 
+    // TODO: Remove eslint-disable-next-line
+
+    // eslint-disable-next-line react-hooks/refs
     if (!ctx.isOpen) return null;
 
     return (
         <div
+            // TODO: Remove eslint-disable-next-line
+
+            // eslint-disable-next-line react-hooks/refs
             ref={ctx.contentRef}
             className={cn(
                 "absolute z-20 mt-2 rounded-lg border border-gray-200 bg-white shadow-lg",

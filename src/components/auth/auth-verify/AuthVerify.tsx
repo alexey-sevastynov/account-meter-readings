@@ -3,21 +3,21 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { VerifyStatusKey, verifyStatusKeys } from "@/components/auth/enums/verify-status-key";
-import { verifyEmail } from "@/components/auth/auth-verify/authVerify.funcs";
+import { getInitialVerifyStatus, verifyEmail } from "@/components/auth/auth-verify/authVerify.funcs";
 import { MrButton } from "@/components/ui/button/Button";
 import { redirectTo } from "@/utils/navigation";
 import { routeKeys } from "@/enums/url/route-key";
 
 interface MrAuthVerifyProps {
-    token: string;
+    token?: string;
 }
 
 export default function MrAuthVerify({ token }: MrAuthVerifyProps) {
     const router = useRouter();
-    const [status, setStatus] = useState<VerifyStatusKey>(verifyStatusKeys.pending);
+    const [status, setStatus] = useState<VerifyStatusKey>(getInitialVerifyStatus(token));
 
     useEffect(() => {
-        if (!token) return setStatus(verifyStatusKeys.error);
+        if (!token) return;
 
         (async () => {
             try {

@@ -5,7 +5,7 @@ import { verifyStatusKeys } from "@/components/auth/enums/verify-status-key";
 export async function verifyEmail(token: string) {
     const response = await createOne<{ token: string }, { success: boolean }>(
         apiEndpointNames.mailVerification,
-        { token }
+        { token },
     );
 
     if (response.success) {
@@ -13,4 +13,8 @@ export async function verifyEmail(token: string) {
     } else {
         return verifyStatusKeys.error;
     }
+}
+
+export function getInitialVerifyStatus(token?: string) {
+    return token ? verifyStatusKeys.pending : verifyStatusKeys.error;
 }

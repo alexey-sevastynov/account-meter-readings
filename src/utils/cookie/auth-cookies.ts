@@ -1,5 +1,5 @@
 import { cookieKeys } from "@/utils/cookie/cookie-key";
-import { removeCookie, setCookie } from "@/utils/cookie/cookies";
+import { removeCookie, setCookie } from "@/utils/cookie/cookie-client";
 
 const authCookieKeys = {
     token: cookieKeys.token,
