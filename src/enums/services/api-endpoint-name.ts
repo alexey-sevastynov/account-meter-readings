@@ -6,6 +6,7 @@ export const apiEndpointNames = {
     forgotPasswordConfirm: "/password-reset/confirm",
     forgotPasswordRequest: "/password-reset/request",
     mailVerification: "/mail-verification/confirm",
+    employee: "/coffee-shop/employees",
 } as const;
 
 export type ApiEndpointName = (typeof apiEndpointNames)[keyof typeof apiEndpointNames];
