@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { cookieKeys } from "@/utils/cookie/cookie-key";
 import { buildRoutePath } from "@/utils/navigation";
 import { routeKeys } from "@/enums/url/route-key";
+import { isProd } from "@/lib/environments";
 
 const redirectToSignInPath = buildRoutePath(routeKeys.signIn);
 const redirectToHomePath = buildRoutePath(routeKeys.home);
@@ -10,6 +11,10 @@ export function middleware(request: NextRequest) {
     const token = request.cookies.get(cookieKeys.token)?.value;
     const isVerifiedMail = request.cookies.get(cookieKeys.isVerified)?.value === "true";
     const pathname = request.nextUrl.pathname;
+
+    if (isProd() && pathname.startsWith(routeKeys.coffeeShop)) {
+        return performRedirect(redirectToHomePath, request);
+    }
 
     if (shouldRedirectToSignIn(pathname, isVerifiedMail, token)) {
         return performRedirect(redirectToSignInPath, request);
@@ -27,7 +32,7 @@ export function middleware(request: NextRequest) {
 // Dynamic values or imported constants cannot be parsed at build time and will cause errors.
 // Always write the paths directly as string literals.
 export const config = {
-    matcher: ["/", "/sign-in"],
+    matcher: ["/", "/sign-in", "/coffee-shop/:path*"],
 };
 
 function performRedirect(url: string, request: NextRequest) {

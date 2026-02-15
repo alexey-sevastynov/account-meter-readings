@@ -1,6 +1,6 @@
 "use server";
 
-import { MrHome } from "@/components/page/home/Home";
+import { MrHome } from "@/components/page/app/home/Home";
 import { cookieKeys } from "@/utils/cookie/cookie-key";
 import { getServerCookie } from "@/utils/cookie/cookie-server";
 

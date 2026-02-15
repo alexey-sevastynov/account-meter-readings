@@ -12,6 +12,13 @@ import {
     X,
     Filter,
     Settings,
+    Coffee,
+    ChevronRight,
+    ChevronLeft,
+    Users,
+    LayoutDashboard,
+    Receipt,
+    CircleGauge,
 } from "lucide-react";
 import { ColorName, colorNames } from "@/enums/ui/color-name";
 import { IconName, iconNames } from "@/enums/ui/icon-name";
@@ -34,11 +41,18 @@ const iconMap: Record<IconName, ComponentType<IconComponentProps>> = {
     chevronUp: ChevronUp,
     gripVertical: GripVertical,
     chevronsLeft: ChevronsLeft,
+    chevronLeft: ChevronLeft,
     chevronsRight: ChevronsRight,
+    chevronRight: ChevronRight,
     download: Download,
     close: X,
     filter: Filter,
     settings: Settings,
+    coffee: Coffee,
+    users: Users,
+    dashboard: LayoutDashboard,
+    receipt: Receipt,
+    circleGauge: CircleGauge,
 } as const;
 
 interface MrIconProps {

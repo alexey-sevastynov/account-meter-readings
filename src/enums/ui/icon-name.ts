@@ -6,11 +6,18 @@ export const iconNames = {
     chevronUp: "chevronUp",
     gripVertical: "gripVertical",
     chevronsLeft: "chevronsLeft",
+    chevronLeft: "chevronLeft",
     chevronsRight: "chevronsRight",
+    chevronRight: "chevronRight",
     download: "download",
     close: "close",
     filter: "filter",
     settings: "settings",
+    coffee: "coffee",
+    users: "users",
+    dashboard: "dashboard",
+    receipt: "receipt",
+    circleGauge: "circleGauge",
 } as const;
 
 export type IconName = (typeof iconNames)[keyof typeof iconNames];

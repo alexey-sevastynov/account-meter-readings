@@ -24,7 +24,7 @@ export function MrAppLayout({ children }: AppLayoutProps) {
 
     return (
         <div className="flex h-screen w-full">
-            <MrSidebar />
+            <MrSidebar sidebarNavigationItems={[]} />
             <div className="flex-1 overflow-y-auto">
                 <MrToolbar />
                 <main className="p-4">{children}</main>
