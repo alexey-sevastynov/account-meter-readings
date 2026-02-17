@@ -18,7 +18,10 @@ export function MrTableHeaderContent<TableData>({
     return (
         <div className="flex items-center gap-2">
             <div
-                className={cn("flex items-center gap-2 select-none", canSort && "cursor-pointer")}
+                className={cn(
+                    "text-foreground flex items-center gap-2 select-none",
+                    canSort && "cursor-pointer",
+                )}
                 onClick={canSort ? toggleSortHandler : undefined}
             >
                 {flexRender(tableHeader.column.columnDef.header, tableHeader.getContext())}

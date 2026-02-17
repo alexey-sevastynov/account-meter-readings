@@ -24,7 +24,7 @@ export function MrCoffeeShopLayout({ children }: MrCoffeeShopLayoutProps) {
     }, [token, router]);
 
     return (
-        <div className="flex h-screen w-full">
+        <div className="bg-background flex min-h-screen w-full">
             <MrSidebar
                 sidebarNavigationItems={[
                     { href: routeKeys.coffeeShop, iconName: iconNames.dashboard, label: "Кавʼярня" },

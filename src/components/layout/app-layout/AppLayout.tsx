@@ -23,11 +23,12 @@ export function MrAppLayout({ children }: AppLayoutProps) {
     }, [token, router]);
 
     return (
-        <div className="flex h-screen w-full">
+        <div className="bg-background flex min-h-screen w-full">
             <MrSidebar sidebarNavigationItems={[]} />
-            <div className="flex-1 overflow-y-auto">
+
+            <div className="flex flex-1 flex-col">
                 <MrToolbar />
-                <main className="p-4">{children}</main>
+                <main className="flex-1 p-4">{children}</main>
             </div>
         </div>
     );

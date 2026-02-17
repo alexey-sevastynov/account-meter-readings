@@ -10,16 +10,16 @@ interface MRInputProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 const baseStyles = `
-peer w-full h-full rounded-xl border px-4 text-gray-900 bg-white 
-focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed 
-flex items-center autofill:bg-white autofill:shadow-[inset_0_0_0px_1000px_white] 
-autofill:[-webkit-text-fill-color:theme(colors.gray.900)] transition-colors duration-200
+peer w-full h-full rounded-xl border px-4 text-foreground
+focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed
+flex items-center transition-colors duration-200 placeholder:text-muted-foreground
+bg-[color:var(--color-input)]
 `;
 
 const variants: Record<InputVariantKey, string> = {
-    primary: "border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500",
-    secondary: "border-gray-400 focus:border-gray-600 focus:ring-1 focus:ring-gray-400",
-    error: "border-red-600 focus:border-red-700 focus:ring-1 focus:ring-red-600",
+    primary: "border-b border-border focus:border-primary ",
+    secondary: "border-b border-border focus:border-secondary",
+    error: "border-b border-destructive focus:border-destructive",
 };
 
 export function MRInput({
@@ -56,7 +56,7 @@ export function MRInput({
     };
 
     return (
-        <div className="relative w-full h-12">
+        <div className="relative h-12 w-full">
             <input
                 {...props}
                 value={value}

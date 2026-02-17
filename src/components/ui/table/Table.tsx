@@ -12,9 +12,9 @@ export function MrTable<TData>({ config }: MrTableProps<TData>) {
         <div className="w-full">
             <div className="overflow-auto">
                 <div className="inline-block min-w-full align-middle">
-                    <div className="ring-opacity-5 overflow-hidden rounded-lg shadow ring-1 ring-black">
+                    <div className="bg-background overflow-hidden rounded-lg border shadow-sm">
                         <table
-                            className="min-w-full divide-y divide-gray-300"
+                            className="border-border min-w-full divide-y"
                             style={{ width: config.reactTable.getCenterTotalSize() }}
                         >
                             <MrTableHeader

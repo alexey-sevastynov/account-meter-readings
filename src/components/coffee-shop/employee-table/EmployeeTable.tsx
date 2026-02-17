@@ -65,10 +65,8 @@ export function MrEmployeeTable({ data, isLoading }: MrEmployeeTableProps) {
 
     return (
         <div className="w-full">
-            <MrTitle position="left" className="text-2xl font-bold text-gray-900">
-                Список працівників
-            </MrTitle>
-            <MrText className="mt-1 text-gray-600">Загальна кількість працівників: {data.length}</MrText>
+            <MrTitle position="left">Список працівників</MrTitle>
+            <MrText className="mt-1">Загальна кількість працівників: {data.length}</MrText>
             <MrTableToolbox columns={reactTable.getAllColumns()} />
             <MrTable config={createTableConfig(reactTable, isLoading, "Немає даних для відображення")} />
             <MrTablePager

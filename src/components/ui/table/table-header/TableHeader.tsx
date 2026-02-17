@@ -16,7 +16,7 @@ export function MrTableHeader<TableData>({
     className,
 }: MrTableHeaderProps<TableData>) {
     return (
-        <thead className={cn("bg-gray-50", className)}>
+        <thead className={cn("bg-background border-border border-b", className)}>
             {reactTable.getHeaderGroups().map((headerGroup) => (
                 <tr key={headerGroup.id}>
                     {headerGroup.headers.map((header) => (

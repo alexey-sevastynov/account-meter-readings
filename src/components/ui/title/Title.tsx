@@ -12,7 +12,7 @@ export function MrTitle({ children, position = "center", className }: MrTitlePro
     return (
         <h2
             className={cn(
-                "text-foreground/70 mb-6 text-2xl leading-snug font-bold tracking-tight",
+                "text-foreground mb-6 text-2xl leading-snug font-bold tracking-tight",
                 position && `text-${position}`,
                 className,
             )}

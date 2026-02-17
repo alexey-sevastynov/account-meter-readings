@@ -19,7 +19,7 @@ export function MrTableHeaderCell<TableData>({
     return (
         <th
             key={tableHeader.id}
-            className="relative px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+            className="text-foreground relative px-3 py-3.5 text-left text-sm font-semibold"
             style={{ width: tableHeader.getSize() }}
         >
             <MrTableHeaderContent tableHeader={tableHeader} enableSorting={enableSorting} />

@@ -1,4 +1,5 @@
 import { ComponentType } from "react";
+import { cn } from "@/lib/cn";
 import {
     Eye,
     EyeOff,
@@ -20,7 +21,7 @@ import {
     Receipt,
     CircleGauge,
 } from "lucide-react";
-import { ColorName, colorNames } from "@/enums/ui/color-name";
+import { IconColor, iconColors } from "@/enums/ui/icon-color";
 import { IconName, iconNames } from "@/enums/ui/icon-name";
 import { IconSize, iconSizes } from "@/enums/ui/icon-size";
 import { IconStrokeWidth, iconStrokeWidths } from "@/enums/ui/icon-stroke-width";
@@ -60,7 +61,7 @@ interface MrIconProps {
     id?: string;
     alt?: string;
     size?: IconSize;
-    color?: ColorName;
+    color?: IconColor;
     className?: string;
     strokeWidth?: IconStrokeWidth;
 }
@@ -70,7 +71,7 @@ export function MrIcon({
     id,
     alt = iconNames[name],
     size = iconSizes.medium,
-    color = colorNames.gray,
+    color = iconColors.primary,
     className,
     strokeWidth = iconStrokeWidths.thin,
 }: MrIconProps) {
@@ -83,7 +84,7 @@ export function MrIcon({
             id={id}
             alt={alt}
             size={size}
-            className={`${color} ${className ?? ""}`}
+            className={cn(color, className)}
             strokeWidth={strokeWidth}
         />
     );

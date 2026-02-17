@@ -14,9 +14,9 @@ const baseStyles =
     "text-sm transition-colors hover:underline focus:outline-none focus:ring-2 focus:ring-offset-2";
 
 const variants: Record<LinkVariantKey, string> = {
-    primary: "text-blue-600 hover:text-blue-700 focus:ring-blue-500",
-    secondary: "text-gray-600 hover:text-gray-800 focus:ring-gray-400",
-    underline: "text-blue-600 underline hover:text-blue-700 focus:ring-blue-500",
+    primary: "text-gray-900 hover:text-gray-700 focus:ring-gray-400",
+    secondary: "text-gray-500 hover:text-gray-700 focus:ring-gray-300",
+    underline: "text-gray-900 underline hover:text-gray-700 focus:ring-gray-400",
 };
 
 export function MrLink({

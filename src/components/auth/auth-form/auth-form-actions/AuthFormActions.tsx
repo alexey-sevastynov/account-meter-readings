@@ -24,6 +24,7 @@ export function MrAuthFormActions({ authMode, toggleAuthMode }: MrAuthFormAction
             <p className="mt-8 text-center text-gray-600">
                 {isSignInMode(authMode) ? "Don’t have an account?" : "Already have an account?"}
                 <MrButton
+                    className="w-full"
                     variant={buttonVariantKeys.link}
                     onClick={toggleAuthMode}
                     text={getAuthModeToggleLabel(authMode)}

@@ -8,13 +8,15 @@ interface MrDividerProps {
 export function MrDivider({ text, className }: MrDividerProps) {
     return (
         <div className={cn("relative flex w-full items-center", className)}>
-            <div className="flex-grow border-t" />
+            <div className="border-border flex-grow border-t" />
 
             {text && (
-                <span className="mx-4 max-w-1/2 flex-none truncate text-xs tracking-widest">{text}</span>
+                <span className="text-muted-foreground bg-background mx-4 px-2 text-xs tracking-widest">
+                    {text}
+                </span>
             )}
 
-            <div className="flex-grow border-t" />
+            <div className="border-border flex-grow border-t" />
         </div>
     );
 }

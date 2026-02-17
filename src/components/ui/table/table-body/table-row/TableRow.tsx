@@ -12,12 +12,12 @@ export function MrTableRow<T>({ tableRow, onRowClick, className }: MrTableRowPro
     return (
         <tr
             onClick={() => onRowClick?.(tableRow.original)}
-            className={cn("transition-colors hover:bg-gray-50", onRowClick && "cursor-pointer", className)}
+            className={cn("hover:bg-muted/10 transition-colors", onRowClick && "cursor-pointer", className)}
         >
             {tableRow.getVisibleCells().map((tableCell) => (
                 <td
                     key={tableCell.id}
-                    className="px-3 py-4 text-sm whitespace-nowrap text-gray-700"
+                    className="text-foreground px-3 py-4 text-sm whitespace-nowrap"
                     style={{ width: tableCell.column.getSize() }}
                 >
                     {flexRender(tableCell.column.columnDef.cell, tableCell.getContext())}

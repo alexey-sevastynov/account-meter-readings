@@ -2,6 +2,7 @@ import { cn } from "@/lib/cn";
 import { MrPageInfo } from "@/components/ui/table-pager/page-info/PageInfo";
 import { MrPaginationControls } from "@/components/ui/table-pager/pagination-controls/PaginationControls";
 import { MrPageSizeSelector } from "@/components/ui/table-pager/page-size-selector/PageSizeSelector";
+import { VoidFunc } from "@/types/getter-setter-functions";
 
 interface MrTablePagerProps {
     currentPage: number;
@@ -11,8 +12,8 @@ interface MrTablePagerProps {
     pageCount: number;
     canNext: boolean;
     canPrevious: boolean;
-    onPageChange: (page: number) => void;
-    onPageSizeChange: (size: number) => void;
+    onPageChange: VoidFunc<number>;
+    onPageSizeChange: VoidFunc<number>;
     className?: string;
 }
 
@@ -34,6 +35,7 @@ export function MrTablePager(props: MrTablePagerProps) {
         <div
             className={cn(
                 "mt-4 flex flex-col gap-3 rounded-lg px-4 py-3 sm:flex-row sm:items-center sm:justify-between sm:px-6",
+                "bg-background text-foreground",
                 className,
             )}
         >

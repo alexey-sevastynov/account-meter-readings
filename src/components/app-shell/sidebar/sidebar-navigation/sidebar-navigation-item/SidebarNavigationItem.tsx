@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 import { MrIcon } from "@/components/ui/icon/Icon";
 import { MrLink } from "@/components/ui/link/Link";
 import { cn } from "@/lib/cn";
-import { colorNames } from "@/enums/ui/color-name";
+import { iconColors } from "@/enums/ui/icon-color";
 import { iconSizes } from "@/enums/ui/icon-size";
 import { iconStrokeWidths } from "@/enums/ui/icon-stroke-width";
 import { IconName } from "@/enums/ui/icon-name";
@@ -29,13 +29,14 @@ export function MrSidebarNavigationItem({ sidebarNavigationItem }: MrSidebarNavi
                 href={sidebarNavigationItem.href}
                 className={cn(
                     "relative flex items-center justify-center rounded-md p-2 transition-colors",
-                    isActive && "bg-stone-700",
+                    isActive && "bg-primary/20",
+                    "hover:bg-primary/10",
                 )}
             >
                 <MrIcon
-                    className="group-hover:text-white"
+                    className="group-hover:text-primary"
                     name={sidebarNavigationItem.iconName}
-                    color={colorNames.lightStone}
+                    color={iconColors.primary}
                     size={iconSizes.large}
                     strokeWidth={iconStrokeWidths.thick}
                 />

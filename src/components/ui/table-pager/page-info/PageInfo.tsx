@@ -8,7 +8,7 @@ interface PageInfoProps {
 
 export function MrPageInfo({ currentPage, pageSize, totalRows }: PageInfoProps) {
     return (
-        <div className="text-sm text-gray-700">
+        <div className="text-foreground text-sm">
             Показано <span className="font-medium">{getFirstItemIndex(currentPage, pageSize)}</span> -{" "}
             <span className="font-medium">{getLastItemIndex(currentPage, pageSize, totalRows)}</span> з{" "}
             <span className="font-medium">{totalRows}</span> записів

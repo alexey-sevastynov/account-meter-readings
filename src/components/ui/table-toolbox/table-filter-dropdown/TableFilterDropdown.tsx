@@ -3,7 +3,7 @@ import { Column } from "@tanstack/react-table";
 import { MRInput } from "@/components/ui/input/Input";
 import { MrButton } from "@/components/ui/button/Button";
 import { iconNames } from "@/enums/ui/icon-name";
-import { colorNames } from "@/enums/ui/color-name";
+import { iconColors } from "@/enums/ui/icon-color";
 import { buttonVariantKeys } from "@/enums/ui/button-variant-key";
 import { MrDropdown, MrDropdownContent, MrDropdownTrigger } from "@/components/ui/dropdown/Dropdown";
 import { MrText } from "@/components/ui/text/Text";
@@ -54,7 +54,7 @@ export function MrTableFilterDropdown<TData>({ columns, className }: MrTableFilt
                                     <MrButton
                                         variant={buttonVariantKeys.icon}
                                         iconName={iconNames.close}
-                                        iconColor={colorNames.gray}
+                                        iconColor={iconColors.primary}
                                         onClick={() => column.setFilterValue("")}
                                         className="absolute top-1/2 right-2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
                                     />

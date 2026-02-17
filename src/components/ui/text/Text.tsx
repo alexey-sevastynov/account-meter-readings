@@ -10,7 +10,13 @@ interface MrTextProps {
 
 export function MrText({ children, position = "left", className }: MrTextProps) {
     return (
-        <p className={cn("mb-4 text-base leading-relaxed", className, position && `text-${position}`)}>
+        <p
+            className={cn(
+                "text-foreground mb-4 text-base leading-relaxed",
+                className,
+                position && `text-${position}`,
+            )}
+        >
             {children}
         </p>
     );

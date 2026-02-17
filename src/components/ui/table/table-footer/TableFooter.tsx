@@ -8,13 +8,13 @@ interface MrTableFooterProps<TableData> {
 
 export function MrTableFooter<TableData>({ reactTable, className }: MrTableFooterProps<TableData>) {
     return (
-        <tfoot className={cn("border-t-2 border-gray-300 bg-gray-50", className)}>
+        <tfoot className={cn("border-border bg-background border-t-2", className)}>
             {reactTable.getFooterGroups().map((footerGroup) => (
                 <tr key={footerGroup.id}>
                     {footerGroup.headers.map((header) => (
                         <th
                             key={header.id}
-                            className="px-3 py-3 text-left text-sm font-semibold text-gray-900"
+                            className="text-foreground px-3 py-3 text-left text-sm font-semibold"
                             style={{ width: header.getSize() }}
                         >
                             {header.isPlaceholder

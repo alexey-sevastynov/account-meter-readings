@@ -21,7 +21,7 @@ export default function MrAuthLayout({ children }: AuthLayoutProps) {
                 Your browser does not support the video tag.
             </video>
 
-            <div className="relative max-h-[calc(100vh-40px)] w-full max-w-md overflow-y-auto rounded-3xl border border-white/20 bg-white p-10 text-center shadow-2xl">
+            <div className="bg-background text-foreground relative max-h-[calc(100vh-40px)] w-full max-w-md overflow-y-auto rounded-3xl border p-10 text-center shadow-2xl">
                 {children}
             </div>
         </div>

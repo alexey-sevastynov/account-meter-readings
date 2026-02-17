@@ -17,12 +17,7 @@ interface MrSidebarProps {
 
 export function MrSidebar({ sidebarNavigationItems, logoIconName, className }: MrSidebarProps) {
     return (
-        <aside
-            className={cn(
-                "relative z-20 h-full w-14 bg-stone-800 transition-[width] duration-75 ease-in",
-                className,
-            )}
-        >
+        <aside className={cn("bg-sidebar sticky top-0 z-20 flex h-screen w-14 flex-col", className)}>
             <div className="flex size-14 items-center justify-center">
                 <MrLogo logoIconName={logoIconName} />
             </div>

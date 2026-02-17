@@ -65,10 +65,8 @@ export function MrTaskTable({ data, isLoading }: MrTaskTableProps) {
 
     return (
         <div className="w-full">
-            <MrTitle position="left" className="text-2xl font-bold text-gray-900">
-                Coffee Shop
-            </MrTitle>
-            <MrText className="mt-1 text-gray-600">Manage your tasks</MrText>
+            <MrTitle position="left">Coffee Shop</MrTitle>
+            <MrText className="mt-1">Manage your tasks</MrText>
             <MrTableToolbox columns={reactTable.getAllColumns()} />
             <MrTable config={createTableConfig(reactTable, isLoading, "Немає даних для відображення")} />
             <MrTablePager

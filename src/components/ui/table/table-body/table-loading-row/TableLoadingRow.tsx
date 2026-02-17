@@ -7,12 +7,12 @@ interface MrTableLoadingRowProps {
 
 export function MrTableLoadingRow({ colSpan, className }: MrTableLoadingRowProps) {
     return (
-        <tr className={cn("border-b border-gray-50 last:border-0", className)}>
+        <tr className={cn("border-border border-b last:border-0", className)}>
             <td colSpan={colSpan} className="px-4 py-4">
                 <div className="flex items-center justify-center gap-2">
-                    <div className="h-2 w-2 animate-bounce rounded-full bg-gray-400" />
-                    <div className="h-2 w-2 animate-bounce rounded-full bg-gray-400" />
-                    <div className="h-2 w-2 animate-bounce rounded-full bg-gray-400" />
+                    <div className="bg-muted h-2 w-2 animate-bounce rounded-full" />
+                    <div className="bg-muted h-2 w-2 animate-bounce rounded-full" />
+                    <div className="bg-muted h-2 w-2 animate-bounce rounded-full" />
                 </div>
             </td>
         </tr>

@@ -77,7 +77,9 @@ export function MrDropdownContent({ children, className }: { children: ReactNode
             // eslint-disable-next-line react-hooks/refs
             ref={ctx.contentRef}
             className={cn(
-                "absolute z-20 mt-2 rounded-lg border border-gray-200 bg-white shadow-lg",
+                "border-border absolute z-20 mt-2 min-w-[180px] rounded-lg border",
+                "bg-popover text-popover-foreground shadow-md",
+                "animate-in fade-in-0 zoom-in-95",
                 className,
             )}
         >
@@ -112,8 +114,10 @@ export function MrDropdownItem({
         <div
             onClick={handleClick}
             className={cn(
-                "cursor-pointer px-4 py-2 transition hover:bg-gray-100",
-                disabled && "cursor-not-allowed opacity-50",
+                "cursor-pointer px-4 py-2 text-sm transition-colors",
+                "hover:bg-accent hover:text-accent-foreground",
+                "focus:bg-accent focus:text-accent-foreground",
+                disabled && "pointer-events-none cursor-not-allowed opacity-50",
                 className,
             )}
         >

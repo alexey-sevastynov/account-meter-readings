@@ -25,7 +25,7 @@ export function MrTableBody<TableData>({
 
     if (isLoading) {
         return (
-            <tbody className={cn("bg-white", className)}>
+            <tbody className={cn("divide-border bg-card divide-y [--tw-divide-opacity:1]", className)}>
                 <MrTableLoadingRow colSpan={colSpan} className="h-16" />
             </tbody>
         );
@@ -33,14 +33,14 @@ export function MrTableBody<TableData>({
 
     if (rows.length === 0) {
         return (
-            <tbody className={cn("bg-white", className)}>
+            <tbody className={cn("divide-border bg-card divide-y [--tw-divide-opacity:1]", className)}>
                 <MrTableEmptyRow colSpan={colSpan} noDataMessage={noDataMessage} className="h-16" />
             </tbody>
         );
     }
 
     return (
-        <tbody className={cn("divide-y divide-gray-200 bg-white", className)}>
+        <tbody className={cn("divide-border bg-card divide-y [--tw-divide-opacity:1]", className)}>
             {rows.map((row) => (
                 <MrTableRow key={row.id} tableRow={row} onRowClick={onRowClick} className="h-16" />
             ))}
