@@ -1,18 +1,13 @@
+import { AxiosError } from "axios";
 import { apiEndpointNames } from "@/enums/services/api-endpoint-name";
-import { createOne, getAll } from "@/services/crud-service";
+import { createOne, deleteOne, getAll, updateOne } from "@/services/crud-service";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { convertToApiError } from "@/lib/api-error";
 import { AuthResponse } from "@/features/auth/types/auth-response";
 import { WithRejectValue } from "@/features/auth/types/with-reject-value";
-import { EmployerPositionKey } from "@/enums/models/employer-position-key";
-import { AxiosError } from "axios";
+import { Employee } from "@/models/employee";
 
-interface Employee {
-    name: string;
-    position: EmployerPositionKey;
-    fixedSalary: number;
-    isActive: boolean;
-}
+type CreateEmployeeDto = Omit<Employee, "_id">;
 
 export const getAllEmployees = createAsyncThunk<Employee[], void, { rejectValue: AxiosError }>(
     "allEmployees",
@@ -25,14 +20,38 @@ export const getAllEmployees = createAsyncThunk<Employee[], void, { rejectValue:
 
 export const createEmployee = createAsyncThunk<AuthResponse, Employee, WithRejectValue>(
     "createEmployee",
+    async (employee: CreateEmployeeDto, { rejectWithValue }) => {
+        try {
+            const response = await createOne<CreateEmployeeDto, AuthResponse>(
+                apiEndpointNames.employee,
+                employee,
+            );
+
+            return response;
+        } catch (error: unknown) {
+            return rejectWithValue(convertToApiError(error));
+        }
+    },
+);
+
+export const deleteEmployee = createAsyncThunk<AuthResponse, string, WithRejectValue>(
+    "deleteEmployee",
+    async (_id: string, { rejectWithValue }) => {
+        try {
+            const response = await deleteOne<AuthResponse>(apiEndpointNames.employee, _id);
+
+            return response;
+        } catch (error: unknown) {
+            return rejectWithValue(convertToApiError(error));
+        }
+    },
+);
+
+export const updateEmployee = createAsyncThunk<Employee[], Employee, WithRejectValue>(
+    "updateEmployee",
     async (employee: Employee, { rejectWithValue }) => {
         try {
-            const response = await createOne<Employee, AuthResponse>(apiEndpointNames.employee, {
-                name: employee.name,
-                position: employee.position,
-                fixedSalary: employee.fixedSalary,
-                isActive: employee.isActive,
-            });
+            const response = await updateOne<Employee>(apiEndpointNames.employee, employee._id, employee);
 
             return response;
         } catch (error: unknown) {

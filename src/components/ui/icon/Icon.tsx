@@ -20,6 +20,8 @@ import {
     LayoutDashboard,
     Receipt,
     CircleGauge,
+    Edit,
+    Trash,
 } from "lucide-react";
 import { IconColor, iconColors } from "@/enums/ui/icon-color";
 import { IconName, iconNames } from "@/enums/ui/icon-name";
@@ -54,6 +56,8 @@ const iconMap: Record<IconName, ComponentType<IconComponentProps>> = {
     dashboard: LayoutDashboard,
     receipt: Receipt,
     circleGauge: CircleGauge,
+    edit: Edit,
+    trash: Trash,
 } as const;
 
 interface MrIconProps {

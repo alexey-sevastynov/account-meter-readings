@@ -71,17 +71,28 @@ export function MrButton({
 
     const buttonVariant = getButtonVariant(variant, text, iconName);
 
+    const iconElement = (() => {
+        if (!hasIcon || loading) return null;
+
+        const color = hasText
+            ? (iconColor ?? iconColors.primaryForeground)
+            : (iconColor ?? iconColors.primary);
+
+        return <MrIcon name={iconName!} color={color} />;
+    })();
+
+    const textElement = !loading && hasText ? <span>{text}</span> : null;
+    const loaderElement = loading ? <ClipLoader size={20} color={iconColors.primary} /> : null;
+
     return (
         <button
             className={cn(baseStyles, variants[buttonVariant], className)}
             disabled={loading || props.disabled}
             {...props}
         >
-            {hasIcon && !loading && (
-                <MrIcon name={iconName!} color={iconColor ?? iconColors.primaryForeground} />
-            )}
-            {loading && <ClipLoader size={20} color={iconColors.primary} />}
-            {hasText && !loading && <span>{text}</span>}
+            {iconElement}
+            {loaderElement}
+            {textElement}
         </button>
     );
 }

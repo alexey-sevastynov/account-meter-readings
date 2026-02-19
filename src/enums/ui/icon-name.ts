@@ -18,6 +18,8 @@ export const iconNames = {
     dashboard: "dashboard",
     receipt: "receipt",
     circleGauge: "circleGauge",
+    edit: "edit",
+    trash: "trash",
 } as const;
 
 export type IconName = (typeof iconNames)[keyof typeof iconNames];

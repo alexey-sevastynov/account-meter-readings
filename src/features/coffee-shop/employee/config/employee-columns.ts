@@ -1,46 +1,47 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { Employee } from "@/models/employee";
-import { employeeProps } from "@/features/coffee-shop/employee/employee-props";
+import { employeeProps } from "@/features/coffee-shop/employee/constants/employee-props";
+import { employeeLabels } from "@/features/coffee-shop/employee/constants/employee-labels";
 
 export const employeeColumns: ColumnDef<Employee>[] = [
     {
         accessorKey: employeeProps.name,
-        header: "Імʼя",
+        header: employeeLabels.name,
         enableResizing: true,
     },
     {
         accessorKey: employeeProps.position,
-        header: "Посада",
+        header: employeeLabels.position,
         enableResizing: true,
     },
     {
         accessorKey: employeeProps.phone,
-        header: "Телефон",
+        header: employeeLabels.phone,
         enableResizing: true,
     },
     {
         accessorKey: employeeProps.birthDate,
-        header: "Дата народження",
+        header: employeeLabels.birthDate,
         enableResizing: true,
     },
     {
         accessorKey: employeeProps.fixedSalary,
-        header: "Фіксована зарплата",
+        header: employeeLabels.fixedSalary,
         enableResizing: true,
     },
     {
         accessorKey: employeeProps.employmentStartDate,
-        header: "Дата початку роботи",
+        header: employeeLabels.employmentStartDate,
         enableResizing: true,
     },
     {
         accessorKey: employeeProps.employmentEndDate,
-        header: "Дата закінчення роботи",
+        header: employeeLabels.employmentEndDate,
         enableResizing: true,
     },
     {
         accessorKey: employeeProps.isActive,
-        header: "Статус",
+        header: employeeLabels.isActive,
         enableResizing: false,
     },
 ];

@@ -1,11 +1,12 @@
 "use client";
 
 import * as DialogPrimitive from "@radix-ui/react-dialog";
-import { X } from "lucide-react";
 import { ReactNode } from "react";
 import { cn } from "@/lib/cn";
 import { VoidFunc } from "@/types/getter-setter-functions";
 import { ModalWindowSize, modalWindowSizes } from "@/enums/ui/modal-window-size";
+import { MrIcon } from "@/components/ui/icon/Icon";
+import { iconNames } from "@/enums/ui/icon-name";
 
 interface ModalWindowProps {
     open: boolean;
@@ -17,7 +18,7 @@ interface ModalWindowProps {
     size?: ModalWindowSize;
 }
 
-export function ModalWindow({
+export function MrModalWindow({
     open,
     onOpenChange,
     title,
@@ -48,7 +49,7 @@ export function ModalWindow({
                     {(title || description) && (
                         <div className="mb-4 space-y-1">
                             {title && (
-                                <DialogPrimitive.Title className="text-lg font-semibold">
+                                <DialogPrimitive.Title className="text-foreground text-md font-semibold">
                                     {title}
                                 </DialogPrimitive.Title>
                             )}
@@ -59,13 +60,10 @@ export function ModalWindow({
                             )}
                         </div>
                     )}
-
                     <div className="py-2">{children}</div>
-
                     {footer && <div className="mt-6 flex justify-end gap-2">{footer}</div>}
-
-                    <DialogPrimitive.Close className="absolute top-4 right-4 opacity-70 hover:opacity-100">
-                        <X className="h-4 w-4" />
+                    <DialogPrimitive.Close className="absolute top-4 right-4 cursor-pointer opacity-70 hover:opacity-100">
+                        <MrIcon name={iconNames.close} />
                     </DialogPrimitive.Close>
                 </DialogPrimitive.Content>
             </DialogPrimitive.Portal>

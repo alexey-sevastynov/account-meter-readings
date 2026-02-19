@@ -17,8 +17,6 @@ import { signInAsGuest } from "@/features/auth/thunks";
 import { buttonVariantKeys } from "@/enums/ui/button-variant-key";
 import { MrDivider } from "@/components/ui/divider/Divider";
 import { routeKeys } from "@/enums/url/route-key";
-import { isDev } from "@/lib/environments";
-import { MrLink } from "@/components/ui/link/Link";
 
 export function MrAuthFormSignIn() {
     const dispatch = useAppDispatch();
@@ -90,16 +88,6 @@ export function MrAuthFormSignIn() {
                     onClick={onGuestLogin}
                     loading={isLoading}
                 />
-
-                {/* TODO: Remove this template code */}
-                {isDev() && (
-                    <MrLink
-                        href={routeKeys.coffeeShop}
-                        className="flex w-full items-center justify-center space-x-2"
-                    >
-                        Go to Coffee Shop
-                    </MrLink>
-                )}
             </div>
         </form>
     );
