@@ -28,25 +28,57 @@ export function MrResourceForm<T extends FieldValues>({
     onSubmit,
     submitLabel = "Зберегти",
 }: ResourceFormProps<T>) {
-    const { handleSubmit, control } = useForm<T>({ defaultValues });
+    const {
+        handleSubmit,
+        control,
+        formState: { errors },
+    } = useForm<T>({ defaultValues });
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             {fields.map((field) => {
                 if (isInputFieldType(field.type)) {
-                    return <MrResourceInputField key={field.name} field={field} control={control} />;
+                    return (
+                        <MrResourceInputField
+                            key={field.name}
+                            field={field}
+                            control={control}
+                            errors={errors}
+                        />
+                    );
                 }
 
                 if (isCheckboxFieldType(field.type)) {
-                    return <MrResourceCheckboxField key={field.name} field={field} control={control} />;
+                    return (
+                        <MrResourceCheckboxField
+                            key={field.name}
+                            field={field}
+                            control={control}
+                            errors={errors}
+                        />
+                    );
                 }
 
                 if (isEnumFieldType(field.type)) {
-                    return <MrResourceSelectField key={field.name} field={field} control={control} />;
+                    return (
+                        <MrResourceSelectField
+                            key={field.name}
+                            field={field}
+                            control={control}
+                            errors={errors}
+                        />
+                    );
                 }
 
                 if (isDateFieldType(field.type)) {
-                    return <MrResourceDateField key={field.name} field={field} control={control} />;
+                    return (
+                        <MrResourceDateField
+                            key={field.name}
+                            field={field}
+                            control={control}
+                            errors={errors}
+                        />
+                    );
                 }
             })}
 

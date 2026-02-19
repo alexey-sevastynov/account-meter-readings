@@ -44,7 +44,7 @@ export function MrValidatedInput<TFormValues extends FieldValues>({
                     />
                 )}
             />
-            {errorMessage && <p className="text-sm text-red-500 mt-1">{errorMessage}</p>}
+            {errorMessage && <p className="text-destructive mt-1 text-sm">{errorMessage}</p>}
         </div>
     );
 }
