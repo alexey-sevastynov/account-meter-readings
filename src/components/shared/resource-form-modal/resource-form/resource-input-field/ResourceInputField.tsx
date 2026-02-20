@@ -1,8 +1,7 @@
-import { Control, FieldErrors, FieldValues } from "react-hook-form";
-
+import { Control, Controller, FieldErrors, FieldValues } from "react-hook-form";
 import { isNumberFieldType } from "@/components/shared/resource-form-modal/resource-form/resource-input-field/resourceInputField.funcs";
 import { ResourceField } from "@/types/resource-field";
-import { MrValidatedInput } from "@/components/shared/validated-input/ValidatedInput";
+import { MRInput } from "@/components/ui/input/Input";
 
 interface MrResourceInputFieldProps<T extends FieldValues> {
     field: ResourceField<T>;
@@ -15,17 +14,31 @@ export function MrResourceInputField<T extends FieldValues>({
     control,
     errors,
 }: MrResourceInputFieldProps<T>) {
+    const errorMessage = errors[field.name]?.message as string;
+
     return (
-        <MrValidatedInput<T>
+        <Controller
             name={field.name}
             control={control}
-            errors={errors}
-            label={field.label}
-            type={isNumberFieldType(field.type) ? "number" : "text"}
             rules={{
-                required: field.required ? `${field.label} обов'язкове поле` : false,
+                required: field.required ? `${field.label} обов'язкове поле` : undefined,
             }}
-            placeholder={field.placeholder}
+            render={(controllerFieldState) => (
+                <div>
+                    <MRInput
+                        label={field.label}
+                        type={field.type}
+                        placeholder={field.placeholder}
+                        value={controllerFieldState.field.value ?? ""}
+                        onChange={(e) =>
+                            controllerFieldState.field.onChange(
+                                isNumberFieldType(field.type) ? Number(e.target.value) : e.target.value,
+                            )
+                        }
+                    />
+                    {errorMessage && <p className="text-destructive mt-1 text-sm">{errorMessage}</p>}
+                </div>
+            )}
         />
     );
 }

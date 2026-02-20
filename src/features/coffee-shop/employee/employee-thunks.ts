@@ -18,11 +18,11 @@ export const getAllEmployees = createAsyncThunk<Employee[], void, { rejectValue:
     },
 );
 
-export const createEmployee = createAsyncThunk<AuthResponse, Employee, WithRejectValue>(
+export const createEmployee = createAsyncThunk<Employee, Employee, WithRejectValue>(
     "createEmployee",
     async (employee: CreateEmployeeDto, { rejectWithValue }) => {
         try {
-            const response = await createOne<CreateEmployeeDto, AuthResponse>(
+            const response = await createOne<CreateEmployeeDto, Employee>(
                 apiEndpointNames.employee,
                 employee,
             );
@@ -47,7 +47,7 @@ export const deleteEmployee = createAsyncThunk<AuthResponse, string, WithRejectV
     },
 );
 
-export const updateEmployee = createAsyncThunk<Employee[], Employee, WithRejectValue>(
+export const updateEmployee = createAsyncThunk<Employee, Employee, WithRejectValue>(
     "updateEmployee",
     async (employee: Employee, { rejectWithValue }) => {
         try {
