@@ -22,6 +22,7 @@ import {
     CircleGauge,
     Edit,
     Trash,
+    Check,
 } from "lucide-react";
 import { IconColor, iconColors } from "@/enums/ui/icon-color";
 import { IconName, iconNames } from "@/enums/ui/icon-name";
@@ -58,6 +59,7 @@ const iconMap: Record<IconName, ComponentType<IconComponentProps>> = {
     circleGauge: CircleGauge,
     edit: Edit,
     trash: Trash,
+    check: Check,
 } as const;
 
 interface MrIconProps {

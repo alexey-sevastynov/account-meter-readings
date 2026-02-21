@@ -20,6 +20,7 @@ export const iconNames = {
     circleGauge: "circleGauge",
     edit: "edit",
     trash: "trash",
+    check: "check",
 } as const;
 
 export type IconName = (typeof iconNames)[keyof typeof iconNames];
