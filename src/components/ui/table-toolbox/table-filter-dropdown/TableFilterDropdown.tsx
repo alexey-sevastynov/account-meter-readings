@@ -7,6 +7,7 @@ import { iconColors } from "@/enums/ui/icon-color";
 import { buttonVariantKeys } from "@/enums/ui/button-variant-key";
 import { MrDropdown, MrDropdownContent, MrDropdownTrigger } from "@/components/ui/dropdown/Dropdown";
 import { MrText } from "@/components/ui/text/Text";
+import { isFilterableInputColumn } from "@/components/ui/table-toolbox/table-filter-dropdown/tableFilterDropdown.funcs";
 
 interface MrTableFilterDropdownProps<TData> {
     columns: Column<TData>[];
@@ -14,8 +15,8 @@ interface MrTableFilterDropdownProps<TData> {
 }
 
 export function MrTableFilterDropdown<TData>({ columns, className }: MrTableFilterDropdownProps<TData>) {
-    const filterableColumns = columns.filter((col) => col.getCanFilter());
-    const activeFiltersCount = filterableColumns.filter((col) => col.getFilterValue()).length;
+    const filterableColumns = columns.filter((column) => isFilterableInputColumn(column));
+    const activeFiltersCount = filterableColumns.filter((column) => column.getFilterValue()).length;
 
     return (
         <MrDropdown className={cn("relative", className)}>
@@ -39,8 +40,7 @@ export function MrTableFilterDropdown<TData>({ columns, className }: MrTableFilt
 
                 <div className="space-y-4 p-4">
                     {filterableColumns.map((column) => {
-                        const columnName =
-                            typeof column.columnDef.header === "string" ? column.columnDef.header : column.id;
+                        const columnName = column.columnDef.meta?.label ?? "";
 
                         return (
                             <div key={column.id} className="relative">

@@ -17,6 +17,7 @@ export function MrCheckbox({ label, className, ...props }: MrCheckboxProps) {
             <CheckboxPrimitive.Root
                 id={generatedId}
                 className={cn(
+                    "cursor-pointer",
                     "border-primary h-4 w-4 shrink-0 rounded-sm border",
                     "flex items-center justify-center",
                     "focus-visible:ring-ring focus-visible:ring-2",

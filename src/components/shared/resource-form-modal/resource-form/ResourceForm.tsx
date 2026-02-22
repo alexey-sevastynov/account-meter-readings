@@ -8,7 +8,7 @@ import {
     isDateFieldType,
     isEnumFieldType,
     isInputFieldType,
-} from "@/components/shared/resource-form-modal/resource-form/resourceForm.funcs";
+} from "@/utils/resource-field-type-guards";
 import { MrResourceInputField } from "@/components/shared/resource-form-modal/resource-form/resource-input-field/ResourceInputField";
 import { MrResourceCheckboxField } from "@/components/shared/resource-form-modal/resource-form/resource-checkbox-field/ResourceCheckboxField";
 import { MrResourceSelectField } from "@/components/shared/resource-form-modal/resource-form/resource-select-field/ResourceSelectField";

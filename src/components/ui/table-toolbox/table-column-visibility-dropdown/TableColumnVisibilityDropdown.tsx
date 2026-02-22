@@ -1,5 +1,5 @@
 import { Column } from "@tanstack/react-table";
-import { Eye, EyeOff } from "lucide-react";
+import { MrCheckbox } from "@/components/ui/checkbox/Checkbox";
 import { MrButton } from "@/components/ui/button/Button";
 import { buttonVariantKeys } from "@/enums/ui/button-variant-key";
 import { iconNames } from "@/enums/ui/icon-name";
@@ -30,43 +30,23 @@ export function MrTableColumnVisibilityDropdown<TData>({
 
             <MrDropdownContent className="w-80">
                 <div className="border-b border-gray-200 p-4">
-                    <div className="flex items-center justify-between">
-                        <MrText>Керування колонками</MrText>
-                        <MrButton
-                            variant={buttonVariantKeys.icon}
-                            iconName={iconNames.close}
-                            onClick={() => {}} // Закрытие handled через контекст dropdown
-                        />
-                    </div>
-                    <MrText className="mt-1 text-xs text-gray-500">Виберіть колонки для відображення</MrText>
+                    <MrText>Виберіть колонки для відображення</MrText>
                 </div>
 
                 <div className="max-h-96 overflow-y-auto p-2">
                     {toggleableColumns.map((column) => {
                         const isVisible = column.getIsVisible();
-                        const columnName =
-                            typeof column.columnDef.header === "string" ? column.columnDef.header : column.id;
 
                         return (
-                            <label
-                                key={column.id}
-                                className="flex cursor-pointer items-center gap-3 rounded-md px-3 py-2 transition-colors hover:bg-gray-50"
-                            >
-                                <input
-                                    type="checkbox"
+                            <div key={column.id} className="flex items-center gap-4 px-3 py-2">
+                                <MrCheckbox
                                     checked={isVisible}
-                                    onChange={column.getToggleVisibilityHandler()}
-                                    className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                                    onCheckedChange={(checked) => {
+                                        column.toggleVisibility(!!checked);
+                                    }}
                                 />
-                                <div className="flex flex-1 items-center gap-2">
-                                    {isVisible ? (
-                                        <Eye className="h-4 w-4 text-blue-600" />
-                                    ) : (
-                                        <EyeOff className="h-4 w-4 text-gray-400" />
-                                    )}
-                                    <span className="text-sm text-gray-700">{columnName}</span>
-                                </div>
-                            </label>
+                                <MrText className="contents">{column.columnDef.meta?.label}</MrText>
+                            </div>
                         );
                     })}
                 </div>
