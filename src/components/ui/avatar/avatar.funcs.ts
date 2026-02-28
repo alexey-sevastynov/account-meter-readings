@@ -1,5 +1,5 @@
-export function getAvatarInitials(name?: string) {
-    if (!name) return "?";
+export function getAvatarInitials(name?: string | null) {
+    if (!name || typeof name !== "string") return "?";
 
     const words = name.trim().split(" ").filter(Boolean);
 

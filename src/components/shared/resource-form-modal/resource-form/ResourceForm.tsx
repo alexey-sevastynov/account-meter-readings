@@ -20,6 +20,7 @@ interface ResourceFormProps<T extends FieldValues> {
     defaultValues?: DefaultValues<T>;
     onSubmit: VoidFunc<T>;
     submitLabel?: string;
+    loading?: boolean;
 }
 
 export function MrResourceForm<T extends FieldValues>({
@@ -27,6 +28,7 @@ export function MrResourceForm<T extends FieldValues>({
     defaultValues,
     onSubmit,
     submitLabel = "Зберегти",
+    loading,
 }: ResourceFormProps<T>) {
     const {
         handleSubmit,
@@ -82,7 +84,7 @@ export function MrResourceForm<T extends FieldValues>({
                 }
             })}
 
-            <MrButton text={submitLabel} type="submit" />
+            <MrButton text={submitLabel} type="submit" loading={loading} />
         </form>
     );
 }

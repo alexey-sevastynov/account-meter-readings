@@ -2,15 +2,15 @@ import { FormMode, formModes } from "@/enums/ui/form-mode";
 import { VoidFuncNoParam } from "@/types/getter-setter-functions";
 import { DefaultValues } from "react-hook-form";
 
-export function executeFormSubmit<T>(
+export async function executeFormSubmit<T>(
     data: T,
     formMode: FormMode,
-    onSubmit: (data: T, mode: FormMode) => void,
+    onSubmit: (data: T, mode: FormMode) => Promise<void>,
     closeModal: VoidFuncNoParam,
     defaultValues?: DefaultValues<T>,
 ) {
     const submitData = getSubmitData(formMode, data, defaultValues);
-    onSubmit(submitData, formMode);
+    await onSubmit(submitData, formMode);
 
     closeModal();
 }

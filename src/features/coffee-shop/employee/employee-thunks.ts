@@ -3,7 +3,6 @@ import { apiEndpointNames } from "@/enums/services/api-endpoint-name";
 import { createOne, deleteOne, getAll, updateOne } from "@/services/crud-service";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { convertToApiError } from "@/lib/api-error";
-import { AuthResponse } from "@/features/auth/types/auth-response";
 import { WithRejectValue } from "@/features/auth/types/with-reject-value";
 import { Employee } from "@/models/employee";
 
@@ -34,11 +33,11 @@ export const createEmployee = createAsyncThunk<Employee, Employee, WithRejectVal
     },
 );
 
-export const deleteEmployee = createAsyncThunk<AuthResponse, string, WithRejectValue>(
+export const deleteEmployee = createAsyncThunk<Employee, string, WithRejectValue>(
     "deleteEmployee",
     async (_id: string, { rejectWithValue }) => {
         try {
-            const response = await deleteOne<AuthResponse>(apiEndpointNames.employee, _id);
+            const response = await deleteOne<Employee>(apiEndpointNames.employee, _id);
 
             return response;
         } catch (error: unknown) {

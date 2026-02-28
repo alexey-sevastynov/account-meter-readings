@@ -7,9 +7,15 @@ interface MrEmployeeDeleteModalProps {
     open: boolean;
     onOpenChange: VoidFunc<boolean>;
     onConfirm: VoidFuncNoParam;
+    loading?: boolean;
 }
 
-export function MrEmployeeDeleteModal({ open, onOpenChange, onConfirm }: MrEmployeeDeleteModalProps) {
+export function MrEmployeeDeleteModal({
+    open,
+    onOpenChange,
+    onConfirm,
+    loading,
+}: MrEmployeeDeleteModalProps) {
     return (
         <MrModalWindow
             open={open}
@@ -26,7 +32,13 @@ export function MrEmployeeDeleteModal({ open, onOpenChange, onConfirm }: MrEmplo
                         className="btn btn-secondary"
                         onClick={() => onOpenChange(false)}
                     />
-                    <MrButton type="button" variant="danger" text="Так" onClick={onConfirm} />
+                    <MrButton
+                        type="button"
+                        variant="danger"
+                        text="Так"
+                        onClick={onConfirm}
+                        loading={loading}
+                    />
                 </>
             }
         >

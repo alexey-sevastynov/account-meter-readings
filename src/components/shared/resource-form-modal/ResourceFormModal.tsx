@@ -14,13 +14,14 @@ import {
 
 interface ResourceFormModalProps<T extends FieldValues> {
     fields: ResourceField<T>[];
-    onSubmit: (data: T, mode: FormMode) => void;
+    onSubmit: (data: T, mode: FormMode) => Promise<void>;
     formMode: FormMode;
     defaultValues?: DefaultValues<T>;
     onClose?: VoidFuncNoParam;
     createTitle?: string;
     editTitle?: string;
     addButtonLabel?: string;
+    loading?: boolean;
 }
 
 export function MrResourceFormModal<T extends FieldValues>({
@@ -32,6 +33,7 @@ export function MrResourceFormModal<T extends FieldValues>({
     createTitle = "Створити",
     editTitle = "Редагування",
     addButtonLabel = "Додати",
+    loading,
 }: ResourceFormModalProps<T>) {
     const [internalOpen, setInternalOpen] = useState(false);
     const isOpen = isEditMode(formMode) || internalOpen;
@@ -61,6 +63,7 @@ export function MrResourceFormModal<T extends FieldValues>({
                     onSubmit={(data) =>
                         executeFormSubmit(data, formMode, onSubmit, closeModal, defaultValues)
                     }
+                    loading={loading}
                 />
             </MrModalWindow>
         </>

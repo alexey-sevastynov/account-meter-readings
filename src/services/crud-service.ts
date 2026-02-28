@@ -25,8 +25,12 @@ export async function deleteOne<T>(endpoint: ApiEndpointName, id: string) {
     return data;
 }
 
-export async function updateOne<T>(endpoint: ApiEndpointName, id: string, body: Partial<T>) {
-    const { data } = await apiClient.patch<T>(`${endpoint}/${id}`, body);
+export async function updateOne<TRequest, TResponse = TRequest>(
+    endpoint: ApiEndpointName,
+    id: string,
+    body: TRequest,
+) {
+    const { data } = await apiClient.patch<TResponse>(`${endpoint}/${id}`, body);
 
     return data;
 }

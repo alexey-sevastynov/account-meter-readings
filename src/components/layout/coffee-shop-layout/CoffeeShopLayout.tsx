@@ -29,7 +29,7 @@ export function MrCoffeeShopLayout({ children }: MrCoffeeShopLayoutProps) {
                 sidebarNavigationItems={[
                     { href: routeKeys.coffeeShop, iconName: iconNames.dashboard, label: "Кавʼярня" },
                     { href: routeKeys.employees, iconName: iconNames.users, label: "Працівники" },
-                    { href: routeKeys.home, iconName: iconNames.receipt, label: "Витрати" },
+                    { href: routeKeys.dailyReports, iconName: iconNames.receipt, label: "Витрати" },
                 ]}
                 logoIconName={iconNames.coffee}
             />

@@ -2,14 +2,6 @@ import { Employee } from "@/models/employee";
 import { VoidFunc } from "@/types/getter-setter-functions";
 import { PaginationState } from "@tanstack/react-table";
 
-export function closeDeleteConfirmModal(
-    setDeletingEmployeeId: VoidFunc<string | null>,
-    setIsDeleteModalOpen: VoidFunc<boolean>,
-) {
-    setDeletingEmployeeId(null);
-    setIsDeleteModalOpen(false);
-}
-
 export function deleteEmployeeById(
     employees: Employee[],
     setDeletingEmployeeId: VoidFunc<string>,

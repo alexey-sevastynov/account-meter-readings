@@ -1,3 +1,4 @@
+import { roundToPrecision } from "@/utils/number";
 import { CellContext } from "@tanstack/react-table";
 
 interface MrNumberCellProps<TData> {
@@ -9,5 +10,5 @@ export function MrNumberCell<TData>({ cellInfo }: MrNumberCellProps<TData>) {
 
     if (typeof value !== "number") return null;
 
-    return <div className="w-full text-right">{value}</div>;
+    return <div className="w-full text-right">{roundToPrecision(value)}</div>;
 }

@@ -9,6 +9,7 @@ import {
     ColumnFiltersState,
     PaginationState,
     VisibilityState,
+    ColumnDef,
 } from "@tanstack/react-table";
 import { MrTable } from "@/components/ui/table/Table";
 import { MrTablePager } from "@/components/ui/table-pager/TablePager";
@@ -16,39 +17,42 @@ import { MrTitle } from "@/components/ui/title/Title";
 import { MrText } from "@/components/ui/text/Text";
 import { MrTableToolbox } from "@/components/ui/table-toolbox/TableToolbox";
 import { createTableConfig } from "@/components/ui/table/table-config";
-import { employeeColumns } from "@/features/coffee-shop/employee/config/employee-columns";
-import { Employee } from "@/models/employee";
-import { createEmployeeActionsColumn } from "@/features/coffee-shop/employee/config/employee-actions";
+import { DailyReport } from "@/models/daily-report";
+import { dailyReportColumns } from "@/features/coffee-shop/daily-report/config/daily-report-columns";
+import { createDailyReportActionsColumn } from "@/features/coffee-shop/daily-report/config/daily-report-actions";
 import {
-    deleteEmployeeById,
+    deleteDailyReportById,
     initializePaginationState,
-} from "@/components/coffee-shop/employee-table/employeeTable.funcs";
-import { EmployeeModals } from "@/components/coffee-shop/employee-table/employee-modals/EmolyeeModals";
+    onEditReport,
+} from "@/components/coffee-shop/daily-report-table/dailyReportTable.funcs";
+import { MrDailyReportModals } from "@/components/coffee-shop/daily-report-table/daily-report-modals/DailyReportModals";
 
-interface MrEmployeeTableProps {
-    data: Employee[];
+interface MrDailyReportTableProps {
+    data: DailyReport[];
     isLoading?: boolean;
 }
 
-// eslint-disable-next-line max-lines-per-function
-export function MrEmployeeTable({ data, isLoading }: MrEmployeeTableProps) {
+export function MrDailyReportTable({ data, isLoading }: MrDailyReportTableProps) {
     const [sorting, setSorting] = useState<SortingState>([]);
     const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
     const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
     const [pagination, setPagination] = useState<PaginationState>(initializePaginationState);
-    const [editingEmployee, setEditingEmployee] = useState<Employee | null>(null);
-    const [deletingEmployeeId, setDeletingEmployeeId] = useState<string | null>(null);
+    const [editingReport, setEditingReport] = useState<DailyReport | null>(null);
+    const [deletingReportId, setDeletingReportId] = useState<string | null>(null);
     const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
-    function onEditEmployee(employee: Employee) {
-        setEditingEmployee(employee);
+    function onDeleteReport(reportId?: string) {
+        deleteDailyReportById(data, setDeletingReportId, setIsDeleteModalOpen, reportId);
     }
 
-    function onDeleteEmployee(employeeId?: string) {
-        deleteEmployeeById(data, setDeletingEmployeeId, setIsDeleteModalOpen, employeeId);
-    }
+    const columns: ColumnDef<DailyReport>[] = [
+        createDailyReportActionsColumn(
+            (id) => onDeleteReport(id),
+            (report) => onEditReport(report, setEditingReport),
+        ),
+        ...dailyReportColumns,
+    ];
 
-    const columns = [createEmployeeActionsColumn(onDeleteEmployee, onEditEmployee), ...employeeColumns];
     const reactTable = useReactTable({
         data,
         columns,
@@ -68,14 +72,14 @@ export function MrEmployeeTable({ data, isLoading }: MrEmployeeTableProps) {
 
     return (
         <div className="w-full">
-            <MrTitle position="left">Список працівників</MrTitle>
-            <MrText className="mt-1">Загальна кількість працівників: {data.length}</MrText>
+            <MrTitle position="left">Щоденні звіти</MrTitle>
+            <MrText className="mt-1">Загальна кількість звітів: {data.length}</MrText>
             <MrTableToolbox columns={reactTable.getAllColumns()} />
-            <EmployeeModals
-                editingEmployee={editingEmployee}
-                setEditingEmployee={setEditingEmployee}
-                deletingReportId={deletingEmployeeId}
-                setDeletingReportId={setDeletingEmployeeId}
+            <MrDailyReportModals
+                editingReport={editingReport}
+                setEditingReport={setEditingReport}
+                deletingReportId={deletingReportId}
+                setDeletingReportId={setDeletingReportId}
                 isDeleteModalOpen={isDeleteModalOpen}
                 setIsDeleteModalOpen={setIsDeleteModalOpen}
             />
