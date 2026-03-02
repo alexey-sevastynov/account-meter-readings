@@ -1,5 +1,5 @@
 import { Middleware, UnknownAction } from "@reduxjs/toolkit";
-import { mrToast } from "@/lib/toast";
+import { mrToast } from "@/shared/lib/toast";
 
 export const toastMiddleware: Middleware = () => (next) => (action) => {
     const { type } = action as UnknownAction;

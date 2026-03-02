@@ -1,6 +1,6 @@
 "use server";
 
-import { MrCoffeeShopLayout } from "@/components/layout/coffee-shop-layout/CoffeeShopLayout";
+import { MrCoffeeShopLayout } from "@/shared/layout/coffee-shop-layout/CoffeeShopLayout";
 
 interface CoffeeShopLayoutProps {
     children: React.ReactNode;

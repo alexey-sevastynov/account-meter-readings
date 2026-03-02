@@ -1,6 +1,6 @@
 "use server";
 
-import MrAuthLayout from "@/components/layout/auth-layout/AuthLayout";
+import MrAuthLayout from "@/shared/layout/auth-layout/AuthLayout";
 
 interface AuthLayoutProps {
     children: React.ReactNode;

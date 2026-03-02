@@ -1,6 +1,6 @@
 "use server";
 
-import { MrResetPassword } from "@/components/auth/reset-password/ResetPassword";
+import { MrResetPassword } from "@/modules/auth/components/reset-password/ResetPassword";
 
 export default async function ResetPasswordPage({ searchParams }: { searchParams: { token: string } }) {
     // TODO: remove "await" once Next.js stops requiring it (currently needed to avoid runtime error)

@@ -1,6 +1,6 @@
 "use server";
 
-import { MrAppLayout } from "@/components/layout/app-layout/AppLayout";
+import { MrAppLayout } from "@/shared/layout/app-layout/AppLayout";
 
 interface AppLayoutProps {
     children: React.ReactNode;

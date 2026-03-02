@@ -1,0 +1,94 @@
+"use client";
+
+import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
+import { MrButton } from "@/shared/ui/button/Button";
+import { useAppDispatch } from "@/shared/lib/redux/hooks/use-app-dispatch";
+import { useAppSelector } from "@/shared/lib/redux/hooks/use-app-selector";
+import { MrNotificationMessage } from "@/shared/ui/notification-message/notification-message";
+import { notificationMessageKeys } from "@/shared/ui/notification-message/notification-message-key";
+import { MrValidatedInput } from "@/shared/ui/validated-input/ValidatedInput";
+import { MrPasswordInput } from "@/shared/ui/password-input/PasswordInput";
+import { redirectTo } from "@/shared/utils/navigation";
+import { timing } from "@/shared/constants/timing";
+import { buttonVariantKeys } from "@/shared/ui/button/button-variant-keys";
+import { MrDivider } from "@/shared/ui/divider/Divider";
+import { routeKeys } from "@/shared/constants/route-keys";
+import { SignInFormValues } from "@/modules/auth/types/sign-in-form-values";
+import { login } from "@/modules/auth/components/auth-form/auth-form-sign-in/authFormSignIn.funcs";
+import { signInAsGuest } from "@/modules/auth/model/thunks";
+
+export function MrAuthFormSignIn() {
+    const dispatch = useAppDispatch();
+    const router = useRouter();
+    const errorMessage = useAppSelector((state) => state.auth.error);
+    const isLoading = useAppSelector((state) => state.auth.isLoading);
+
+    const {
+        control,
+        handleSubmit,
+        formState: { errors },
+    } = useForm<SignInFormValues>();
+
+    const onSubmit = async (data: SignInFormValues) => {
+        const response = await login(dispatch, data);
+
+        if (response.meta.requestStatus === "fulfilled") {
+            // TODO: Temporarily added a delay before redirecting
+            // to ensure cookies are saved and middleware works correctly.
+            // This should be properly handled later via server-side redirect
+            // or guaranteed cookie setting.
+            await new Promise((resolve) => setTimeout(resolve, timing.fiveSecondsInMilliseconds));
+
+            redirectTo(router, routeKeys.home);
+        }
+    };
+
+    const onGuestLogin = async () => {
+        const response = await dispatch(signInAsGuest());
+
+        if (response.meta.requestStatus === "fulfilled") {
+            redirectTo(router, routeKeys.home);
+        }
+    };
+
+    return (
+        <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
+            <MrValidatedInput
+                name="email"
+                control={control}
+                errors={errors}
+                label="Email"
+                type="email"
+                rules={{ required: "Email is required" }}
+                placeholder="johndoe@example.com"
+            />
+
+            <MrPasswordInput name="password" control={control} errors={errors} />
+
+            {errorMessage?.message && (
+                <MrNotificationMessage message={errorMessage.message} type={notificationMessageKeys.error} />
+            )}
+
+            <div>
+                <MrButton
+                    text="Sign In"
+                    type="submit"
+                    className="flex w-full items-center justify-center space-x-2"
+                    loading={isLoading}
+                />
+
+                <MrDivider text="OR" className="py-2" />
+
+                <MrButton
+                    text="Continue as Guest"
+                    variant={buttonVariantKeys.outline}
+                    type="button"
+                    className="flex w-full items-center justify-center space-x-2"
+                    onClick={onGuestLogin}
+                    loading={isLoading}
+                />
+            </div>
+        </form>
+    );
+}

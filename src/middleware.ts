@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
-import { cookieKeys } from "@/utils/cookie/cookie-key";
-import { buildRoutePath } from "@/utils/navigation";
-import { routeKeys } from "@/enums/url/route-key";
-import { isProd } from "@/lib/environments";
+import { cookieKeys } from "@/shared/utils/cookie/cookie-key";
+import { buildRoutePath } from "@/shared/utils/navigation";
+import { routeKeys } from "@/shared/constants/route-keys";
+import { isProd } from "@/shared/lib/environments";
 
 const redirectToSignInPath = buildRoutePath(routeKeys.signIn);
 const redirectToHomePath = buildRoutePath(routeKeys.home);

@@ -2,10 +2,10 @@
 
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { useAppSelector } from "@/hooks/use-app-selector";
-import { MrAuthForm } from "@/components/auth/auth-form/AuthForm";
-import { redirectTo } from "@/utils/navigation";
-import { routeKeys } from "@/enums/url/route-key";
+import { useAppSelector } from "@/shared/lib/redux/hooks/use-app-selector";
+import { redirectTo } from "@/shared/utils/navigation";
+import { routeKeys } from "@/shared/constants/route-keys";
+import { MrAuthForm } from "@/modules/auth/components/auth-form/AuthForm";
 
 export default function SignInPage() {
     const router = useRouter();

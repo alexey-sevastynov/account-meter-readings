@@ -1,6 +1,6 @@
 "use server";
 
-import { MrEmployees } from "@/components/page/coffee-shop/employees/Employees";
+import { MrEmployees } from "@/modules/employee/components/page/Employees";
 
 export default async function EmployeePage() {
     return <MrEmployees />;
