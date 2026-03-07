@@ -15,7 +15,7 @@ export interface ValidatedInputProps<TFormValues extends FieldValues> {
     placeholder?: string;
 }
 
-export function MrValidatedInput<TFormValues extends FieldValues>({
+export function ValidatedInput<TFormValues extends FieldValues>({
     name,
     control,
     errors,

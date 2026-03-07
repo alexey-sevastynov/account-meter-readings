@@ -1,14 +1,14 @@
-import { MrAvatar } from "@/shared/ui/avatar/Avatar";
+import { Avatar } from "@/shared/ui/avatar/Avatar";
 import { CellContext } from "@tanstack/react-table";
 
-interface MrAvatarCellProps<TData> {
+interface AvatarCellProps<TData> {
     cellInfo: CellContext<TData, unknown>;
 }
 
-export function MrAvatarCell<TData>({ cellInfo }: MrAvatarCellProps<TData>) {
+export function AvatarCell<TData>({ cellInfo }: AvatarCellProps<TData>) {
     return (
         <div className="flex items-center gap-2">
-            <MrAvatar name={cellInfo.getValue() as string} size="md" />
+            <Avatar name={cellInfo.getValue() as string} size="md" />
             <span>{cellInfo.getValue() as string}</span>
         </div>
     );

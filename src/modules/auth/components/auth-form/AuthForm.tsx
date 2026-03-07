@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useState } from "react";
-import { MrTitle } from "@/shared/ui/typography/title/Title";
+import { Title } from "@/shared/ui/typography/title/Title";
 import { useAppDispatch } from "@/shared/lib/redux/hooks/use-app-dispatch";
 import { AuthModeKey, authModeKeys } from "@/modules/auth/enums/auth-mode-key";
 import {
@@ -9,12 +9,12 @@ import {
     isSignInMode,
     toggleAuthMode,
 } from "@/modules/auth/components/auth-form/AuthForm.funcs";
-import { MrAuthFormActions } from "@/modules/auth/components/auth-form/auth-form-actions/AuthFormActions";
-import { MrAuthFormSignIn } from "@/modules/auth/components/auth-form/auth-form-sign-in/AuthFormSignIn";
-import { MrAuthFormSignUp } from "@/modules/auth/components/auth-form/auth-form-sign-up/AuthFormSignUp";
+import { AuthFormActions } from "@/modules/auth/components/auth-form/auth-form-actions/AuthFormActions";
+import { AuthFormSignIn } from "@/modules/auth/components/auth-form/auth-form-sign-in/AuthFormSignIn";
+import { AuthFormSignUp } from "@/modules/auth/components/auth-form/auth-form-sign-up/AuthFormSignUp";
 import { clearAuthError } from "@/modules/auth/model/slice";
 
-export function MrAuthForm() {
+export function AuthForm() {
     const dispatch = useAppDispatch();
     const [authMode, setAuthMode] = useState<AuthModeKey>(authModeKeys.signIn);
 
@@ -25,9 +25,9 @@ export function MrAuthForm() {
 
     return (
         <>
-            <MrTitle className="text-foreground">{getAuthModeLabel(authMode)}</MrTitle>
-            {isSignInMode(authMode) ? <MrAuthFormSignIn /> : <MrAuthFormSignUp />}
-            <MrAuthFormActions authMode={authMode} toggleAuthMode={onToggleAuthMode} />
+            <Title className="text-foreground">{getAuthModeLabel(authMode)}</Title>
+            {isSignInMode(authMode) ? <AuthFormSignIn /> : <AuthFormSignUp />}
+            <AuthFormActions authMode={authMode} toggleAuthMode={onToggleAuthMode} />
         </>
     );
 }

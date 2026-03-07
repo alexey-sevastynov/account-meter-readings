@@ -2,18 +2,18 @@
 
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { MrSidebar } from "@/shared/layout/sidebar/Sidebar";
-import { MrToolbar } from "@/shared/layout/toolbar/Toolbar";
+import { Sidebar } from "@/shared/layout/sidebar/Sidebar";
+import { Toolbar } from "@/shared/layout/toolbar/Toolbar";
 import { routeKeys } from "@/shared/constants/route-keys";
 import { useAppSelector } from "@/shared/lib/redux/hooks/use-app-selector";
 import { redirectTo } from "@/shared/utils/navigation";
 import { iconNames } from "@/shared/ui/icon/icon-name";
 
-interface MrCoffeeShopLayoutProps {
+interface CoffeeShopLayoutProps {
     children: React.ReactNode;
 }
 
-export function MrCoffeeShopLayout({ children }: MrCoffeeShopLayoutProps) {
+export function CoffeeShopLayout({ children }: CoffeeShopLayoutProps) {
     const router = useRouter();
     const token = useAppSelector((state) => state.auth.token);
 
@@ -25,7 +25,7 @@ export function MrCoffeeShopLayout({ children }: MrCoffeeShopLayoutProps) {
 
     return (
         <div className="bg-background flex min-h-screen w-full">
-            <MrSidebar
+            <Sidebar
                 sidebarNavigationItems={[
                     { href: routeKeys.coffeeShop, iconName: iconNames.dashboard, label: "Кавʼярня" },
                     { href: routeKeys.employees, iconName: iconNames.users, label: "Працівники" },
@@ -34,7 +34,7 @@ export function MrCoffeeShopLayout({ children }: MrCoffeeShopLayoutProps) {
                 logoIconName={iconNames.coffee}
             />
             <div className="flex-1 overflow-y-auto">
-                <MrToolbar />
+                <Toolbar />
                 <main className="p-4">{children}</main>
             </div>
         </div>

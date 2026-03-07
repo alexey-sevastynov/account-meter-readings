@@ -1,13 +1,13 @@
 import React from "react";
 import { cn } from "@/shared/lib/cn";
 
-interface MrBadgeProps {
+interface BadgeProps {
     children: React.ReactNode;
     color?: string;
     textColor?: string;
 }
 
-export function MrBadge({ children, color = "bg-accent/20", textColor = "text-accent" }: MrBadgeProps) {
+export function Badge({ children, color = "bg-accent/20", textColor = "text-accent" }: BadgeProps) {
     return (
         <span
             className={cn(

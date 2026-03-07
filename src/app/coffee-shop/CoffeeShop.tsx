@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { MrTaskTable } from "@/modules/task/components/task-table/TaskTable";
+import { TaskTable } from "@/modules/task/components/task-table/TaskTable";
 import { useAppDispatch } from "@/shared/lib/redux/hooks/use-app-dispatch";
 import { useAppSelector } from "@/shared/lib/redux/hooks/use-app-selector";
 import { getAllTasks } from "@/modules/task/model/thunks";
@@ -19,7 +19,7 @@ export function CoffeeShop() {
 
     return (
         <div className="p-0">
-            <MrTaskTable data={tasks ?? []} isLoading={isLoadingTasks} />
+            <TaskTable data={tasks ?? []} isLoading={isLoadingTasks} />
         </div>
     );
 }

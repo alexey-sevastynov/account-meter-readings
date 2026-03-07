@@ -1,11 +1,11 @@
 import { roundToPrecision } from "@/shared/utils/number";
 import { CellContext } from "@tanstack/react-table";
 
-interface MrNumberCellProps<TData> {
+interface NumberCellProps<TData> {
     cellInfo: CellContext<TData, unknown>;
 }
 
-export function MrNumberCell<TData>({ cellInfo }: MrNumberCellProps<TData>) {
+export function NumberCell<TData>({ cellInfo }: NumberCellProps<TData>) {
     const value = cellInfo.getValue<number | null | undefined>();
 
     if (typeof value !== "number") return null;

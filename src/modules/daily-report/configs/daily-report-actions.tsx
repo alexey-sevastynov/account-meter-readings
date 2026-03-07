@@ -1,6 +1,6 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { DailyReport } from "@/modules/daily-report/types/daily-report";
-import { MrButton } from "@/shared/ui/button/Button";
+import { Button } from "@/shared/ui/button/Button";
 import { iconNames } from "@/shared/ui/icon/icon-name";
 import { VoidFunc } from "@/shared/types/getter-setter-functions";
 
@@ -13,8 +13,8 @@ export function createDailyReportActionsColumn(onDelete: VoidFunc<string>, onEdi
 
             return (
                 <div className="flex gap-2">
-                    <MrButton iconName={iconNames.edit} onClick={() => onEdit(report)} />
-                    <MrButton iconName={iconNames.trash} onClick={() => onDelete(report._id)} />
+                    <Button iconName={iconNames.edit} onClick={() => onEdit(report)} />
+                    <Button iconName={iconNames.trash} onClick={() => onDelete(report._id)} />
                 </div>
             );
         },

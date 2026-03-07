@@ -1,23 +1,23 @@
-import { MrButton } from "@/shared/ui/button/Button";
-import { MrModalWindow } from "@/shared/ui/modal-window/ModalWindow";
-import { MrText } from "@/shared/ui/typography/text/Text";
+import { Button } from "@/shared/ui/button/Button";
+import { ModalWindow } from "@/shared/ui/modal-window/ModalWindow";
+import { Text } from "@/shared/ui/typography/text/Text";
 import { VoidFunc, VoidFuncNoParam } from "@/shared/types/getter-setter-functions";
 
-interface MrEmployeeDeleteModalProps {
+interface EmployeeDeleteModalProps {
     open: boolean;
     onOpenChange: VoidFunc<boolean>;
     onConfirm: VoidFuncNoParam;
     loading?: boolean;
 }
 
-export function MrEmployeeDeleteModal({
+export function EmployeeDeleteModal({
     open,
     onOpenChange,
     onConfirm,
     loading,
-}: MrEmployeeDeleteModalProps) {
+}: EmployeeDeleteModalProps) {
     return (
-        <MrModalWindow
+        <ModalWindow
             open={open}
             onOpenChange={onOpenChange}
             title="Підтвердження видалення"
@@ -25,14 +25,14 @@ export function MrEmployeeDeleteModal({
             size="sm"
             footer={
                 <>
-                    <MrButton
+                    <Button
                         type="button"
                         variant="secondary"
                         text="Ні"
                         className="btn btn-secondary"
                         onClick={() => onOpenChange(false)}
                     />
-                    <MrButton
+                    <Button
                         type="button"
                         variant="danger"
                         text="Так"
@@ -42,10 +42,10 @@ export function MrEmployeeDeleteModal({
                 </>
             }
         >
-            <MrText>
+            <Text>
                 Натискаючи кнопку &quot;Так&quot;, ви видаляєте цього співробітника з системи. Та ви не
                 зможете його відновити.
-            </MrText>
-        </MrModalWindow>
+            </Text>
+        </ModalWindow>
     );
 }

@@ -7,19 +7,19 @@ import {
 import { VoidFuncNoParam } from "@/shared/types/getter-setter-functions";
 import { timing } from "@/shared/constants/timing";
 
-interface MrNotificationMessageProps {
+interface NotificationMessageProps {
     message: string;
     type?: NotificationMessageKey;
     onClose?: VoidFuncNoParam;
     autoClose?: number;
 }
 
-export function MrNotificationMessage({
+export function NotificationMessage({
     message,
     type = notificationMessageKeys.info,
     onClose,
     autoClose = timing.fiveSecondsInMilliseconds,
-}: MrNotificationMessageProps) {
+}: NotificationMessageProps) {
     const [visible, setVisible] = useState(true);
     const [hovered, setHovered] = useState(false);
 

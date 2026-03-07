@@ -1,26 +1,26 @@
 import { cn } from "@/shared/lib/cn";
 import { Table } from "@tanstack/react-table";
-import { MrTableHeaderCell } from "@/shared/ui/table/table-header/table-header-cell/TableHeaderCell";
+import { TableHeaderCell } from "@/shared/ui/table/table-header/table-header-cell/TableHeaderCell";
 
-interface MrTableHeaderProps<TableData> {
+interface TableHeaderProps<TableData> {
     reactTable: Table<TableData>;
     enableSorting?: boolean;
     enableColumnResizing?: boolean;
     className?: string;
 }
 
-export function MrTableHeader<TableData>({
+export function TableHeader<TableData>({
     reactTable,
     enableSorting,
     enableColumnResizing,
     className,
-}: MrTableHeaderProps<TableData>) {
+}: TableHeaderProps<TableData>) {
     return (
         <thead className={cn("bg-background border-border border-b", className)}>
             {reactTable.getHeaderGroups().map((headerGroup) => (
                 <tr key={headerGroup.id}>
                     {headerGroup.headers.map((header) => (
-                        <MrTableHeaderCell
+                        <TableHeaderCell
                             key={header.id}
                             tableHeader={header}
                             enableSorting={enableSorting}

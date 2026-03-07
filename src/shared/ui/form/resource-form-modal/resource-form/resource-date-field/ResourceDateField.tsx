@@ -1,18 +1,18 @@
 import { Control, Controller, FieldValues, FieldErrors } from "react-hook-form";
 import { ResourceField } from "@/shared/types/resource-field";
-import { MrDatePicker } from "@/shared/ui/date-picker/DatePicker";
+import { DatePicker } from "@/shared/ui/date-picker/DatePicker";
 
-interface MrResourceDateFieldProps<T extends FieldValues> {
+interface ResourceDateFieldProps<T extends FieldValues> {
     field: ResourceField<T>;
     control: Control<T>;
     errors: FieldErrors<T>;
 }
 
-export function MrResourceDateField<T extends FieldValues>({
+export function ResourceDateField<T extends FieldValues>({
     field,
     control,
     errors,
-}: MrResourceDateFieldProps<T>) {
+}: ResourceDateFieldProps<T>) {
     const errorMessage = errors[field.name]?.message as string;
 
     return (
@@ -24,7 +24,7 @@ export function MrResourceDateField<T extends FieldValues>({
             }}
             render={(controllerFieldState) => (
                 <div>
-                    <MrDatePicker
+                    <DatePicker
                         label={field.label}
                         value={controllerFieldState.field.value}
                         onChange={controllerFieldState.field.onChange}

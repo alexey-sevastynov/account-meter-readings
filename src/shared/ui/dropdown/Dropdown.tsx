@@ -11,7 +11,7 @@ interface DropdownContextProps {
 
 const DropdownContext = createContext<DropdownContextProps | null>(null);
 
-export function MrDropdown({ children, className }: { children: ReactNode; className?: string }) {
+export function Dropdown({ children, className }: { children: ReactNode; className?: string }) {
     const [isOpen, setIsOpen] = useState(false);
     const triggerRef = useRef<HTMLDivElement>(null);
     const contentRef = useRef<HTMLDivElement>(null);
@@ -45,7 +45,7 @@ export function MrDropdown({ children, className }: { children: ReactNode; class
     );
 }
 
-export function MrDropdownTrigger({ children, className }: { children: ReactNode; className?: string }) {
+export function DropdownTrigger({ children, className }: { children: ReactNode; className?: string }) {
     const ctx = useContext(DropdownContext);
 
     if (!ctx) throw new Error("TdDropdownTrigger must be inside TdDropdown");
@@ -60,7 +60,7 @@ export function MrDropdownTrigger({ children, className }: { children: ReactNode
     );
 }
 
-export function MrDropdownContent({ children, className }: { children: ReactNode; className?: string }) {
+export function DropdownContent({ children, className }: { children: ReactNode; className?: string }) {
     const ctx = useContext(DropdownContext);
 
     if (!ctx) throw new Error("TdDropdownContent must be inside TdDropdown");
@@ -88,7 +88,7 @@ export function MrDropdownContent({ children, className }: { children: ReactNode
     );
 }
 
-export function MrDropdownItem({
+export function DropdownItem({
     children,
     onSelect,
     className,

@@ -2,13 +2,13 @@ import { cn } from "@/shared/lib/cn";
 import { VoidFunc } from "@/shared/types/getter-setter-functions";
 import { flexRender, Row } from "@tanstack/react-table";
 
-interface MrTableRowProps<T> {
+interface TableRowProps<T> {
     tableRow: Row<T>;
     onRowClick?: VoidFunc<T>;
     className?: string;
 }
 
-export function MrTableRow<T>({ tableRow, onRowClick, className }: MrTableRowProps<T>) {
+export function TableRow<T>({ tableRow, onRowClick, className }: TableRowProps<T>) {
     return (
         <tr
             onClick={() => onRowClick?.(tableRow.original)}

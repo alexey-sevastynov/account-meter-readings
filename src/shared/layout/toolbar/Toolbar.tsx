@@ -1,11 +1,11 @@
 import { cn } from "@/shared/lib/cn";
 import { InvertedCorner } from "@/shared/layout/toolbar/inverted-corner/InvertedCorner";
 
-interface MrToolbarProps {
+interface ToolbarProps {
     className?: string;
 }
 
-export function MrToolbar({ className }: MrToolbarProps) {
+export function Toolbar({ className }: ToolbarProps) {
     return (
         <header
             className={cn(

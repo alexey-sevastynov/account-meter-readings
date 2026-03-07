@@ -1,36 +1,36 @@
 import { Column } from "@tanstack/react-table";
-import { MrCheckbox } from "@/shared/ui/checkbox/Checkbox";
-import { MrButton } from "@/shared/ui/button/Button";
+import { Checkbox } from "@/shared/ui/checkbox/Checkbox";
+import { Button } from "@/shared/ui/button/Button";
 import { buttonVariantKeys } from "@/shared/ui/button/button-variant-keys";
 import { iconNames } from "@/shared/ui/icon/icon-name";
-import { MrText } from "@/shared/ui/typography/text/Text";
-import { MrDropdown, MrDropdownTrigger, MrDropdownContent } from "@/shared/ui/dropdown/Dropdown";
+import { Text } from "@/shared/ui/typography/text/Text";
+import { Dropdown, DropdownTrigger, DropdownContent } from "@/shared/ui/dropdown/Dropdown";
 
-interface MrTableColumnVisibilityDropdownProps<TData> {
+interface TableColumnVisibilityDropdownProps<TData> {
     columns: Column<TData>[];
     className?: string;
 }
 
-export function MrTableColumnVisibilityDropdown<TData>({
+export function TableColumnVisibilityDropdown<TData>({
     columns,
     className = "",
-}: MrTableColumnVisibilityDropdownProps<TData>) {
+}: TableColumnVisibilityDropdownProps<TData>) {
     const toggleableColumns = columns.filter((col) => col.getCanHide());
     const visibleCount = columns.filter((col) => col.getIsVisible()).length;
 
     return (
-        <MrDropdown className={`relative ${className}`}>
-            <MrDropdownTrigger>
-                <MrButton
+        <Dropdown className={`relative ${className}`}>
+            <DropdownTrigger>
+                <Button
                     text={`Колонки (${visibleCount}/${toggleableColumns.length})`}
                     iconName={iconNames.settings}
                     className="w-full"
                 />
-            </MrDropdownTrigger>
+            </DropdownTrigger>
 
-            <MrDropdownContent className="w-80">
+            <DropdownContent className="w-80">
                 <div className="border-b border-gray-200 p-4">
-                    <MrText>Виберіть колонки для відображення</MrText>
+                    <Text>Виберіть колонки для відображення</Text>
                 </div>
 
                 <div className="max-h-96 overflow-y-auto p-2">
@@ -39,30 +39,30 @@ export function MrTableColumnVisibilityDropdown<TData>({
 
                         return (
                             <div key={column.id} className="flex items-center gap-4 px-3 py-2">
-                                <MrCheckbox
+                                <Checkbox
                                     checked={isVisible}
                                     onCheckedChange={(checked) => {
                                         column.toggleVisibility(!!checked);
                                     }}
                                 />
-                                <MrText className="contents">{column.columnDef.meta?.label}</MrText>
+                                <Text className="contents">{column.columnDef.meta?.label}</Text>
                             </div>
                         );
                     })}
                 </div>
 
                 <div className="flex gap-2 border-t border-gray-200 p-3">
-                    <MrButton
+                    <Button
                         text="Показати всі"
                         onClick={() => toggleableColumns.forEach((col) => col.toggleVisibility(true))}
                     />
-                    <MrButton
+                    <Button
                         text="Скрити всі"
                         variant={buttonVariantKeys.secondary}
                         onClick={() => toggleableColumns.forEach((col) => col.toggleVisibility(false))}
                     />
                 </div>
-            </MrDropdownContent>
-        </MrDropdown>
+            </DropdownContent>
+        </Dropdown>
     );
 }

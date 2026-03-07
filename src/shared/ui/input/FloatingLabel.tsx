@@ -1,6 +1,6 @@
 import { cn } from "@/shared/lib/cn";
 
-interface MrFloatingLabelProps {
+interface FloatingLabelProps {
     label: string;
     isFocused: boolean;
     hasValue: boolean;
@@ -10,7 +10,7 @@ const baseStyles = "absolute left-4 px-1 pointer-events-none transition-all dura
 const labelPositionDefault = "top-1/2 -translate-y-1/2 text-muted-foreground";
 const labelPositionFocused = "top-0 -translate-y-1/2 text-primary text-sm";
 
-export function MrFloatingLabel({ label, isFocused, hasValue }: MrFloatingLabelProps) {
+export function FloatingLabel({ label, isFocused, hasValue }: FloatingLabelProps) {
     const isFloating = isFocused || hasValue;
 
     return (

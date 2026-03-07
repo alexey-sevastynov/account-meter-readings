@@ -2,13 +2,13 @@ import { ReactNode } from "react";
 import { TextPosition } from "@/shared/ui/typography/text-position";
 import { cn } from "@/shared/lib/cn";
 
-interface MrTitleProps {
+interface TitleProps {
     children: ReactNode;
     position?: TextPosition;
     className?: string;
 }
 
-export function MrTitle({ children, position = "center", className }: MrTitleProps) {
+export function Title({ children, position = "center", className }: TitleProps) {
     return (
         <h2
             className={cn(

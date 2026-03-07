@@ -1,29 +1,29 @@
-import { MrButton } from "@/shared/ui/button/Button";
+import { Button } from "@/shared/ui/button/Button";
 import { buttonVariantKeys } from "@/shared/ui/button/button-variant-keys";
 import { VoidFuncNoParam } from "@/shared/types/getter-setter-functions";
-import { MrLink } from "@/shared/ui/link/Link";
+import { Link } from "@/shared/ui/link/Link";
 import { routeKeys } from "@/shared/constants/route-keys";
 import { AuthModeKey } from "@/modules/auth/enums/auth-mode-key";
 import { getAuthModeToggleLabel } from "@/modules/auth/components/auth-form/auth-form-actions/authFormActions.funcs";
 import { isSignInMode } from "@/modules/auth/components/auth-form/AuthForm.funcs";
 
-interface MrAuthFormActionsProps {
+interface AuthFormActionsProps {
     authMode: AuthModeKey;
     toggleAuthMode: VoidFuncNoParam;
 }
 
-export function MrAuthFormActions({ authMode, toggleAuthMode }: MrAuthFormActionsProps) {
+export function AuthFormActions({ authMode, toggleAuthMode }: AuthFormActionsProps) {
     return (
         <>
             {isSignInMode(authMode) && (
                 <div className="mt-2 text-right">
-                    <MrLink href={routeKeys.forgotPassword}>Forgot password?</MrLink>
+                    <Link href={routeKeys.forgotPassword}>Forgot password?</Link>
                 </div>
             )}
 
             <p className="mt-8 text-center text-gray-600">
                 {isSignInMode(authMode) ? "Don’t have an account?" : "Already have an account?"}
-                <MrButton
+                <Button
                     className="w-full"
                     variant={buttonVariantKeys.link}
                     onClick={toggleAuthMode}

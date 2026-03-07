@@ -10,11 +10,11 @@ import {
     PaginationState,
     VisibilityState,
 } from "@tanstack/react-table";
-import { MrTable } from "@/shared/ui/table/Table";
-import { MrTablePager } from "@/shared/ui/table-pager/TablePager";
-import { MrTitle } from "@/shared/ui/typography/title/Title";
-import { MrText } from "@/shared/ui/typography/text/Text";
-import { MrTableToolbox } from "@/shared/ui/table-toolbox/TableToolbox";
+import { Table } from "@/shared/ui/table/Table";
+import { TablePager } from "@/shared/ui/table-pager/TablePager";
+import { Title } from "@/shared/ui/typography/title/Title";
+import { Text } from "@/shared/ui/typography/text/Text";
+import { TableToolbox } from "@/shared/ui/table-toolbox/TableToolbox";
 import { createTableConfig } from "@/shared/ui/table/table-config";
 import { employeeColumns } from "@/modules/employee/configs/employee-columns";
 import { Employee } from "@/modules/employee/types/employee";
@@ -25,13 +25,13 @@ import {
 } from "@/modules/employee/components/employee-table/employeeTable.funcs";
 import { EmployeeModals } from "@/modules/employee/components/employee-table/employee-modals/EmolyeeModals";
 
-interface MrEmployeeTableProps {
+interface EmployeeTableProps {
     data: Employee[];
     isLoading?: boolean;
 }
 
 // eslint-disable-next-line max-lines-per-function
-export function MrEmployeeTable({ data, isLoading }: MrEmployeeTableProps) {
+export function EmployeeTable({ data, isLoading }: EmployeeTableProps) {
     const [sorting, setSorting] = useState<SortingState>([]);
     const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
     const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
@@ -68,9 +68,9 @@ export function MrEmployeeTable({ data, isLoading }: MrEmployeeTableProps) {
 
     return (
         <div className="w-full">
-            <MrTitle position="left">Список працівників</MrTitle>
-            <MrText className="mt-1">Загальна кількість працівників: {data.length}</MrText>
-            <MrTableToolbox columns={reactTable.getAllColumns()} />
+            <Title position="left">Список працівників</Title>
+            <Text className="mt-1">Загальна кількість працівників: {data.length}</Text>
+            <TableToolbox columns={reactTable.getAllColumns()} />
             <EmployeeModals
                 editingEmployee={editingEmployee}
                 setEditingEmployee={setEditingEmployee}
@@ -79,8 +79,8 @@ export function MrEmployeeTable({ data, isLoading }: MrEmployeeTableProps) {
                 isDeleteModalOpen={isDeleteModalOpen}
                 setIsDeleteModalOpen={setIsDeleteModalOpen}
             />
-            <MrTable config={createTableConfig(reactTable, isLoading, "Немає даних для відображення")} />
-            <MrTablePager
+            <Table config={createTableConfig(reactTable, isLoading, "Немає даних для відображення")} />
+            <TablePager
                 currentPage={reactTable.getState().pagination.pageIndex + 1}
                 pageSize={reactTable.getState().pagination.pageSize}
                 totalRows={reactTable.getFilteredRowModel().rows.length}

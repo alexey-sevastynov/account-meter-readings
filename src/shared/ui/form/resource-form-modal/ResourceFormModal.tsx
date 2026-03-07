@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { FieldValues, DefaultValues } from "react-hook-form";
-import { MrResourceForm } from "@/shared/ui/form/resource-form-modal/resource-form/ResourceForm";
-import { MrModalWindow } from "@/shared/ui/modal-window/ModalWindow";
-import { MrButton } from "@/shared/ui/button/Button";
+import { ResourceForm } from "@/shared/ui/form/resource-form-modal/resource-form/ResourceForm";
+import { ModalWindow } from "@/shared/ui/modal-window/ModalWindow";
+import { Button } from "@/shared/ui/button/Button";
 import { ResourceField } from "@/shared/types/resource-field";
 import { VoidFuncNoParam } from "@/shared/types/getter-setter-functions";
 import { FormMode, formModes } from "@/shared/ui/form/form-mode";
@@ -24,7 +24,7 @@ interface ResourceFormModalProps<T extends FieldValues> {
     loading?: boolean;
 }
 
-export function MrResourceFormModal<T extends FieldValues>({
+export function ResourceFormModal<T extends FieldValues>({
     fields,
     onSubmit,
     formMode = formModes.create,
@@ -42,10 +42,10 @@ export function MrResourceFormModal<T extends FieldValues>({
     return (
         <>
             {!isEditMode(formMode) && (
-                <MrButton text={addButtonLabel} onClick={() => setInternalOpen(true)} />
+                <Button text={addButtonLabel} onClick={() => setInternalOpen(true)} />
             )}
 
-            <MrModalWindow
+            <ModalWindow
                 open={isOpen}
                 onOpenChange={(value) => {
                     if (!value) {
@@ -57,7 +57,7 @@ export function MrResourceFormModal<T extends FieldValues>({
                 title={isEditMode(formMode) ? editTitle : createTitle}
                 size="md"
             >
-                <MrResourceForm<T>
+                <ResourceForm<T>
                     fields={fields}
                     defaultValues={defaultValues}
                     onSubmit={(data) =>
@@ -65,7 +65,7 @@ export function MrResourceFormModal<T extends FieldValues>({
                     }
                     loading={loading}
                 />
-            </MrModalWindow>
+            </ModalWindow>
         </>
     );
 }

@@ -3,21 +3,21 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAppDispatch } from "@/shared/lib/redux/hooks/use-app-dispatch";
-import { MrButton } from "@/shared/ui/button/Button";
+import { Button } from "@/shared/ui/button/Button";
 import { redirectTo } from "@/shared/utils/navigation";
 import { useTheme } from "@/shared/context/theme-provider/ThemeProvider";
-import { MrTitle } from "@/shared/ui/typography/title/Title";
-import { MrText } from "@/shared/ui/typography/text/Text";
+import { Title } from "@/shared/ui/typography/title/Title";
+import { Text } from "@/shared/ui/typography/text/Text";
 import { themeModes } from "@/shared/context/theme-provider/theme-mode";
 import { buttonVariantKeys } from "@/shared/ui/button/button-variant-keys";
 import { routeKeys } from "@/shared/constants/route-keys";
 import { signOut } from "@/modules/auth/model/slice";
 
-interface MrHomeProps {
+interface HomeProps {
     userName?: string;
 }
 
-export function MrHome({ userName }: MrHomeProps) {
+export function Home({ userName }: HomeProps) {
     const router = useRouter();
     const theme = useTheme();
     const dispatch = useAppDispatch();
@@ -42,26 +42,26 @@ export function MrHome({ userName }: MrHomeProps) {
     return (
         <div className="flex flex-col">
             <div className="flex w-full max-w-md flex-col items-center rounded-2xl p-8">
-                <MrTitle>Welcome to Home, {userName ? userName : "Guest"}!</MrTitle>
-                <MrText>You are successfully logged in.</MrText>
+                <Title>Welcome to Home, {userName ? userName : "Guest"}!</Title>
+                <Text>You are successfully logged in.</Text>
 
                 <div className="flex w-full flex-col space-y-4">
                     <div className="flex flex-col space-y-3">
                         <div className="flex items-center justify-between">
-                            <MrText>
+                            <Text>
                                 Current theme:
                                 <span className="font-semibold capitalize">{clientTheme}</span>
-                            </MrText>
+                            </Text>
                         </div>
 
                         <div className="flex space-x-2">
-                            <MrButton text="Light" onClick={() => theme.setTheme(themeModes.light)} />
-                            <MrButton text="Dark" onClick={() => theme.setTheme(themeModes.dark)} />
-                            <MrButton text="System" onClick={() => theme.setTheme(themeModes.system)} />
+                            <Button text="Light" onClick={() => theme.setTheme(themeModes.light)} />
+                            <Button text="Dark" onClick={() => theme.setTheme(themeModes.dark)} />
+                            <Button text="System" onClick={() => theme.setTheme(themeModes.system)} />
                         </div>
                     </div>
 
-                    <MrButton text="Logout" onClick={onLogout} variant={buttonVariantKeys.danger} />
+                    <Button text="Logout" onClick={onLogout} variant={buttonVariantKeys.danger} />
                 </div>
             </div>
         </div>

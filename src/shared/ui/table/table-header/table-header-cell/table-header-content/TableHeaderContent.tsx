@@ -1,17 +1,17 @@
 import { cn } from "@/shared/lib/cn";
-import { MrIcon } from "@/shared/ui/icon/Icon";
+import { Icon } from "@/shared/ui/icon/Icon";
 import { iconNames } from "@/shared/ui/icon/icon-name";
 import { flexRender, Header } from "@tanstack/react-table";
 
-interface MrTableHeaderContentProps<TableData> {
+interface TableHeaderContentProps<TableData> {
     tableHeader: Header<TableData, unknown>;
     enableSorting?: boolean;
 }
 
-export function MrTableHeaderContent<TableData>({
+export function TableHeaderContent<TableData>({
     tableHeader,
     enableSorting,
-}: MrTableHeaderContentProps<TableData>) {
+}: TableHeaderContentProps<TableData>) {
     const canSort = tableHeader.column.getCanSort();
     const toggleSortHandler = tableHeader.column.getToggleSortingHandler();
 
@@ -35,9 +35,9 @@ export function MrTableHeaderContent<TableData>({
 function SortIcon<TableData>({ tableHeader }: { tableHeader: Header<TableData, unknown> }) {
     const sort = tableHeader.column.getIsSorted();
 
-    if (sort === "asc") return <MrIcon name={iconNames.chevronUp} />;
+    if (sort === "asc") return <Icon name={iconNames.chevronUp} />;
 
-    if (sort === "desc") return <MrIcon name={iconNames.chevronDown} />;
+    if (sort === "desc") return <Icon name={iconNames.chevronDown} />;
 
-    return <MrIcon name={iconNames.chevronsUpDown} />;
+    return <Icon name={iconNames.chevronsUpDown} />;
 }

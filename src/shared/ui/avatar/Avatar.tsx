@@ -4,7 +4,7 @@ import { cn } from "@/shared/lib/cn";
 import * as AvatarPrimitive from "@radix-ui/react-avatar";
 import { getAvatarInitials } from "@/shared/ui/avatar/avatar.funcs";
 
-interface MrAvatarProps {
+interface AvatarProps {
     name?: string;
     src?: string;
     size?: "sm" | "md" | "lg";
@@ -17,7 +17,7 @@ const avatarSizeMap = {
     lg: "h-14 w-14 text-base",
 } as const;
 
-export function MrAvatar({ name, src, size = "md", className }: MrAvatarProps) {
+export function Avatar({ name, src, size = "md", className }: AvatarProps) {
     return (
         <AvatarPrimitive.Root
             className={cn(

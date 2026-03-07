@@ -9,10 +9,10 @@ import { useState } from "react";
 import { format } from "date-fns";
 import { uk } from "date-fns/locale";
 import { cn } from "@/shared/lib/cn";
-import { MrFloatingLabel } from "@/shared/ui/input/FloatingLabel";
+import { FloatingLabel } from "@/shared/ui/input/FloatingLabel";
 import { VoidFunc } from "@/shared/types/getter-setter-functions";
 
-interface MrDatePickerProps {
+interface DatePickerProps {
     label?: string;
     value?: Date;
     onChange?: VoidFunc<Date | undefined>;
@@ -21,14 +21,14 @@ interface MrDatePickerProps {
     toYear?: number;
 }
 
-export function MrDatePicker({
+export function DatePicker({
     label,
     value,
     onChange,
     className,
     fromYear = 1900,
     toYear = new Date().getFullYear(),
-}: MrDatePickerProps) {
+}: DatePickerProps) {
     const [open, setOpen] = useState(false);
     const [isFocused, setIsFocused] = useState(false);
 
@@ -81,7 +81,7 @@ export function MrDatePicker({
                 </Popover.Portal>
             </Popover.Root>
 
-            {label && <MrFloatingLabel label={label} isFocused={isFocused || open} hasValue={hasValue} />}
+            {label && <FloatingLabel label={label} isFocused={isFocused || open} hasValue={hasValue} />}
         </div>
     );
 }

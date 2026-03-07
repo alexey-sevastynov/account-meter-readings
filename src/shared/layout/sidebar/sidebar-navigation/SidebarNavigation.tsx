@@ -1,18 +1,17 @@
 import {
-    MrSidebarNavigationItem,
     SidebarNavigationItem,
 } from "@/shared/layout/sidebar/sidebar-navigation/sidebar-navigation-item/SidebarNavigationItem";
 
-interface MrSidebarNavigationProps {
+interface SidebarNavigationProps {
     sidebarNavigationItems: SidebarNavigationItem[];
 }
 
-export function MrSidebarNavigation({ sidebarNavigationItems }: MrSidebarNavigationProps) {
+export function SidebarNavigation({ sidebarNavigationItems }: SidebarNavigationProps) {
     return (
         <nav>
             <ul className="relative mt-7 flex flex-col">
                 {sidebarNavigationItems.map((item) => (
-                    <MrSidebarNavigationItem key={item.href} sidebarNavigationItem={item} />
+                    <SidebarNavigationItem key={item.href} sidebarNavigationItem={item} />
                 ))}
             </ul>
         </nav>

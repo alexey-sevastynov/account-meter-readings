@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useAppSelector } from "@/shared/lib/redux/hooks/use-app-selector";
 import { redirectTo } from "@/shared/utils/navigation";
 import { routeKeys } from "@/shared/constants/route-keys";
-import { MrAuthForm } from "@/modules/auth/components/auth-form/AuthForm";
+import { AuthForm } from "@/modules/auth/components/auth-form/AuthForm";
 
 export default function SignInPage() {
     const router = useRouter();
@@ -17,5 +17,5 @@ export default function SignInPage() {
         }
     }, [token, router]);
 
-    return <MrAuthForm />;
+    return <AuthForm />;
 }

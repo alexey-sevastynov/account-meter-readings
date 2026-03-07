@@ -2,11 +2,11 @@ import { useState } from "react";
 import { useAppDispatch } from "@/shared/lib/redux/hooks/use-app-dispatch";
 import { VoidFunc } from "@/shared/types/getter-setter-functions";
 import { getTodayDate } from "@/shared/utils/date";
-import { MrResourceFormModal } from "@/shared/ui/form/resource-form-modal/ResourceFormModal";
+import { ResourceFormModal } from "@/shared/ui/form/resource-form-modal/ResourceFormModal";
 import { formModes } from "@/shared/ui/form/form-mode";
 import { Employee } from "@/modules/employee/types/employee";
 import { employeeFormFields } from "@/modules/employee/configs/employee-form-fields";
-import { MrEmployeeDeleteModal } from "@/modules/employee/components/employee-table/employee-modals/employee-delete-modal/EmployeeDeleteModal";
+import { EmployeeDeleteModal } from "@/modules/employee/components/employee-table/employee-modals/employee-delete-modal/EmployeeDeleteModal";
 import {
     closeDeleteConfirmModal,
     onCreateEmployee,
@@ -42,7 +42,7 @@ export function EmployeeModals({
 
     return (
         <>
-            <MrEmployeeDeleteModal
+            <EmployeeDeleteModal
                 open={isDeleteModalOpen}
                 onOpenChange={handleDeleteModalOpenChange}
                 onConfirm={() =>
@@ -56,7 +56,7 @@ export function EmployeeModals({
                 }
                 loading={isDeleting}
             />
-            <MrResourceFormModal<Employee>
+            <ResourceFormModal<Employee>
                 fields={employeeFormFields}
                 onSubmit={async (employee: Employee) => onCreateEmployee(employee, dispatch, setIsCreating)}
                 formMode={formModes.create}
@@ -66,7 +66,7 @@ export function EmployeeModals({
                 loading={isCreating}
             />
             {editingEmployee && (
-                <MrResourceFormModal<Employee>
+                <ResourceFormModal<Employee>
                     fields={employeeFormFields}
                     onSubmit={async (employee: Employee) =>
                         onUpdateEmployee(employee, dispatch, setIsUpdating, setEditingEmployee)

@@ -1,11 +1,11 @@
 import { cn } from "@/shared/lib/cn";
 import { VoidFunc } from "@/shared/types/getter-setter-functions";
 import { Table } from "@tanstack/react-table";
-import { MrTableRow } from "@/shared/ui/table/table-body/table-row/TableRow";
-import { MrTableEmptyRow } from "@/shared/ui/table/table-body/table-empty-row/TableEmptyRow";
-import { MrTableLoadingRow } from "@/shared/ui/table/table-body/table-loading-row/TableLoadingRow";
+import { TableRow } from "@/shared/ui/table/table-body/table-row/TableRow";
+import { TableEmptyRow } from "@/shared/ui/table/table-body/table-empty-row/TableEmptyRow";
+import { TableLoadingRow } from "@/shared/ui/table/table-body/table-loading-row/TableLoadingRow";
 
-interface MrTableBodyProps<TableData> {
+interface TableBodyProps<TableData> {
     reactTable: Table<TableData>;
     noDataMessage?: string;
     isLoading?: boolean;
@@ -13,20 +13,20 @@ interface MrTableBodyProps<TableData> {
     className?: string;
 }
 
-export function MrTableBody<TableData>({
+export function TableBody<TableData>({
     reactTable,
     noDataMessage,
     isLoading = false,
     onRowClick,
     className,
-}: MrTableBodyProps<TableData>) {
+}: TableBodyProps<TableData>) {
     const rows = reactTable.getRowModel().rows;
     const colSpan = reactTable.getAllColumns().length;
 
     if (isLoading) {
         return (
             <tbody className={cn("divide-border bg-card divide-y [--tw-divide-opacity:1]", className)}>
-                <MrTableLoadingRow colSpan={colSpan} className="h-16" />
+                <TableLoadingRow colSpan={colSpan} className="h-16" />
             </tbody>
         );
     }
@@ -34,7 +34,7 @@ export function MrTableBody<TableData>({
     if (rows.length === 0) {
         return (
             <tbody className={cn("divide-border bg-card divide-y [--tw-divide-opacity:1]", className)}>
-                <MrTableEmptyRow colSpan={colSpan} noDataMessage={noDataMessage} className="h-16" />
+                <TableEmptyRow colSpan={colSpan} noDataMessage={noDataMessage} className="h-16" />
             </tbody>
         );
     }
@@ -42,7 +42,7 @@ export function MrTableBody<TableData>({
     return (
         <tbody className={cn("divide-border bg-card divide-y [--tw-divide-opacity:1]", className)}>
             {rows.map((row) => (
-                <MrTableRow key={row.id} tableRow={row} onRowClick={onRowClick} className="h-16" />
+                <TableRow key={row.id} tableRow={row} onRowClick={onRowClick} className="h-16" />
             ))}
         </tbody>
     );

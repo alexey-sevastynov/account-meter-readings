@@ -2,12 +2,12 @@
 
 import { useEffect } from "react";
 
-import { MrDailyReportTable } from "@/modules/daily-report/components/daily-report-table/DailyReportTable";
+import { DailyReportTable } from "@/modules/daily-report/components/daily-report-table/DailyReportTable";
 import { useAppSelector } from "@/shared/lib/redux/hooks/use-app-selector";
 import { useAppDispatch } from "@/shared/lib/redux/hooks/use-app-dispatch";
 import { getAllDailyReports } from "@/modules/daily-report/model/daily-report-thunks";
 
-export function MrDailyReports() {
+export function DailyReports() {
     const dispatch = useAppDispatch();
 
     const reports = useAppSelector((state) => state.dailyReport.data);
@@ -19,7 +19,7 @@ export function MrDailyReports() {
 
     return (
         <div className="p-0">
-            <MrDailyReportTable data={reports} isLoading={isLoadingReports} />
+            <DailyReportTable data={reports} isLoading={isLoadingReports} />
         </div>
     );
 }

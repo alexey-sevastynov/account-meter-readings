@@ -1,7 +1,7 @@
 "use client";
 
 import { useForm, DefaultValues, FieldValues } from "react-hook-form";
-import { MrButton } from "@/shared/ui/button/Button";
+import { Button } from "@/shared/ui/button/Button";
 import { VoidFunc } from "@/shared/types/getter-setter-functions";
 import {
     isCheckboxFieldType,
@@ -9,11 +9,11 @@ import {
     isEnumFieldType,
     isInputFieldType,
 } from "@/shared/utils/resource-field-type-guards";
-import { MrResourceInputField } from "@/shared/ui/form/resource-form-modal/resource-form/resource-input-field/ResourceInputField";
-import { MrResourceCheckboxField } from "@/shared/ui/form/resource-form-modal/resource-form/resource-checkbox-field/ResourceCheckboxField";
-import { MrResourceSelectField } from "@/shared/ui/form/resource-form-modal/resource-form/resource-select-field/ResourceSelectField";
+import { ResourceInputField } from "@/shared/ui/form/resource-form-modal/resource-form/resource-input-field/ResourceInputField";
+import { ResourceCheckboxField } from "@/shared/ui/form/resource-form-modal/resource-form/resource-checkbox-field/ResourceCheckboxField";
+import { ResourceSelectField } from "@/shared/ui/form/resource-form-modal/resource-form/resource-select-field/ResourceSelectField";
 import { ResourceField } from "@/shared/types/resource-field";
-import { MrResourceDateField } from "@/shared/ui/form/resource-form-modal/resource-form/resource-date-field/ResourceDateField";
+import { ResourceDateField } from "@/shared/ui/form/resource-form-modal/resource-form/resource-date-field/ResourceDateField";
 
 interface ResourceFormProps<T extends FieldValues> {
     fields: ResourceField<T>[];
@@ -23,7 +23,7 @@ interface ResourceFormProps<T extends FieldValues> {
     loading?: boolean;
 }
 
-export function MrResourceForm<T extends FieldValues>({
+export function ResourceForm<T extends FieldValues>({
     fields,
     defaultValues,
     onSubmit,
@@ -41,7 +41,7 @@ export function MrResourceForm<T extends FieldValues>({
             {fields.map((field) => {
                 if (isInputFieldType(field.type)) {
                     return (
-                        <MrResourceInputField
+                        <ResourceInputField
                             key={field.name}
                             field={field}
                             control={control}
@@ -52,7 +52,7 @@ export function MrResourceForm<T extends FieldValues>({
 
                 if (isCheckboxFieldType(field.type)) {
                     return (
-                        <MrResourceCheckboxField
+                        <ResourceCheckboxField
                             key={field.name}
                             field={field}
                             control={control}
@@ -63,7 +63,7 @@ export function MrResourceForm<T extends FieldValues>({
 
                 if (isEnumFieldType(field.type)) {
                     return (
-                        <MrResourceSelectField
+                        <ResourceSelectField
                             key={field.name}
                             field={field}
                             control={control}
@@ -74,7 +74,7 @@ export function MrResourceForm<T extends FieldValues>({
 
                 if (isDateFieldType(field.type)) {
                     return (
-                        <MrResourceDateField
+                        <ResourceDateField
                             key={field.name}
                             field={field}
                             control={control}
@@ -84,7 +84,7 @@ export function MrResourceForm<T extends FieldValues>({
                 }
             })}
 
-            <MrButton text={submitLabel} type="submit" loading={loading} />
+            <Button text={submitLabel} type="submit" loading={loading} />
         </form>
     );
 }

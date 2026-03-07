@@ -2,10 +2,10 @@
 
 import { useForm } from "react-hook-form";
 import { useState } from "react";
-import { MrButton } from "@/shared/ui/button/Button";
-import { MrTitle } from "@/shared/ui/typography/title/Title";
-import { MrValidatedInput } from "@/shared/ui/validated-input/ValidatedInput";
-import { MrNotificationMessage } from "@/shared/ui/notification-message/notification-message";
+import { Button } from "@/shared/ui/button/Button";
+import { Title } from "@/shared/ui/typography/title/Title";
+import { ValidatedInput } from "@/shared/ui/validated-input/ValidatedInput";
+import { NotificationMessage } from "@/shared/ui/notification-message/notification-message";
 import { NotificationMessageKey } from "@/shared/ui/notification-message/notification-message-key";
 import { buttonVariantKeys } from "@/shared/ui/button/button-variant-keys";
 import { useRouter } from "next/navigation";
@@ -17,7 +17,7 @@ interface FormValues {
     email: string;
 }
 
-export function MrForgotPassword() {
+export function ForgotPassword() {
     const router = useRouter();
     const {
         handleSubmit,
@@ -41,9 +41,9 @@ export function MrForgotPassword() {
 
     return (
         <>
-            <MrTitle className="text-black">Forgot Password</MrTitle>
+            <Title className="text-black">Forgot Password</Title>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-                <MrValidatedInput
+                <ValidatedInput
                     name="email"
                     control={control}
                     errors={errors}
@@ -53,17 +53,17 @@ export function MrForgotPassword() {
                     placeholder="johndoe@email.com"
                 />
                 {notificationMessage && (
-                    <MrNotificationMessage message={notificationMessage} type={notificationTypeMessage} />
+                    <NotificationMessage message={notificationMessage} type={notificationTypeMessage} />
                 )}
                 <div className="flex gap-3">
-                    <MrButton
+                    <Button
                         text="Cancel"
                         type="button"
                         variant={buttonVariantKeys.outline}
                         onClick={goToSignInPage}
                         className="w-full"
                     />
-                    <MrButton
+                    <Button
                         text="Send reset link"
                         type="submit"
                         disabled={isLoading}

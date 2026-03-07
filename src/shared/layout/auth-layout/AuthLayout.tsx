@@ -6,7 +6,7 @@ interface AuthLayoutProps {
     children: ReactNode;
 }
 
-export default function MrAuthLayout({ children }: AuthLayoutProps) {
+export function AuthLayout({ children }: AuthLayoutProps) {
     return (
         <div className="relative flex min-h-screen items-center justify-center px-4">
             <video

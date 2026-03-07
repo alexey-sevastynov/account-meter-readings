@@ -1,10 +1,10 @@
 import { Header } from "@tanstack/react-table";
 
-interface MrTableHeaderResizerProps<TableData> {
+interface TableHeaderResizerProps<TableData> {
     tableHeader: Header<TableData, unknown>;
 }
 
-export function MrTableHeaderResizer<TableData>({ tableHeader }: MrTableHeaderResizerProps<TableData>) {
+export function TableHeaderResizer<TableData>({ tableHeader }: TableHeaderResizerProps<TableData>) {
     const isResizing = tableHeader.column.getIsResizing();
 
     return (

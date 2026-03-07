@@ -5,7 +5,7 @@ import { ReactNode } from "react";
 import { cn } from "@/shared/lib/cn";
 import { VoidFunc } from "@/shared/types/getter-setter-functions";
 import { ModalWindowSize, modalWindowSizes } from "@/shared/ui/modal-window/modal-window-size";
-import { MrIcon } from "@/shared/ui/icon/Icon";
+import { Icon } from "@/shared/ui/icon/Icon";
 import { iconNames } from "@/shared/ui/icon/icon-name";
 
 interface ModalWindowProps {
@@ -18,7 +18,7 @@ interface ModalWindowProps {
     size?: ModalWindowSize;
 }
 
-export function MrModalWindow({
+export function ModalWindow({
     open,
     onOpenChange,
     title,
@@ -63,7 +63,7 @@ export function MrModalWindow({
                     <div className="py-2">{children}</div>
                     {footer && <div className="mt-6 flex justify-end gap-2">{footer}</div>}
                     <DialogPrimitive.Close className="absolute top-4 right-4 cursor-pointer opacity-70 hover:opacity-100">
-                        <MrIcon name={iconNames.close} />
+                        <Icon name={iconNames.close} />
                     </DialogPrimitive.Close>
                 </DialogPrimitive.Content>
             </DialogPrimitive.Portal>

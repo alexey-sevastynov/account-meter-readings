@@ -5,11 +5,11 @@ import { Check } from "lucide-react";
 import { ReactNode, useId } from "react";
 import { cn } from "@/shared/lib/cn";
 
-interface MrCheckboxProps extends React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root> {
+interface CheckboxProps extends React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root> {
     label?: ReactNode;
 }
 
-export function MrCheckbox({ label, className, ...props }: MrCheckboxProps) {
+export function Checkbox({ label, className, ...props }: CheckboxProps) {
     const generatedId: string = useId();
 
     return (

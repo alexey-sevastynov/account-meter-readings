@@ -1,11 +1,11 @@
 "use server";
 
-import MrAuthLayout from "@/shared/layout/auth-layout/AuthLayout";
+import { AuthLayout } from "@/shared/layout/auth-layout/AuthLayout";
 
 interface AuthLayoutProps {
     children: React.ReactNode;
 }
 
-export default async function AuthLayout({ children }: AuthLayoutProps) {
-    return <MrAuthLayout>{children}</MrAuthLayout>;
+export default async function Layout({ children }: AuthLayoutProps) {
+    return <AuthLayout>{children}</AuthLayout>;
 }

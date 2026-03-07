@@ -1,18 +1,18 @@
 import { Control, Controller, FieldValues, FieldErrors } from "react-hook-form";
-import { MrSelect } from "@/shared/ui/select/Select";
+import { Select } from "@/shared/ui/select/Select";
 import { ResourceField } from "@/shared/types/resource-field";
 
-interface MrResourceSelectFieldProps<T extends FieldValues> {
+interface ResourceSelectFieldProps<T extends FieldValues> {
     field: ResourceField<T>;
     control: Control<T>;
     errors: FieldErrors<T>;
 }
 
-export function MrResourceSelectField<T extends FieldValues>({
+export function ResourceSelectField<T extends FieldValues>({
     field,
     control,
     errors,
-}: MrResourceSelectFieldProps<T>) {
+}: ResourceSelectFieldProps<T>) {
     const errorMessage = errors[field.name]?.message as string;
 
     return (
@@ -24,7 +24,7 @@ export function MrResourceSelectField<T extends FieldValues>({
             }}
             render={(controllerFieldState) => (
                 <div>
-                    <MrSelect
+                    <Select
                         options={field.options || []}
                         value={controllerFieldState.field.value}
                         onValueChange={controllerFieldState.field.onChange}

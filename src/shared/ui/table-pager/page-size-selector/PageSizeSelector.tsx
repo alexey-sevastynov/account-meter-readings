@@ -6,7 +6,7 @@ interface PageSizeSelectorProps {
     onPageSizeChange: VoidFunc<number>;
 }
 
-export function MrPageSizeSelector({ pageSize, pageSizeOptions, onPageSizeChange }: PageSizeSelectorProps) {
+export function PageSizeSelector({ pageSize, pageSizeOptions, onPageSizeChange }: PageSizeSelectorProps) {
     return (
         <div className="flex items-center gap-2">
             <label htmlFor="pageSize" className="text-foreground text-sm">

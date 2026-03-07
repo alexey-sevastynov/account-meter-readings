@@ -62,7 +62,7 @@ const iconMap: Record<IconName, ComponentType<IconComponentProps>> = {
     check: Check,
 } as const;
 
-interface MrIconProps {
+interface IconProps {
     name: IconName;
     id?: string;
     alt?: string;
@@ -72,7 +72,7 @@ interface MrIconProps {
     strokeWidth?: IconStrokeWidth;
 }
 
-export function MrIcon({
+export function Icon({
     name,
     id,
     alt = iconNames[name],
@@ -80,7 +80,7 @@ export function MrIcon({
     color = iconColors.primary,
     className,
     strokeWidth = iconStrokeWidths.thin,
-}: MrIconProps) {
+}: IconProps) {
     const IconComponent = iconMap[name];
 
     if (!IconComponent) return null;

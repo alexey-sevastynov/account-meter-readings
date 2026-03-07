@@ -1,9 +1,9 @@
 import { ReactNode } from "react";
-import Link from "next/link";
+import NextLink from "next/link";
 import { cn } from "@/shared/lib/cn";
 import { LinkVariantKey, linkVariantKeys } from "@/shared/ui/link/link-variant-key";
 
-interface MrLinkProps {
+interface LinkProps {
     href: string;
     children: ReactNode;
     variant?: LinkVariantKey;
@@ -19,16 +19,16 @@ const variants: Record<LinkVariantKey, string> = {
     underline: "text-gray-900 underline hover:text-gray-700 focus:ring-gray-400",
 };
 
-export function MrLink({
+export function Link({
     href,
     children,
     variant = linkVariantKeys.primary,
     className,
     ...props
-}: MrLinkProps) {
+}: LinkProps) {
     return (
-        <Link href={href} {...props} className={cn(baseStyles, variants[variant], className)}>
+        <NextLink href={href} {...props} className={cn(baseStyles, variants[variant], className)}>
             {children}
-        </Link>
+        </NextLink>
     );
 }

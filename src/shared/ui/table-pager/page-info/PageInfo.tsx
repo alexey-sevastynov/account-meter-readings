@@ -6,7 +6,7 @@ interface PageInfoProps {
     totalRows: number;
 }
 
-export function MrPageInfo({ currentPage, pageSize, totalRows }: PageInfoProps) {
+export function PageInfo({ currentPage, pageSize, totalRows }: PageInfoProps) {
     return (
         <div className="text-foreground text-sm">
             Показано <span className="font-medium">{getFirstItemIndex(currentPage, pageSize)}</span> -{" "}

@@ -1,11 +1,11 @@
 "use server";
 
-import MrAuthVerify from "@/modules/auth/components/auth-verify/AuthVerify";
+import AuthVerify from "@/modules/auth/components/auth-verify/AuthVerify";
 
 export default async function VerifyPage({ searchParams }: { searchParams: { token?: string } }) {
     // TODO: remove "await" once Next.js stops requiring it (currently needed to avoid runtime error)
     // eslint-disable-next-line @typescript-eslint/await-thenable
     const { token } = await searchParams;
 
-    return <MrAuthVerify token={token} />;
+    return <AuthVerify token={token} />;
 }

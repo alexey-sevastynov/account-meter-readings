@@ -1,13 +1,13 @@
 import { CellContext } from "@tanstack/react-table";
-import { MrBadge } from "@/shared/ui/badge/Badge";
+import { Badge } from "@/shared/ui/badge/Badge";
 import { getRandomBadgeColor } from "@/shared/ui/badge/badge.funcs";
 
-interface MrBadgeCellProps<TData, TKey extends string> {
+interface BadgeCellProps<TData, TKey extends string> {
     cellInfo: CellContext<TData, unknown>;
     labels: Record<TKey, string>;
 }
 
-export function MrBadgeCell<TData, TKey extends string>({ cellInfo, labels }: MrBadgeCellProps<TData, TKey>) {
+export function BadgeCell<TData, TKey extends string>({ cellInfo, labels }: BadgeCellProps<TData, TKey>) {
     const value = cellInfo.getValue() as TKey;
 
     if (!value || !labels[value]) return null;
@@ -15,8 +15,8 @@ export function MrBadgeCell<TData, TKey extends string>({ cellInfo, labels }: Mr
     const randomBadgeColor = getRandomBadgeColor(value);
 
     return (
-        <MrBadge color={randomBadgeColor.bg} textColor={randomBadgeColor.text}>
+        <Badge color={randomBadgeColor.bg} textColor={randomBadgeColor.text}>
             {labels[value]}
-        </MrBadge>
+        </Badge>
     );
 }

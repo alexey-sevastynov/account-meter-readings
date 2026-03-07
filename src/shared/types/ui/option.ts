@@ -1,4 +1,4 @@
-export interface MrOption {
+export interface Option {
     value: string;
     label: string;
 }

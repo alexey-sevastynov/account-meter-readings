@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDailyReportFormFields } from "@/modules/daily-report/components/daily-report-table/daily-report-modals/use-daily-report-form-fields";
-import { MrDailyReportDeleteModal } from "@/modules/daily-report/components/daily-report-table/daily-report-modals/daily-report-delete-modal/DailyReportDeleteModal";
+import { DailyReportDeleteModal } from "@/modules/daily-report/components/daily-report-table/daily-report-modals/daily-report-delete-modal/DailyReportDeleteModal";
 import { formModes } from "@/shared/ui/form/form-mode";
 import {
     closeDeleteConfirmModal,
@@ -11,10 +11,10 @@ import {
 import { DailyReport } from "@/modules/daily-report/types/daily-report";
 import { VoidFunc } from "@/shared/types/getter-setter-functions";
 import { useAppDispatch } from "@/shared/lib/redux/hooks/use-app-dispatch";
-import { MrResourceFormModal } from "@/shared/ui/form/resource-form-modal/ResourceFormModal";
+import { ResourceFormModal } from "@/shared/ui/form/resource-form-modal/ResourceFormModal";
 import { getTodayDate } from "@/shared/utils/date";
 
-interface MrDailyReportModalsProps {
+interface DailyReportModalsProps {
     editingReport: DailyReport | null;
     setEditingReport: VoidFunc<DailyReport | null>;
     deletingReportId: string | null;
@@ -23,14 +23,14 @@ interface MrDailyReportModalsProps {
     setIsDeleteModalOpen: VoidFunc<boolean>;
 }
 
-export function MrDailyReportModals({
+export function DailyReportModals({
     editingReport,
     setEditingReport,
     deletingReportId,
     setDeletingReportId,
     isDeleteModalOpen,
     setIsDeleteModalOpen,
-}: MrDailyReportModalsProps) {
+}: DailyReportModalsProps) {
     const dispatch = useAppDispatch();
     const dailyReportFormFields = useDailyReportFormFields();
     const [isDeleting, setIsDeleting] = useState(false);
@@ -43,7 +43,7 @@ export function MrDailyReportModals({
 
     return (
         <>
-            <MrDailyReportDeleteModal
+            <DailyReportDeleteModal
                 open={isDeleteModalOpen}
                 onOpenChange={handleDeleteModalOpenChange}
                 onConfirm={() =>
@@ -57,7 +57,7 @@ export function MrDailyReportModals({
                 }
                 isDeleting={isDeleting}
             />
-            <MrResourceFormModal<DailyReport>
+            <ResourceFormModal<DailyReport>
                 fields={dailyReportFormFields}
                 onSubmit={async (report: DailyReport) => onCreateReport(report, dispatch, setIsCreating)}
                 formMode={formModes.create}
@@ -67,7 +67,7 @@ export function MrDailyReportModals({
                 loading={isCreating}
             />
             {editingReport && (
-                <MrResourceFormModal<DailyReport>
+                <ResourceFormModal<DailyReport>
                     fields={dailyReportFormFields}
                     onSubmit={async (report: DailyReport) =>
                         onUpdateReport(report, dispatch, setIsUpdating, setEditingReport)

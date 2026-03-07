@@ -4,7 +4,7 @@ import * as SelectPrimitive from "@radix-ui/react-select";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/shared/lib/cn";
-import { MrFloatingLabel } from "@/shared/ui/input/FloatingLabel";
+import { FloatingLabel } from "@/shared/ui/input/FloatingLabel";
 
 interface SelectOption {
     value: string;
@@ -21,7 +21,7 @@ interface MRSelectProps
     className?: string;
 }
 
-export function MrSelect({
+export function Select({
     label,
     options,
     value: externalValue,
@@ -95,7 +95,7 @@ export function MrSelect({
                 </SelectPrimitive.Portal>
             </SelectPrimitive.Root>
 
-            {label && <MrFloatingLabel label={label} isFocused={isFocused} hasValue={hasValue} />}
+            {label && <FloatingLabel label={label} isFocused={isFocused} hasValue={hasValue} />}
         </div>
     );
 }

@@ -2,11 +2,11 @@
 
 import { useState } from "react";
 import { Control, FieldErrors, FieldValues, Path } from "react-hook-form";
-import { MrValidatedInput } from "@/shared/ui/validated-input/ValidatedInput";
+import { ValidatedInput } from "@/shared/ui/validated-input/ValidatedInput";
 import { iconNames } from "@/shared/ui/icon/icon-name";
-import { MrIcon } from "@/shared/ui/icon/Icon";
+import { Icon } from "@/shared/ui/icon/Icon";
 
-interface MrPasswordInputProps<TFormValues extends FieldValues> {
+interface PasswordInputProps<TFormValues extends FieldValues> {
     name: Path<TFormValues>;
     control: Control<TFormValues>;
     errors: FieldErrors<TFormValues>;
@@ -20,19 +20,19 @@ const defaultRules = {
     minLength: { value: 8, message: "Min length 8" },
 };
 
-export function MrPasswordInput<TFormValues extends FieldValues>({
+export function PasswordInput<TFormValues extends FieldValues>({
     name,
     control,
     errors,
     label = "Password",
     rules = defaultRules,
     placeholder = "••••••••",
-}: MrPasswordInputProps<TFormValues>) {
+}: PasswordInputProps<TFormValues>) {
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
     return (
         <div className="relative">
-            <MrValidatedInput
+            <ValidatedInput
                 name={name}
                 control={control}
                 errors={errors}
@@ -47,7 +47,7 @@ export function MrPasswordInput<TFormValues extends FieldValues>({
                 onClick={() => setIsPasswordVisible((prev) => !prev)}
                 className="absolute top-6 right-3 -translate-y-1/2"
             >
-                <MrIcon
+                <Icon
                     name={isPasswordVisible ? iconNames.eyeOff : iconNames.eye}
                     className="cursor-pointer"
                 />

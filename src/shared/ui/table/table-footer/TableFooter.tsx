@@ -1,12 +1,12 @@
 import { cn } from "@/shared/lib/cn";
 import { flexRender, Table } from "@tanstack/react-table";
 
-interface MrTableFooterProps<TableData> {
+interface TableFooterProps<TableData> {
     reactTable: Table<TableData>;
     className?: string;
 }
 
-export function MrTableFooter<TableData>({ reactTable, className }: MrTableFooterProps<TableData>) {
+export function TableFooter<TableData>({ reactTable, className }: TableFooterProps<TableData>) {
     return (
         <tfoot className={cn("border-border bg-background border-t-2", className)}>
             {reactTable.getFooterGroups().map((footerGroup) => (

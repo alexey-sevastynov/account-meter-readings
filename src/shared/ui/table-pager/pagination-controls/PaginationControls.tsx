@@ -1,10 +1,10 @@
 import { buttonVariantKeys } from "@/shared/ui/button/button-variant-keys";
-import { MrButton } from "@/shared/ui/button/Button";
+import { Button } from "@/shared/ui/button/Button";
 import { iconColors } from "@/shared/ui/icon/icon-color";
 import { iconNames } from "@/shared/ui/icon/icon-name";
 import { VoidFunc } from "@/shared/types/getter-setter-functions";
 
-interface MrPaginationControlsProps {
+interface PaginationControlsProps {
     currentPage: number;
     pageCount: number;
     canNext: boolean;
@@ -12,16 +12,16 @@ interface MrPaginationControlsProps {
     onPageChange: VoidFunc<number>;
 }
 
-export function MrPaginationControls({
+export function PaginationControls({
     currentPage,
     pageCount,
     canNext,
     canPrevious,
     onPageChange,
-}: MrPaginationControlsProps) {
+}: PaginationControlsProps) {
     return (
         <div className="flex items-center gap-2">
-            <MrButton
+            <Button
                 variant={buttonVariantKeys.icon}
                 iconColor={iconColors.primary}
                 onClick={() => onPageChange(1)}
@@ -29,7 +29,7 @@ export function MrPaginationControls({
                 title="Перша сторінка"
                 iconName={iconNames.chevronsLeft}
             />
-            <MrButton
+            <Button
                 variant={buttonVariantKeys.icon}
                 iconColor={iconColors.primary}
                 onClick={() => onPageChange(currentPage - 1)}
@@ -62,7 +62,7 @@ export function MrPaginationControls({
                 />
             </div>
 
-            <MrButton
+            <Button
                 variant={buttonVariantKeys.icon}
                 iconColor={iconColors.primary}
                 onClick={() => onPageChange(currentPage + 1)}
@@ -70,7 +70,7 @@ export function MrPaginationControls({
                 title="Наступна сторінка"
                 iconName={iconNames.chevronsRight}
             />
-            <MrButton
+            <Button
                 variant={buttonVariantKeys.icon}
                 iconColor={iconColors.primary}
                 onClick={() => onPageChange(pageCount)}

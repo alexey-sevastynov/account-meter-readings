@@ -1,11 +1,11 @@
 import { cn } from "@/shared/lib/cn";
 
-interface MrTableLoadingRowProps {
+interface TableLoadingRowProps {
     colSpan: number;
     className?: string;
 }
 
-export function MrTableLoadingRow({ colSpan, className }: MrTableLoadingRowProps) {
+export function TableLoadingRow({ colSpan, className }: TableLoadingRowProps) {
     return (
         <tr className={cn("border-border border-b last:border-0", className)}>
             <td colSpan={colSpan} className="px-4 py-4">

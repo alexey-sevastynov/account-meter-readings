@@ -1,7 +1,7 @@
 import React, { InputHTMLAttributes, useState } from "react";
 import { cn } from "@/shared/lib/cn";
 import { InputVariantKey, inputVariantKeys } from "@/shared/ui/input/input-variant-key";
-import { MrFloatingLabel } from "@/shared/ui/input/FloatingLabel";
+import { FloatingLabel } from "@/shared/ui/input/FloatingLabel";
 
 interface MRInputProps extends InputHTMLAttributes<HTMLInputElement> {
     label: string;
@@ -66,7 +66,7 @@ export function MRInput({
                 placeholder={isFocused ? placeholder : ""}
                 className={cn(baseStyles, variants[variant], className)}
             />
-            {label && <MrFloatingLabel label={label} isFocused={isFocused} hasValue={hasValue} />}
+            {label && <FloatingLabel label={label} isFocused={isFocused} hasValue={hasValue} />}
         </div>
     );
 }

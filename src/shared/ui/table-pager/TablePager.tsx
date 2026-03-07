@@ -1,10 +1,10 @@
 import { cn } from "@/shared/lib/cn";
-import { MrPageInfo } from "@/shared/ui/table-pager/page-info/PageInfo";
-import { MrPaginationControls } from "@/shared/ui/table-pager/pagination-controls/PaginationControls";
-import { MrPageSizeSelector } from "@/shared/ui/table-pager/page-size-selector/PageSizeSelector";
+import { PageInfo } from "@/shared/ui/table-pager/page-info/PageInfo";
+import { PaginationControls } from "@/shared/ui/table-pager/pagination-controls/PaginationControls";
+import { PageSizeSelector } from "@/shared/ui/table-pager/page-size-selector/PageSizeSelector";
 import { VoidFunc } from "@/shared/types/getter-setter-functions";
 
-interface MrTablePagerProps {
+interface TablePagerProps {
     currentPage: number;
     pageSize: number;
     totalRows: number;
@@ -17,7 +17,7 @@ interface MrTablePagerProps {
     className?: string;
 }
 
-export function MrTablePager(props: MrTablePagerProps) {
+export function TablePager(props: TablePagerProps) {
     const {
         className,
         currentPage,
@@ -40,14 +40,14 @@ export function MrTablePager(props: MrTablePagerProps) {
             )}
         >
             <div className="flex items-center gap-4">
-                <MrPageInfo currentPage={currentPage} pageSize={pageSize} totalRows={totalRows} />
-                <MrPageSizeSelector
+                <PageInfo currentPage={currentPage} pageSize={pageSize} totalRows={totalRows} />
+                <PageSizeSelector
                     pageSize={pageSize}
                     pageSizeOptions={pageSizeOptions}
                     onPageSizeChange={onPageSizeChange}
                 />
             </div>
-            <MrPaginationControls
+            <PaginationControls
                 currentPage={currentPage}
                 pageCount={pageCount}
                 canNext={canNext}

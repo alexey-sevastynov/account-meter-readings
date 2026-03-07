@@ -3,13 +3,13 @@
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { MrButton } from "@/shared/ui/button/Button";
-import { MrTitle } from "@/shared/ui/typography/title/Title";
-import { MrPasswordInput } from "@/shared/ui/password-input/PasswordInput";
+import { Button } from "@/shared/ui/button/Button";
+import { Title } from "@/shared/ui/typography/title/Title";
+import { PasswordInput } from "@/shared/ui/password-input/PasswordInput";
 import { buttonVariantKeys } from "@/shared/ui/button/button-variant-keys";
 import { redirectTo } from "@/shared/utils/navigation";
 import { NotificationMessageKey } from "@/shared/ui/notification-message/notification-message-key";
-import { MrNotificationMessage } from "@/shared/ui/notification-message/notification-message";
+import { NotificationMessage } from "@/shared/ui/notification-message/notification-message";
 import {
     isNotificationSuccess,
     sendResetPassword,
@@ -21,11 +21,11 @@ interface FormValues {
     confirmPassword: string;
 }
 
-interface MrResetPasswordProps {
+interface ResetPasswordProps {
     token: string;
 }
 
-export function MrResetPassword({ token }: MrResetPasswordProps) {
+export function ResetPassword({ token }: ResetPasswordProps) {
     const {
         control,
         handleSubmit,
@@ -55,10 +55,10 @@ export function MrResetPassword({ token }: MrResetPasswordProps) {
 
     return (
         <>
-            <MrTitle className="text-black">Reset Password</MrTitle>
+            <Title className="text-black">Reset Password</Title>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-                <MrPasswordInput name="password" control={control} errors={errors} />
-                <MrPasswordInput
+                <PasswordInput name="password" control={control} errors={errors} />
+                <PasswordInput
                     name="confirmPassword"
                     control={control}
                     errors={errors}
@@ -69,10 +69,10 @@ export function MrResetPassword({ token }: MrResetPasswordProps) {
                     }}
                 />
                 {notificationMessage && (
-                    <MrNotificationMessage message={notificationMessage} type={notificationTypeMessage} />
+                    <NotificationMessage message={notificationMessage} type={notificationTypeMessage} />
                 )}
                 {isNotificationSuccess(notificationTypeMessage) && (
-                    <MrButton
+                    <Button
                         text="Go to sign in page"
                         type="button"
                         variant={buttonVariantKeys.outline}
@@ -81,7 +81,7 @@ export function MrResetPassword({ token }: MrResetPasswordProps) {
                     />
                 )}
                 {!isNotificationSuccess(notificationTypeMessage) && (
-                    <MrButton
+                    <Button
                         text="Send reset link"
                         type="submit"
                         disabled={isLoading}

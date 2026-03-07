@@ -1,6 +1,6 @@
 import { FieldValues, Path } from "react-hook-form";
 import { ResourceFieldType } from "@/shared/ui/form/resource-field-type";
-import { MrOption } from "@/shared/types/ui/option";
+import { Option } from "@/shared/types/ui/option";
 
 export interface ResourceField<T extends FieldValues> {
     name: Path<T>;
@@ -10,5 +10,5 @@ export interface ResourceField<T extends FieldValues> {
     disabled?: boolean;
     readonly?: boolean;
     placeholder?: string;
-    options?: MrOption[];
+    options?: Option[];
 }

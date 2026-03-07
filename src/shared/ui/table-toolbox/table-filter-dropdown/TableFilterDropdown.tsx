@@ -1,40 +1,40 @@
 import { cn } from "@/shared/lib/cn";
 import { Column } from "@tanstack/react-table";
 import { MRInput } from "@/shared/ui/input/Input";
-import { MrButton } from "@/shared/ui/button/Button";
+import { Button } from "@/shared/ui/button/Button";
 import { iconNames } from "@/shared/ui/icon/icon-name";
 import { iconColors } from "@/shared/ui/icon/icon-color";
 import { buttonVariantKeys } from "@/shared/ui/button/button-variant-keys";
-import { MrDropdown, MrDropdownContent, MrDropdownTrigger } from "@/shared/ui/dropdown/Dropdown";
-import { MrText } from "@/shared/ui/typography/text/Text";
+import { Dropdown, DropdownContent, DropdownTrigger } from "@/shared/ui/dropdown/Dropdown";
+import { Text } from "@/shared/ui/typography/text/Text";
 import { isFilterableInputColumn } from "@/shared/ui/table-toolbox/table-filter-dropdown/tableFilterDropdown.funcs";
 
-interface MrTableFilterDropdownProps<TData> {
+interface TableFilterDropdownProps<TData> {
     columns: Column<TData>[];
     className?: string;
 }
 
-export function MrTableFilterDropdown<TData>({ columns, className }: MrTableFilterDropdownProps<TData>) {
+export function TableFilterDropdown<TData>({ columns, className }: TableFilterDropdownProps<TData>) {
     const filterableColumns = columns.filter((column) => isFilterableInputColumn(column));
     const activeFiltersCount = filterableColumns.filter((column) => column.getFilterValue()).length;
 
     return (
-        <MrDropdown className={cn("relative", className)}>
-            <MrDropdownTrigger>
+        <Dropdown className={cn("relative", className)}>
+            <DropdownTrigger>
                 <div className="relative inline-flex items-center">
-                    <MrButton text="Фільтри" iconName={iconNames.filter} />
+                    <Button text="Фільтри" iconName={iconNames.filter} />
                     {activeFiltersCount > 0 && (
                         <span className="absolute -top-1 -right-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-red-600 text-xs font-medium text-white">
                             {activeFiltersCount}
                         </span>
                     )}
                 </div>
-            </MrDropdownTrigger>
+            </DropdownTrigger>
 
-            <MrDropdownContent className="w-80">
+            <DropdownContent className="w-80">
                 <div className="border-b border-gray-200 p-4">
                     <div className="flex items-center justify-between">
-                        <MrText>Фільтри</MrText>
+                        <Text>Фільтри</Text>
                     </div>
                 </div>
 
@@ -51,7 +51,7 @@ export function MrTableFilterDropdown<TData>({ columns, className }: MrTableFilt
                                     placeholder={`Пошук по ${columnName.toLowerCase()}...`}
                                 />
                                 {!!column.getFilterValue() && (
-                                    <MrButton
+                                    <Button
                                         variant={buttonVariantKeys.icon}
                                         iconName={iconNames.close}
                                         iconColor={iconColors.primary}
@@ -65,13 +65,13 @@ export function MrTableFilterDropdown<TData>({ columns, className }: MrTableFilt
                 </div>
 
                 <div className="border-t border-gray-200 p-3">
-                    <MrButton
+                    <Button
                         className="w-full"
                         text="Скинути всі фільтри"
                         onClick={() => filterableColumns.forEach((col) => col.setFilterValue(""))}
                     />
                 </div>
-            </MrDropdownContent>
-        </MrDropdown>
+            </DropdownContent>
+        </Dropdown>
     );
 }

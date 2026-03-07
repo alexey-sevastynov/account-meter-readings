@@ -3,17 +3,17 @@
 import { store } from "@/store";
 import { Provider } from "react-redux";
 import { ThemeProvider } from "@/shared/context/theme-provider/ThemeProvider";
-import { MrToaster } from "@/shared/ui/toaster/MrToaster";
+import { Toaster } from "@/shared/ui/toaster/Toaster";
 
-interface MrAppProviderProps {
+interface AppProviderProps {
     children: React.ReactNode;
 }
 
-export function MrAppProvider({ children }: MrAppProviderProps) {
+export function AppProvider({ children }: AppProviderProps) {
     return (
         <ThemeProvider>
             <Provider store={store}>{children}</Provider>
-            <MrToaster />
+            <Toaster />
         </ThemeProvider>
     );
 }

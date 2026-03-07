@@ -2,13 +2,13 @@ import { ReactNode } from "react";
 import { cn } from "@/shared/lib/cn";
 import { TextPosition } from "@/shared/ui/typography/text-position";
 
-interface MrTextProps {
+interface TextProps {
     children: ReactNode;
     position?: TextPosition;
     className?: string;
 }
 
-export function MrText({ children, position = "left", className }: MrTextProps) {
+export function Text({ children, position = "left", className }: TextProps) {
     return (
         <p
             className={cn(

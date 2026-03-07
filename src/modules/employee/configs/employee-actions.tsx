@@ -1,7 +1,7 @@
 import { RenderFunc, VoidFunc } from "@/shared/types/getter-setter-functions";
 import { ColumnDef } from "@tanstack/react-table";
 import { Employee } from "@/modules/employee/types/employee";
-import { MrButton } from "@/shared/ui/button/Button";
+import { Button } from "@/shared/ui/button/Button";
 import { iconNames } from "@/shared/ui/icon/icon-name";
 
 function createActionsColumn<TData>(renderActions: RenderFunc<TData>) {
@@ -21,8 +21,8 @@ function createActionsColumn<TData>(renderActions: RenderFunc<TData>) {
 export function createEmployeeActionsColumn(onDelete: VoidFunc<string>, onEdit: VoidFunc<Employee>) {
     return createActionsColumn<Employee>((employee) => (
         <>
-            <MrButton iconName={iconNames.edit} onClick={() => onEdit(employee)} />
-            <MrButton iconName={iconNames.trash} onClick={() => onDelete(employee._id)} />
+            <Button iconName={iconNames.edit} onClick={() => onEdit(employee)} />
+            <Button iconName={iconNames.trash} onClick={() => onDelete(employee._id)} />
         </>
     ));
 }

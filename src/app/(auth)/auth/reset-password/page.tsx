@@ -1,11 +1,11 @@
 "use server";
 
-import { MrResetPassword } from "@/modules/auth/components/reset-password/ResetPassword";
+import { ResetPassword } from "@/modules/auth/components/reset-password/ResetPassword";
 
 export default async function ResetPasswordPage({ searchParams }: { searchParams: { token: string } }) {
     // TODO: remove "await" once Next.js stops requiring it (currently needed to avoid runtime error)
     // eslint-disable-next-line @typescript-eslint/await-thenable
     const { token } = await searchParams;
 
-    return <MrResetPassword token={token} />;
+    return <ResetPassword token={token} />;
 }

@@ -1,7 +1,7 @@
 "use server";
 
-import { MrDailyReports } from "@/modules/daily-report/components/page/DailyReport";
+import { DailyReports } from "@/modules/daily-report/components/page/DailyReport";
 
-export default async function DailyReportPage() {
-    return <MrDailyReports />;
+export default async function DailyReportsPage() {
+    return <DailyReports />;
 }

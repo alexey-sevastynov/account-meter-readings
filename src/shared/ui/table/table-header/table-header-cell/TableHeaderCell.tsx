@@ -1,19 +1,19 @@
 import { Header } from "@tanstack/react-table";
-import { MrTableHeaderContent } from "@/shared/ui/table/table-header/table-header-cell/table-header-content/TableHeaderContent";
-import { MrTableHeaderResizer } from "@/shared/ui/table/table-header/table-header-cell/table-header-resizer/TableHeaderResizer";
+import { TableHeaderContent } from "@/shared/ui/table/table-header/table-header-cell/table-header-content/TableHeaderContent";
+import { TableHeaderResizer } from "@/shared/ui/table/table-header/table-header-cell/table-header-resizer/TableHeaderResizer";
 import { isColumnResizable } from "@/shared/ui/table/table-header/table-header-cell/TableHeaderCell.funcs";
 
-interface MrTableHeaderCellProps<TableData> {
+interface TableHeaderCellProps<TableData> {
     tableHeader: Header<TableData, unknown>;
     enableSorting?: boolean;
     enableResizing?: boolean;
 }
 
-export function MrTableHeaderCell<TableData>({
+export function TableHeaderCell<TableData>({
     tableHeader,
     enableSorting,
     enableResizing,
-}: MrTableHeaderCellProps<TableData>) {
+}: TableHeaderCellProps<TableData>) {
     if (tableHeader.isPlaceholder) return <th key={tableHeader.id} />;
 
     return (
@@ -22,10 +22,10 @@ export function MrTableHeaderCell<TableData>({
             className="text-foreground relative px-3 py-3.5 text-left text-sm font-semibold"
             style={{ width: tableHeader.getSize() }}
         >
-            <MrTableHeaderContent tableHeader={tableHeader} enableSorting={enableSorting} />
+            <TableHeaderContent tableHeader={tableHeader} enableSorting={enableSorting} />
 
             {isColumnResizable(tableHeader.column.getCanResize(), enableResizing) && (
-                <MrTableHeaderResizer tableHeader={tableHeader} />
+                <TableHeaderResizer tableHeader={tableHeader} />
             )}
         </th>
     );

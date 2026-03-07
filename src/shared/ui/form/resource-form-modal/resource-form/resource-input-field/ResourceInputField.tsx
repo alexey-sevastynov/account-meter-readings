@@ -3,17 +3,17 @@ import { isNumberFieldType } from "@/shared/ui/form/resource-form-modal/resource
 import { ResourceField } from "@/shared/types/resource-field";
 import { MRInput } from "@/shared/ui/input/Input";
 
-interface MrResourceInputFieldProps<T extends FieldValues> {
+interface ResourceInputFieldProps<T extends FieldValues> {
     field: ResourceField<T>;
     control: Control<T>;
     errors: FieldErrors<T>;
 }
 
-export function MrResourceInputField<T extends FieldValues>({
+export function ResourceInputField<T extends FieldValues>({
     field,
     control,
     errors,
-}: MrResourceInputFieldProps<T>) {
+}: ResourceInputFieldProps<T>) {
     const errorMessage = errors[field.name]?.message as string;
 
     return (

@@ -1,23 +1,23 @@
 import { VoidFunc, VoidFuncNoParam } from "@/shared/types/getter-setter-functions";
-import { MrButton } from "@/shared/ui/button/Button";
-import { MrModalWindow } from "@/shared/ui/modal-window/ModalWindow";
-import { MrText } from "@/shared/ui/typography/text/Text";
+import { Button } from "@/shared/ui/button/Button";
+import { ModalWindow } from "@/shared/ui/modal-window/ModalWindow";
+import { Text } from "@/shared/ui/typography/text/Text";
 
-interface MrDailyReportDeleteModalProps {
+interface DailyReportDeleteModalProps {
     open: boolean;
     onOpenChange: VoidFunc<boolean>;
     onConfirm: VoidFuncNoParam;
     isDeleting: boolean;
 }
 
-export function MrDailyReportDeleteModal({
+export function DailyReportDeleteModal({
     open,
     onOpenChange,
     onConfirm,
     isDeleting,
-}: MrDailyReportDeleteModalProps) {
+}: DailyReportDeleteModalProps) {
     return (
-        <MrModalWindow
+        <ModalWindow
             open={open}
             onOpenChange={onOpenChange}
             title="Підтвердження видалення"
@@ -25,13 +25,13 @@ export function MrDailyReportDeleteModal({
             size="sm"
             footer={
                 <>
-                    <MrButton
+                    <Button
                         type="button"
                         variant="secondary"
                         text="Ні"
                         onClick={() => onOpenChange(false)}
                     />
-                    <MrButton
+                    <Button
                         type="button"
                         variant="danger"
                         text="Так"
@@ -41,10 +41,10 @@ export function MrDailyReportDeleteModal({
                 </>
             }
         >
-            <MrText>
+            <Text>
                 Натискаючи кнопку &quot;Так&quot;, ви видаляєте цей щоденний звіт з системи. Його не можна
                 буде відновити.
-            </MrText>
-        </MrModalWindow>
+            </Text>
+        </ModalWindow>
     );
 }

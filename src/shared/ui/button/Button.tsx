@@ -3,7 +3,7 @@ import { ClipLoader } from "react-spinners";
 import { cn } from "@/shared/lib/cn";
 import { buttonVariantKeys } from "@/shared/ui/button/button-variant-keys";
 import { IconName } from "@/shared/ui/icon/icon-name";
-import { MrIcon } from "@/shared/ui/icon/Icon";
+import { Icon } from "@/shared/ui/icon/Icon";
 import { IconColor, iconColors } from "@/shared/ui/icon/icon-color";
 import { getButtonVariant } from "@/shared/ui/button/button.funcs";
 
@@ -21,7 +21,7 @@ interface ButtonIconOnly {
     iconColor?: IconColor;
 }
 
-type MrButtonProps = (ButtonWithText | ButtonIconOnly) & {
+type ButtonProps = (ButtonWithText | ButtonIconOnly) & {
     variant?: ButtonVariantKey;
     loading?: boolean;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
@@ -59,7 +59,7 @@ const variants: Record<ButtonVariantKey, string> = {
     icon: "bg-transparent",
 };
 
-export function MrButton({
+export function Button({
     text,
     iconName,
     iconColor,
@@ -67,7 +67,7 @@ export function MrButton({
     loading = false,
     className,
     ...props
-}: MrButtonProps) {
+}: ButtonProps) {
     const hasText = !!text;
     const hasIcon = !!iconName;
 
@@ -80,7 +80,7 @@ export function MrButton({
             ? (iconColor ?? iconColors.primaryForeground)
             : (iconColor ?? iconColors.primary);
 
-        return <MrIcon name={iconName!} color={color} />;
+        return <Icon name={iconName!} color={color} />;
     })();
 
     const textElement = !loading && hasText ? <span>{text}</span> : null;

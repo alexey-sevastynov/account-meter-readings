@@ -1,11 +1,11 @@
 "use server";
 
-import { MrCoffeeShopLayout } from "@/shared/layout/coffee-shop-layout/CoffeeShopLayout";
+import { CoffeeShopLayout } from "@/shared/layout/coffee-shop-layout/CoffeeShopLayout";
 
 interface CoffeeShopLayoutProps {
     children: React.ReactNode;
 }
 
-export default async function CoffeeShopLayout({ children }: CoffeeShopLayoutProps) {
-    return <MrCoffeeShopLayout>{children}</MrCoffeeShopLayout>;
+export default async function Layout({ children }: CoffeeShopLayoutProps) {
+    return <CoffeeShopLayout>{children}</CoffeeShopLayout>;
 }
