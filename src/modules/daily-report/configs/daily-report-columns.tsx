@@ -7,6 +7,7 @@ import { NumberCell } from "@/shared/ui/table/table-body/table-row/number-cell/N
 import { AvatarCell } from "@/shared/ui/table/table-body/table-row/avatar-cell/AvatarCell";
 import { dailyReportProps } from "@/modules/daily-report/constants/daily-report-props";
 import { dailyReportLabels } from "@/modules/daily-report/constants/daily-report-labels";
+import { NumberFooterCell } from "@/shared/ui/table/table-footer/number-footer-cell/NumberFooterCell";
 
 export const dailyReportColumns: ColumnDef<DailyReport>[] = [
     {
@@ -33,6 +34,7 @@ export const dailyReportColumns: ColumnDef<DailyReport>[] = [
         enableResizing: true,
         cell: (cellInfo) => <NumberCell cellInfo={cellInfo} />,
         meta: { label: dailyReportLabels.cashRevenue, resourceFieldType: resourceFieldTypes.number },
+        footer: (props) => <NumberFooterCell {...props} />,
     },
     {
         accessorKey: dailyReportProps.terminalRevenue,
@@ -40,6 +42,7 @@ export const dailyReportColumns: ColumnDef<DailyReport>[] = [
         enableResizing: true,
         cell: (cellInfo) => <NumberCell cellInfo={cellInfo} />,
         meta: { label: dailyReportLabels.terminalRevenue, resourceFieldType: resourceFieldTypes.number },
+        footer: (props) => <NumberFooterCell {...props} />,
     },
     {
         accessorKey: dailyReportProps.acquiringFee,
@@ -47,6 +50,7 @@ export const dailyReportColumns: ColumnDef<DailyReport>[] = [
         enableResizing: true,
         cell: (cellInfo) => <NumberCell cellInfo={cellInfo} />,
         meta: { label: dailyReportLabels.acquiringFee, resourceFieldType: resourceFieldTypes.number },
+        footer: (props) => <NumberFooterCell {...props} />,
     },
     {
         accessorKey: dailyReportProps.costOfGoods,
@@ -54,6 +58,7 @@ export const dailyReportColumns: ColumnDef<DailyReport>[] = [
         enableResizing: true,
         cell: (cellInfo) => <NumberCell cellInfo={cellInfo} />,
         meta: { label: dailyReportLabels.costOfGoods, resourceFieldType: resourceFieldTypes.number },
+        footer: (props) => <NumberFooterCell {...props} />,
     },
     {
         accessorKey: dailyReportProps.productWriteOffs,
@@ -61,6 +66,7 @@ export const dailyReportColumns: ColumnDef<DailyReport>[] = [
         enableResizing: true,
         cell: (cellInfo) => <NumberCell cellInfo={cellInfo} />,
         meta: { label: dailyReportLabels.productWriteOffs, resourceFieldType: resourceFieldTypes.number },
+        footer: (props) => <NumberFooterCell {...props} />,
     },
     {
         accessorKey: dailyReportProps.employeeBonus,
@@ -68,6 +74,7 @@ export const dailyReportColumns: ColumnDef<DailyReport>[] = [
         enableResizing: true,
         cell: (cellInfo) => <NumberCell cellInfo={cellInfo} />,
         meta: { label: dailyReportLabels.employeeBonus, resourceFieldType: resourceFieldTypes.number },
+        footer: (props) => <NumberFooterCell {...props} />,
     },
     {
         accessorKey: dailyReportProps.totalRevenue,
@@ -75,6 +82,7 @@ export const dailyReportColumns: ColumnDef<DailyReport>[] = [
         enableResizing: true,
         cell: (cellInfo) => <NumberCell cellInfo={cellInfo} />,
         meta: { label: dailyReportLabels.totalRevenue, resourceFieldType: resourceFieldTypes.number },
+        footer: (props) => <NumberFooterCell {...props} />,
     },
     {
         accessorKey: dailyReportProps.netProfit,
@@ -82,6 +90,7 @@ export const dailyReportColumns: ColumnDef<DailyReport>[] = [
         enableResizing: true,
         cell: (cellInfo) => <NumberCell cellInfo={cellInfo} />,
         meta: { label: dailyReportLabels.netProfit, resourceFieldType: resourceFieldTypes.number },
+        footer: (props) => <NumberFooterCell {...props} />,
     },
     {
         accessorKey: dailyReportProps.salaryPercent,
