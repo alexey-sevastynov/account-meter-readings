@@ -15,7 +15,7 @@ import { TablePager } from "@/shared/ui/table-pager/TablePager";
 import { Title } from "@/shared/ui/typography/title/Title";
 import { Text } from "@/shared/ui/typography/text/Text";
 import { TableToolbox } from "@/shared/ui/table-toolbox/TableToolbox";
-import { createTableConfig } from "@/shared/ui/table/table-config";
+import { createTableConfig } from "@/shared/lib/react-table/table-config";
 import { employeeColumns } from "@/modules/employee/configs/employee-columns";
 import { Employee } from "@/modules/employee/types/employee";
 import { createEmployeeActionsColumn } from "@/modules/employee/configs/employee-actions";
@@ -30,7 +30,6 @@ interface EmployeeTableProps {
     isLoading?: boolean;
 }
 
-// eslint-disable-next-line max-lines-per-function
 export function EmployeeTable({ data, isLoading }: EmployeeTableProps) {
     const [sorting, setSorting] = useState<SortingState>([]);
     const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);

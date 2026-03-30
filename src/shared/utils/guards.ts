@@ -1,4 +1,6 @@
 import { typeNames } from "@/shared/enums/type-name";
+import { DateRange } from "@/shared/types/date-range/date-range-type";
+import { dateRangeProps } from "@/shared/types/date-range/date-range-props";
 
 export function isObject(value: unknown): value is object {
     return typeof value === typeNames.object && value !== null;
@@ -18,4 +20,8 @@ export function isArray(value: unknown): value is unknown[] {
 
 export function isEmptyObject(obj: unknown) {
     return isObject(obj) && !Array.isArray(obj) && Object.keys(obj).length === 0;
+}
+
+export function isDateRange(value: unknown): value is DateRange {
+    return isObject(value) && (dateRangeProps.from in value || dateRangeProps.to in value);
 }

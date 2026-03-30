@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect } from "react";
-
 import { DailyReportTable } from "@/modules/daily-report/components/daily-report-table/DailyReportTable";
 import { useAppSelector } from "@/shared/lib/redux/hooks/use-app-selector";
 import { useAppDispatch } from "@/shared/lib/redux/hooks/use-app-dispatch";

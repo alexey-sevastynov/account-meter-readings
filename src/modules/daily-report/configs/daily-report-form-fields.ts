@@ -1,6 +1,6 @@
 import { DailyReport } from "@/modules/daily-report/types/daily-report";
 import { ResourceField } from "@/shared/types/resource-field";
-import { resourceFieldTypes } from "@/shared/ui/form/resource-field-type";
+import { resourceFieldTypes } from "@/shared/enums/resource-field-type";
 import { dailyReportLabels } from "@/modules/daily-report/constants/daily-report-labels";
 import { dailyReportProps } from "@/modules/daily-report/constants/daily-report-props";
 

@@ -1,4 +1,5 @@
-import { format } from "date-fns";
+import { endOfDay, format, startOfDay } from "date-fns";
+import { DateRange } from "@/shared/types/date-range/date-range-type";
 
 const dateFormatStrings = {
     short: "dd.MM.yyyy",
@@ -32,4 +33,15 @@ export function formatDate(value: unknown, dateFormatString: DateFormatString = 
     }
 
     return format(date, dateFormatString);
+}
+
+export function isDateInRange(date: Date | null, dateRange: DateRange) {
+    if (!dateRange.from && !dateRange.to) return true;
+
+    if (!(date instanceof Date) || Number.isNaN(date.getTime())) return false;
+
+    return (
+        (!dateRange.from || date >= startOfDay(dateRange.from)) &&
+        (!dateRange.to || date <= endOfDay(dateRange.to))
+    );
 }

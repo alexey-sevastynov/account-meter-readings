@@ -1,13 +1,16 @@
 import { cn } from "@/shared/lib/cn";
 import { Column } from "@tanstack/react-table";
-import { MRInput } from "@/shared/ui/input/Input";
 import { Button } from "@/shared/ui/button/Button";
 import { iconNames } from "@/shared/ui/icon/icon-name";
-import { iconColors } from "@/shared/ui/icon/icon-color";
-import { buttonVariantKeys } from "@/shared/ui/button/button-variant-keys";
 import { Dropdown, DropdownContent, DropdownTrigger } from "@/shared/ui/dropdown/Dropdown";
 import { Text } from "@/shared/ui/typography/text/Text";
-import { isFilterableInputColumn } from "@/shared/ui/table-toolbox/table-filter-dropdown/tableFilterDropdown.funcs";
+import {
+    isFilterableInputColumn,
+    isFilterableDateColumn,
+    getColumnDateRange,
+} from "@/shared/ui/table-toolbox/table-filter-dropdown/tableFilterDropdown.funcs";
+import { InputFilterColumn } from "@/shared/ui/table-toolbox/table-filter-dropdown/input-filter-column/InputFilterColumn";
+import { DateFilterColumn } from "@/shared/ui/table-toolbox/table-filter-dropdown/date-filter-column/DateFilterColumn";
 
 interface TableFilterDropdownProps<TData> {
     columns: Column<TData>[];
@@ -15,8 +18,17 @@ interface TableFilterDropdownProps<TData> {
 }
 
 export function TableFilterDropdown<TData>({ columns, className }: TableFilterDropdownProps<TData>) {
-    const filterableColumns = columns.filter((column) => isFilterableInputColumn(column));
-    const activeFiltersCount = filterableColumns.filter((column) => column.getFilterValue()).length;
+    const filterableInputColumns = columns.filter((column) => isFilterableInputColumn(column));
+    const filterableDateColumns = columns.filter((column) => isFilterableDateColumn(column));
+
+    const activeInputFiltersCount = filterableInputColumns.filter((column) => column.getFilterValue()).length;
+    const activeDateFiltersCount = filterableDateColumns.filter((column) => {
+        const columnDateRange = getColumnDateRange(column);
+
+        return columnDateRange?.from || columnDateRange?.to;
+    }).length;
+
+    const activeFiltersCount = activeInputFiltersCount + activeDateFiltersCount;
 
     return (
         <Dropdown className={cn("relative", className)}>
@@ -31,44 +43,30 @@ export function TableFilterDropdown<TData>({ columns, className }: TableFilterDr
                 </div>
             </DropdownTrigger>
 
-            <DropdownContent className="w-80">
-                <div className="border-b border-gray-200 p-4">
+            <DropdownContent className="max-h-[80vh] w-80 overflow-y-auto">
+                <div className="sticky top-0 z-10 border-b border-gray-200 bg-white p-4">
                     <div className="flex items-center justify-between">
                         <Text>Фільтри</Text>
                     </div>
                 </div>
 
                 <div className="space-y-4 p-4">
-                    {filterableColumns.map((column) => {
-                        const columnName = column.columnDef.meta?.label ?? "";
-
-                        return (
-                            <div key={column.id} className="relative">
-                                <MRInput
-                                    label={columnName}
-                                    value={(column.getFilterValue() as string) ?? ""}
-                                    onChange={(e) => column.setFilterValue(e.target.value)}
-                                    placeholder={`Пошук по ${columnName.toLowerCase()}...`}
-                                />
-                                {!!column.getFilterValue() && (
-                                    <Button
-                                        variant={buttonVariantKeys.icon}
-                                        iconName={iconNames.close}
-                                        iconColor={iconColors.primary}
-                                        onClick={() => column.setFilterValue("")}
-                                        className="absolute top-1/2 right-2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
-                                    />
-                                )}
-                            </div>
-                        );
-                    })}
+                    {filterableInputColumns.map((column) => (
+                        <InputFilterColumn key={column.id} column={column} />
+                    ))}
+                    {filterableDateColumns.map((column) => (
+                        <DateFilterColumn key={column.id} column={column} />
+                    ))}
                 </div>
 
-                <div className="border-t border-gray-200 p-3">
+                <div className="sticky bottom-0 border-t border-gray-200 bg-white p-3">
                     <Button
                         className="w-full"
                         text="Скинути всі фільтри"
-                        onClick={() => filterableColumns.forEach((col) => col.setFilterValue(""))}
+                        onClick={() => {
+                            filterableInputColumns.forEach((col) => col.setFilterValue(""));
+                            filterableDateColumns.forEach((col) => col.setFilterValue(undefined));
+                        }}
                     />
                 </div>
             </DropdownContent>

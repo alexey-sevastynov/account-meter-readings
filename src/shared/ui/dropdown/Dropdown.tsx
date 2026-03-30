@@ -21,7 +21,10 @@ export function Dropdown({ children, className }: { children: ReactNode; classNa
 
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
-            const target = event.target as Node;
+            const target = event.target as Element;
+
+            // Ignore clicks that occur inside radix portals (like the nested DatePicker dialog)
+            if (target && target.closest?.('[data-radix-popper-content-wrapper], [role="dialog"]')) return;
 
             if (
                 triggerRef.current &&

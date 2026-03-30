@@ -16,7 +16,7 @@ import { Title } from "@/shared/ui/typography/title/Title";
 import { Text } from "@/shared/ui/typography/text/Text";
 import { TableToolbox } from "@/shared/ui/table-toolbox/TableToolbox";
 import { Task } from "@/modules/task/types/task";
-import { createTableConfig } from "@/shared/ui/table/table-config";
+import { createTableConfig } from "@/shared/lib/react-table/table-config";
 import { taskColumns } from "@/modules/task/configs/task-columns";
 import { taskActionsColumn } from "@/modules/task/configs/task-actions";
 

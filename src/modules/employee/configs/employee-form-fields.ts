@@ -1,6 +1,6 @@
 import { employerPositionLabels } from "@/modules/employee/constants/employer-position-labels";
 import { employerPositionKeys } from "@/modules/employee/enums/employer-position-key";
-import { resourceFieldTypes } from "@/shared/ui/form/resource-field-type";
+import { resourceFieldTypes } from "@/shared/enums/resource-field-type";
 import { ResourceField } from "@/shared/types/resource-field";
 import { createEnumOptions } from "@/shared/utils/create-enum-options";
 import { employeeProps } from "@/modules/employee/constants/employee-props";

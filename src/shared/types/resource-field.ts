@@ -1,5 +1,5 @@
 import { FieldValues, Path } from "react-hook-form";
-import { ResourceFieldType } from "@/shared/ui/form/resource-field-type";
+import { ResourceFieldType } from "@/shared/enums/resource-field-type";
 import { Option } from "@/shared/types/ui/option";
 
 export interface ResourceField<T extends FieldValues> {

@@ -17,6 +17,8 @@ export function TableHeaderContent<TableData>({
 
     return (
         <div className="flex items-center gap-2">
+            {flexRender(tableHeader.column.columnDef.header, tableHeader.getContext())}
+
             <div
                 className={cn(
                     "text-foreground flex items-center gap-2 select-none",
@@ -24,8 +26,6 @@ export function TableHeaderContent<TableData>({
                 )}
                 onClick={canSort ? toggleSortHandler : undefined}
             >
-                {flexRender(tableHeader.column.columnDef.header, tableHeader.getContext())}
-
                 {enableSorting && canSort && <SortIcon tableHeader={tableHeader} />}
             </div>
         </div>

@@ -11,7 +11,6 @@ import {
     VisibilityState,
     ColumnDef,
 } from "@tanstack/react-table";
-
 import {
     deleteDailyReportById,
     initializePaginationState,
@@ -25,7 +24,7 @@ import { Title } from "@/shared/ui/typography/title/Title";
 import { Text } from "@/shared/ui/typography/text/Text";
 import { TableToolbox } from "@/shared/ui/table-toolbox/TableToolbox";
 import { Table } from "@/shared/ui/table/Table";
-import { createTableConfig } from "@/shared/ui/table/table-config";
+import { createTableConfig } from "@/shared/lib/react-table/table-config";
 import { TablePager } from "@/shared/ui/table-pager/TablePager";
 
 interface DailyReportTableProps {

@@ -1,4 +1,4 @@
-import { ResourceFieldType, resourceFieldTypes } from "@/shared/ui/form/resource-field-type";
+import { ResourceFieldType, resourceFieldTypes } from "@/shared/enums/resource-field-type";
 
 export function isInputFieldType(type: ResourceFieldType) {
     return type === resourceFieldTypes.text || type === resourceFieldTypes.number;

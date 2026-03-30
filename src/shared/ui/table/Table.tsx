@@ -1,7 +1,7 @@
 import { TableBody } from "@/shared/ui/table/table-body/TableBody";
 import { TableHeader } from "@/shared/ui/table/table-header/TableHeader";
 import { TableFooter } from "@/shared/ui/table/table-footer/TableFooter";
-import { TableConfig } from "@/shared/ui/table/table-config";
+import { TableConfig } from "@/shared/lib/react-table/table-config";
 
 export interface TableProps<TData> {
     config: TableConfig<TData>;
