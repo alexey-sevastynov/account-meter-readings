@@ -7,6 +7,7 @@ interface TableHeaderProps<TableData> {
     enableSorting?: boolean;
     enableColumnResizing?: boolean;
     className?: string;
+    isSticky?: boolean;
 }
 
 export function TableHeader<TableData>({
@@ -14,9 +15,16 @@ export function TableHeader<TableData>({
     enableSorting,
     enableColumnResizing,
     className,
+    isSticky,
 }: TableHeaderProps<TableData>) {
     return (
-        <thead className={cn("bg-background border-border border-b", className)}>
+        <thead
+            className={cn(
+                "bg-background border-border border-b",
+                isSticky && "sticky top-0 z-10 shadow-xs",
+                className,
+            )}
+        >
             {reactTable.getHeaderGroups().map((headerGroup) => (
                 <tr key={headerGroup.id}>
                     {headerGroup.headers.map((header) => (

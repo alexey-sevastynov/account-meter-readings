@@ -17,8 +17,8 @@ export function TableRow<T>({ tableRow, onRowClick, className }: TableRowProps<T
             {tableRow.getVisibleCells().map((tableCell) => (
                 <td
                     key={tableCell.id}
-                    className="text-foreground px-3 py-4 text-sm whitespace-nowrap"
-                    style={{ width: tableCell.column.getSize() }}
+                    className="text-foreground px-3 py-4 text-sm whitespace-nowrap last:w-full"
+                    style={{ minWidth: tableCell.column.getSize() }}
                 >
                     {flexRender(tableCell.column.columnDef.cell, tableCell.getContext())}
                 </td>

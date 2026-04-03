@@ -83,7 +83,13 @@ export function DailyReportTable({ data, isLoading }: DailyReportTableProps) {
                 isDeleteModalOpen={isDeleteModalOpen}
                 setIsDeleteModalOpen={setIsDeleteModalOpen}
             />
-            <Table config={createTableConfig(reactTable, isLoading, "Немає даних для відображення")} />
+            <Table
+                config={createTableConfig({
+                    reactTable: reactTable,
+                    isLoading: isLoading,
+                    noDataMessage: "Немає даних для відображення",
+                })}
+            />
             <TablePager
                 currentPage={reactTable.getState().pagination.pageIndex + 1}
                 pageSize={reactTable.getState().pagination.pageSize}

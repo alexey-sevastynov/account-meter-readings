@@ -78,7 +78,14 @@ export function EmployeeTable({ data, isLoading }: EmployeeTableProps) {
                 isDeleteModalOpen={isDeleteModalOpen}
                 setIsDeleteModalOpen={setIsDeleteModalOpen}
             />
-            <Table config={createTableConfig(reactTable, isLoading, "Немає даних для відображення")} />
+            <Table
+                config={createTableConfig({
+                    reactTable: reactTable,
+                    isLoading: isLoading,
+                    noDataMessage: "Немає даних для відображення",
+                    stickyHeader: false,
+                })}
+            />
             <TablePager
                 currentPage={reactTable.getState().pagination.pageIndex + 1}
                 pageSize={reactTable.getState().pagination.pageSize}

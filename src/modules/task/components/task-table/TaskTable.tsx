@@ -68,7 +68,13 @@ export function TaskTable({ data, isLoading }: TaskTableProps) {
             <Title position="left">Coffee Shop</Title>
             <Text className="mt-1">Manage your tasks</Text>
             <TableToolbox columns={reactTable.getAllColumns()} />
-            <Table config={createTableConfig(reactTable, isLoading, "Немає даних для відображення")} />
+            <Table
+                config={createTableConfig({
+                    reactTable: reactTable,
+                    isLoading: isLoading,
+                    noDataMessage: "Немає даних для відображення",
+                })}
+            />
             <TablePager
                 currentPage={reactTable.getState().pagination.pageIndex + 1}
                 pageSize={reactTable.getState().pagination.pageSize}

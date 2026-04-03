@@ -80,7 +80,7 @@ export function DropdownContent({ children, className }: { children: ReactNode; 
             // eslint-disable-next-line react-hooks/refs
             ref={ctx.contentRef}
             className={cn(
-                "border-border absolute z-20 mt-2 min-w-[180px] rounded-lg border",
+                "border-border absolute z-50 mt-2 min-w-[180px] rounded-lg border",
                 "bg-popover text-popover-foreground shadow-md",
                 "animate-in fade-in-0 zoom-in-95",
                 className,

@@ -24,7 +24,7 @@ export function CoffeeShopLayout({ children }: CoffeeShopLayoutProps) {
     }, [token, router]);
 
     return (
-        <div className="bg-background flex min-h-screen w-full">
+        <div className="bg-background flex h-screen w-full overflow-hidden">
             <Sidebar
                 sidebarNavigationItems={[
                     { href: routeKeys.coffeeShop, iconName: iconNames.dashboard, label: "Кавʼярня" },
@@ -33,8 +33,8 @@ export function CoffeeShopLayout({ children }: CoffeeShopLayoutProps) {
                 ]}
                 logoIconName={iconNames.coffee}
             />
-            <div className="flex-1 overflow-y-auto">
-                <Toolbar />
+            <div className="flex-1 overflow-auto">
+                <Toolbar className="shrink-0" />
                 <main className="p-4">{children}</main>
             </div>
         </div>

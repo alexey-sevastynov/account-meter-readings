@@ -7,28 +7,18 @@ export interface TableConfig<TData> {
     enableSorting?: boolean;
     enableResizing?: boolean;
     enableTableFooter?: boolean;
+    stickyHeader?: boolean;
     noDataMessage?: string;
     onRowClick?: VoidFunc<TData>;
 }
 
-export function createTableConfig<TData>(
-    reactTable: Table<TData>,
-    isLoading?: boolean,
-    noDataMessage?: string,
-    enableSorting?: boolean,
-    enableResizing?: boolean,
-    enableTableFooter?: boolean,
-    onRowClick?: VoidFunc<TData>,
-): TableConfig<TData> {
-    const tableConfig: TableConfig<TData> = {
-        reactTable,
-        isLoading: isLoading ?? true,
-        noDataMessage,
-        enableSorting: enableSorting ?? true,
-        enableResizing: enableResizing ?? true,
-        enableTableFooter: enableTableFooter ?? true,
-        onRowClick,
+export function createTableConfig<TData>(tableConfig: TableConfig<TData>) {
+    return {
+        ...tableConfig,
+        isLoading: tableConfig.isLoading ?? true,
+        enableSorting: tableConfig.enableSorting ?? true,
+        enableResizing: tableConfig.enableResizing ?? true,
+        enableTableFooter: tableConfig.enableTableFooter ?? true,
+        stickyHeader: tableConfig.stickyHeader ?? true,
     };
-
-    return tableConfig;
 }

@@ -19,8 +19,8 @@ export function TableHeaderCell<TableData>({
     return (
         <th
             key={tableHeader.id}
-            className="text-foreground relative px-3 py-3.5 text-left text-sm font-semibold"
-            style={{ width: tableHeader.getSize() }}
+            className="bg-background bg-clip-padding text-foreground relative px-3 py-3.5 text-left text-sm font-semibold last:w-full"
+            style={{ minWidth: tableHeader.getSize() }}
         >
             <TableHeaderContent tableHeader={tableHeader} enableSorting={enableSorting} />
 
