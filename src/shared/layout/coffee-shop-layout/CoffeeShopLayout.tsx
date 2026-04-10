@@ -30,6 +30,11 @@ export function CoffeeShopLayout({ children }: CoffeeShopLayoutProps) {
                     { href: routeKeys.coffeeShop, iconName: iconNames.dashboard, label: "Кавʼярня" },
                     { href: routeKeys.employees, iconName: iconNames.users, label: "Працівники" },
                     { href: routeKeys.dailyReports, iconName: iconNames.receipt, label: "Витрати" },
+                    {
+                        href: routeKeys.expenseReport,
+                        iconName: iconNames.wallet,
+                        label: "Операційні витрати",
+                    },
                 ]}
                 logoIconName={iconNames.coffee}
             />

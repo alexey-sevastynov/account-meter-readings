@@ -21,6 +21,7 @@ export const iconNames = {
     edit: "edit",
     trash: "trash",
     check: "check",
+    wallet: "wallet",
 } as const;
 
 export type IconName = (typeof iconNames)[keyof typeof iconNames];

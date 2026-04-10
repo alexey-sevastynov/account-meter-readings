@@ -3,6 +3,7 @@ import taskReducer from "@/modules/task/model/slice";
 import authReducer from "@/modules/auth/model/slice";
 import employeeReducer from "@/modules/employee/model/employee-slice";
 import dailyReportReducer from "@/modules/daily-report/model/daily-report-slice";
+import expenseReportReducer from "@/modules/expense-report/model/expense-report-slice";
 import { toastMiddleware } from "@/toast-middleware";
 
 export const store = configureStore({
@@ -11,6 +12,7 @@ export const store = configureStore({
         auth: authReducer,
         employee: employeeReducer,
         dailyReport: dailyReportReducer,
+        expenseReport: expenseReportReducer,
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({

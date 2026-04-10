@@ -4,6 +4,6 @@ export const routeKeys = {
     forgotPassword: "/auth/forgot-password",
     coffeeShop: "/coffee-shop",
     employees: "/coffee-shop/employees",
-    expenses: "/coffee-shop/expenses",
     dailyReports: "/coffee-shop/daily-reports",
+    expenseReport: "/coffee-shop/expense-reports",
 } as const;

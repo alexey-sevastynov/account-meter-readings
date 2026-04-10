@@ -23,6 +23,7 @@ import {
     Edit,
     Trash,
     Check,
+    Wallet,
 } from "lucide-react";
 import { IconColor, iconColors } from "@/shared/ui/icon/icon-color";
 import { IconName, iconNames } from "@/shared/ui/icon/icon-name";
@@ -60,6 +61,7 @@ const iconMap: Record<IconName, ComponentType<IconComponentProps>> = {
     edit: Edit,
     trash: Trash,
     check: Check,
+    wallet: Wallet,
 } as const;
 
 interface IconProps {

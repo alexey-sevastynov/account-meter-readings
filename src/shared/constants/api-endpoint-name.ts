@@ -8,4 +8,5 @@ export const apiEndpointNames = {
     mailVerification: "/mail-verification/confirm",
     employee: "/coffee-shop/employees",
     dailyReport: "/coffee-shop/daily-reports",
+    expenseReport: "/coffee-shop/expense-reports",
 } as const;
