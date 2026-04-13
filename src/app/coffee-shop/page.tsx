@@ -1,7 +1,7 @@
 "use server";
 
-import { CoffeeShop } from "@/app/coffee-shop/CoffeeShop";
+import { CoffeeShopStatistics } from "@/modules/statistics/components/page/CoffeeShopStatistics";
 
 export default async function CoffeeShopPage() {
-    return <CoffeeShop />;
+    return <CoffeeShopStatistics />;
 }

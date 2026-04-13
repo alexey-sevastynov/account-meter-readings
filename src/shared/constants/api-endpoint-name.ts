@@ -9,4 +9,5 @@ export const apiEndpointNames = {
     employee: "/coffee-shop/employees",
     dailyReport: "/coffee-shop/daily-reports",
     expenseReport: "/coffee-shop/expense-reports",
+    statistics: "/coffee-shop/statistics",
 } as const;

@@ -73,8 +73,8 @@ export function DatePicker({
                             }}
                             locale={uk}
                             captionLayout="dropdown"
-                            fromYear={fromYear}
-                            toYear={toYear}
+                            startMonth={new Date(fromYear, 0)}
+                            endMonth={new Date(toYear, 11)}
                             className="bg-background text-foreground [&_button]:text-foreground [&_button:hover]:bg-primary/10 [&_button:focus-visible]:ring-ring [&_day]:hover:bg-primary/10 [&_day_selected]:bg-primary [&_day_selected]:text-primary-foreground [&_day_disabled]:text-muted-foreground [&_button:focus-visible]:ring-2"
                         />
                     </Popover.Content>
