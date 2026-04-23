@@ -22,6 +22,19 @@ export const iconNames = {
     trash: "trash",
     check: "check",
     wallet: "wallet",
+    calendarDays: "calendarDays",
+    dollarSign: "dollarSign",
+    banknote: "banknote",
+    creditCard: "creditCard",
+    shoppingCart: "shoppingCart",
+    trash2: "trash2",
+    percent: "percent",
+    trendingDown: "trendingDown",
+    receiptText: "receiptText",
+    calendar: "calendar",
+    piggyBank: "piggyBank",
+    pieChart: "pieChart",
+    activity: "activity",
 } as const;
 
 export type IconName = (typeof iconNames)[keyof typeof iconNames];

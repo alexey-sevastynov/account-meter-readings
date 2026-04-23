@@ -24,6 +24,19 @@ import {
     Trash,
     Check,
     Wallet,
+    CalendarDays,
+    DollarSign,
+    Banknote,
+    CreditCard,
+    ShoppingCart,
+    Trash2,
+    Percent,
+    TrendingDown,
+    ReceiptText,
+    Calendar,
+    PiggyBank,
+    PieChart,
+    Activity,
 } from "lucide-react";
 import { IconColor, iconColors } from "@/shared/ui/icon/icon-color";
 import { IconName, iconNames } from "@/shared/ui/icon/icon-name";
@@ -62,6 +75,19 @@ const iconMap: Record<IconName, ComponentType<IconComponentProps>> = {
     trash: Trash,
     check: Check,
     wallet: Wallet,
+    calendarDays: CalendarDays,
+    dollarSign: DollarSign,
+    banknote: Banknote,
+    creditCard: CreditCard,
+    shoppingCart: ShoppingCart,
+    trash2: Trash2,
+    percent: Percent,
+    trendingDown: TrendingDown,
+    receiptText: ReceiptText,
+    calendar: Calendar,
+    piggyBank: PiggyBank,
+    pieChart: PieChart,
+    activity: Activity,
 } as const;
 
 interface IconProps {

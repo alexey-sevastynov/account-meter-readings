@@ -1,6 +1,7 @@
 import { Control, Controller, FieldValues, FieldErrors } from "react-hook-form";
 import { ResourceField } from "@/shared/types/resource-field";
 import { DatePicker } from "@/shared/ui/date-picker/DatePicker";
+import { formatDateToIsoDate } from "@/shared/utils/date";
 
 interface ResourceDateFieldProps<T extends FieldValues> {
     field: ResourceField<T>;
@@ -27,7 +28,9 @@ export function ResourceDateField<T extends FieldValues>({
                     <DatePicker
                         label={field.label}
                         value={controllerFieldState.field.value}
-                        onChange={controllerFieldState.field.onChange}
+                        onChange={(date) => {
+                            controllerFieldState.field.onChange(formatDateToIsoDate(date));
+                        }}
                         className={errorMessage ? "border-destructive" : undefined}
                     />
                     {errorMessage && <p className="text-destructive mt-1 text-sm">{errorMessage}</p>}

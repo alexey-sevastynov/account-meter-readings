@@ -9,6 +9,8 @@ import { getCoffeeShopStatistics } from "@/modules/statistics/model/statistics-t
 import { RangeDatePicker } from "@/shared/ui/date-picker/RangeDatePicker";
 import { DateRange } from "@/shared/types/date-range/date-range-type";
 import { initializeDateRangeFromDailyReports } from "@/modules/statistics/components/page/coffeeShopStatistics.funcs";
+import { StatisticsDashboard } from "@/modules/statistics/components/page/statistics-dashboard/StatisticsDashboard";
+import { LoadingIndicator } from "@/shared/ui/loading-indicator/LoadingIndicator";
 
 export function CoffeeShopStatistics() {
     const dispatch = useAppDispatch();
@@ -50,50 +52,15 @@ export function CoffeeShopStatistics() {
                 <h2 className="text-lg font-semibold text-gray-800">Статистика кав&apos;ярні</h2>
 
                 {isInitialLoading ? (
-                    <div className="flex items-center gap-2 text-sm text-gray-500">
-                        <svg className="h-4 w-4 animate-spin text-gray-400" viewBox="0 0 24 24" fill="none">
-                            <circle
-                                className="opacity-25"
-                                cx="12"
-                                cy="12"
-                                r="10"
-                                stroke="currentColor"
-                                strokeWidth="4"
-                            />
-                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
-                        </svg>
-                        Завантаження звітів...
-                    </div>
+                    <LoadingIndicator text="Завантаження звітів..." />
                 ) : (
                     <RangeDatePicker value={dateRange} onChange={setDateRange} className="max-w-sm" />
                 )}
             </div>
 
-            {statisticsLoading && (
-                <div className="flex items-center gap-2 px-1 text-sm text-gray-500">
-                    <svg className="h-4 w-4 animate-spin text-gray-400" viewBox="0 0 24 24" fill="none">
-                        <circle
-                            className="opacity-25"
-                            cx="12"
-                            cy="12"
-                            r="10"
-                            stroke="currentColor"
-                            strokeWidth="4"
-                        />
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
-                    </svg>
-                    Завантаження статистики...
-                </div>
-            )}
+            {statisticsLoading && <LoadingIndicator text="Завантаження статистики..." className="px-1" />}
 
-            {statisticsData && !statisticsLoading && (
-                <div className="flex flex-col gap-2 rounded-xl border p-4 shadow-sm">
-                    <h3 className="text-sm font-semibold">Результат (JSON)</h3>
-                    <pre className="overflow-x-auto rounded-lg p-4 text-xs">
-                        {JSON.stringify(statisticsData, null, 2)}
-                    </pre>
-                </div>
-            )}
+            {statisticsData && !statisticsLoading && <StatisticsDashboard statisticsData={statisticsData} />}
         </div>
     );
 }

@@ -15,7 +15,7 @@ import {
 export const dailyReportColumns: ColumnDef<DailyReport>[] = [
     createDateTableColumn<DailyReport>({
         accessorKey: dailyReportProps.date,
-        accessorFn: (row) => (row.date ? new Date(row.date) : null),
+        accessorFn: (row) => new Date(row.date),
         header: dailyReportLabels.date,
         filterable: true,
     }),

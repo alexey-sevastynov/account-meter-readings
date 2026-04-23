@@ -1,0 +1,45 @@
+import { MetricCard } from "@/shared/ui/metric-card/MetricCard";
+import { formatUah } from "@/shared/utils/currency";
+import { Icon } from "@/shared/ui/icon/Icon";
+
+interface EmployeeStat {
+    name: string;
+    shifts: number;
+    totalSalary: number;
+    basicSalary: number;
+    bonuses: number;
+}
+
+interface TeamStatisticsSectionProps {
+    employees?: EmployeeStat[];
+}
+
+export function TeamStatisticsSection({ employees }: TeamStatisticsSectionProps) {
+    if (!employees || employees.length === 0) return null;
+
+    return (
+        <section className="flex flex-col gap-3">
+            <h3 className="text-sm font-semibold tracking-wide text-gray-500 uppercase">Команда</h3>
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                {employees.map((emp) => (
+                    <MetricCard
+                        key={emp.name}
+                        title={`${emp.name} (${emp.shifts} зм.)`}
+                        value={
+                            <div className="flex flex-col">
+                                <span>{formatUah(emp.totalSalary)}</span>
+                                <span className="mt-1 text-[13px] font-normal text-gray-500">
+                                    База: {formatUah(emp.basicSalary)} | Бонуси:{" "}
+                                    <span className="font-medium text-emerald-600">
+                                        +{formatUah(emp.bonuses)}
+                                    </span>
+                                </span>
+                            </div>
+                        }
+                        icon={<Icon name="users" />}
+                    />
+                ))}
+            </div>
+        </section>
+    );
+}

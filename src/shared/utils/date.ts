@@ -15,7 +15,26 @@ export function getTodayDate() {
     return format(new Date(), "yyyy-MM-dd");
 }
 
-export function formatDate(value: unknown, dateFormatString: DateFormatString = dateFormatStrings.short) {
+export function isDateInRange(date: Date | null, dateRange: DateRange) {
+    if (!dateRange.from && !dateRange.to) return true;
+
+    if (!(date instanceof Date) || Number.isNaN(date.getTime())) return false;
+
+    return (
+        (!dateRange.from || date >= startOfDay(dateRange.from)) &&
+        (!dateRange.to || date <= endOfDay(dateRange.to))
+    );
+}
+
+export function formatDateToIsoDate(date: unknown) {
+    return formatDate(date, dateFormatStrings.iso);
+}
+
+export function formatDateToShortDate(date: unknown) {
+    return formatDate(date, dateFormatStrings.short);
+}
+
+function formatDate(value: unknown, dateFormatString: DateFormatString) {
     if (!value) return "";
 
     let date: Date;
@@ -33,15 +52,4 @@ export function formatDate(value: unknown, dateFormatString: DateFormatString = 
     }
 
     return format(date, dateFormatString);
-}
-
-export function isDateInRange(date: Date | null, dateRange: DateRange) {
-    if (!dateRange.from && !dateRange.to) return true;
-
-    if (!(date instanceof Date) || Number.isNaN(date.getTime())) return false;
-
-    return (
-        (!dateRange.from || date >= startOfDay(dateRange.from)) &&
-        (!dateRange.to || date <= endOfDay(dateRange.to))
-    );
 }

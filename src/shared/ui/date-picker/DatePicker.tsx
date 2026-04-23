@@ -26,7 +26,7 @@ export function DatePicker({
     value,
     onChange,
     className,
-    fromYear = 1900,
+    fromYear = 2025,
     toYear = new Date().getFullYear(),
 }: DatePickerProps) {
     const [open, setOpen] = useState(false);
