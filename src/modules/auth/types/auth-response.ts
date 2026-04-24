@@ -3,4 +3,5 @@ export interface AuthResponse {
     userId: string;
     userName: string;
     isVerified: boolean;
+    userRole: string;
 }

@@ -2,22 +2,23 @@ import { NextRequest, NextResponse } from "next/server";
 import { cookieKeys } from "@/shared/utils/cookie/cookie-key";
 import { buildRoutePath } from "@/shared/utils/navigation";
 import { routeKeys } from "@/shared/constants/route-keys";
-import { isProd } from "@/shared/lib/environments";
+import { userRoleKeys } from "@/modules/auth/enums/user-role-key";
 
 const redirectToSignInPath = buildRoutePath(routeKeys.signIn);
 const redirectToHomePath = buildRoutePath(routeKeys.home);
 
 export function middleware(request: NextRequest) {
     const token = request.cookies.get(cookieKeys.token)?.value;
+    const userRole = request.cookies.get(cookieKeys.userRole)?.value;
     const isVerifiedMail = request.cookies.get(cookieKeys.isVerified)?.value === "true";
     const pathname = request.nextUrl.pathname;
 
-    if (isProd() && pathname.startsWith(routeKeys.coffeeShop)) {
-        return performRedirect(redirectToHomePath, request);
-    }
-
     if (shouldRedirectToSignIn(pathname, isVerifiedMail, token)) {
         return performRedirect(redirectToSignInPath, request);
+    }
+
+    if (!canAccessCoffeeShop(pathname, isVerifiedMail, token, userRole)) {
+        return performRedirect(redirectToHomePath, request);
     }
 
     if (shouldRedirectToHome(pathname, isVerifiedMail, token)) {
@@ -51,4 +52,12 @@ function shouldRedirectToSignIn(pathname: string, isVerifiedMail: boolean, token
 
 function shouldRedirectToHome(pathname: string, isVerifiedMail: boolean, token?: string) {
     return token && isVerifiedMail && isPublicPath(pathname);
+}
+
+function canAccessCoffeeShop(pathname: string, isVerifiedMail: boolean, token?: string, userRole?: string) {
+    const isCoffeeShopRoute = pathname.startsWith(routeKeys.coffeeShop);
+    const isAuthenticated = Boolean(token);
+    const isAdmin = userRole === userRoleKeys.admin;
+
+    return !isCoffeeShopRoute || (isAuthenticated && isVerifiedMail && isAdmin);
 }

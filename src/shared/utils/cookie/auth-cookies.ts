@@ -7,14 +7,16 @@ const authCookieKeys = {
     isVerified: cookieKeys.isVerified,
 } as const;
 
-export function setAuthCookies(token: string, userName: string, isVerified: boolean) {
+export function setAuthCookies(token: string, userName: string, isVerified: boolean, userRole: string) {
     setCookie(authCookieKeys.token, token);
     setCookie(authCookieKeys.userName, userName);
     setCookie(authCookieKeys.isVerified, String(isVerified));
+    setCookie(cookieKeys.userRole, userRole);
 }
 
 export function clearAuthCookies() {
     removeCookie(authCookieKeys.token);
     removeCookie(authCookieKeys.userName);
     removeCookie(authCookieKeys.isVerified);
+    removeCookie(cookieKeys.userRole);
 }

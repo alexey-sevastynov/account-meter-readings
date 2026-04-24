@@ -19,7 +19,7 @@ export const signIn = createAsyncThunk<AuthResponse, SignInDto, WithRejectValue>
                 password: signInDto.password,
             });
 
-            setAuthCookies(response.token, response.userName, !!response.isVerified);
+            setAuthCookies(response.token, response.userName, !!response.isVerified, response.userRole);
 
             return response;
         } catch (error: unknown) {
@@ -54,7 +54,7 @@ export const signInAsGuest = createAsyncThunk<AuthResponse, void, WithRejectValu
         try {
             const response = await createOne<null, AuthResponse>(apiEndpointNames.signInAsGuest, null);
 
-            setAuthCookies(response.token, response.userName, !!response.isVerified);
+            setAuthCookies(response.token, response.userName, !!response.isVerified, response.userRole);
 
             return response;
         } catch (error: unknown) {
