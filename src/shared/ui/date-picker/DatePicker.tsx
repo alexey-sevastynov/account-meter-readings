@@ -6,7 +6,7 @@ import "react-day-picker/dist/style.css";
 import { Calendar as CalendarIcon } from "lucide-react";
 import { DayPicker } from "react-day-picker";
 import { useState } from "react";
-import { format } from "date-fns";
+import { formatSingleDate } from "@/shared/ui/date-picker/datePicker.funcs";
 import { uk } from "date-fns/locale";
 import { cn } from "@/shared/lib/cn";
 import { FloatingLabel } from "@/shared/ui/input/FloatingLabel";
@@ -19,6 +19,7 @@ interface DatePickerProps {
     className?: string;
     fromYear?: number;
     toYear?: number;
+    highlightDates?: Date[];
 }
 
 export function DatePicker({
@@ -28,14 +29,13 @@ export function DatePicker({
     className,
     fromYear = 2025,
     toYear = new Date().getFullYear(),
+    highlightDates = [],
 }: DatePickerProps) {
     const [open, setOpen] = useState(false);
     const [isFocused, setIsFocused] = useState(false);
 
-    const hasValue = Boolean(value);
-
     return (
-        <div className="relative h-12 w-full">
+        <div className={cn("relative h-12 w-full", className)}>
             <Popover.Root open={open} onOpenChange={setOpen}>
                 <Popover.Trigger asChild>
                     <button
@@ -47,14 +47,9 @@ export function DatePicker({
                             "border-border bg-[color:var(--color-input)] text-[color:var(--color-foreground)]",
                             "focus:ring-ring focus:ring-2 focus:ring-offset-2 focus:outline-none",
                             "transition-colors duration-200 disabled:cursor-not-allowed disabled:opacity-50",
-                            className,
                         )}
                     >
-                        {value ? (
-                            <span>{format(value, "dd.MM.yyyy", { locale: uk })}</span>
-                        ) : (
-                            <span className="invisible">&nbsp;</span>
-                        )}
+                        <span>{formatSingleDate(value)}</span>
                         <CalendarIcon className="h-4 w-4 shrink-0 text-[color:var(--color-foreground)]" />
                     </button>
                 </Popover.Trigger>
@@ -75,13 +70,26 @@ export function DatePicker({
                             captionLayout="dropdown"
                             startMonth={new Date(fromYear, 0)}
                             endMonth={new Date(toYear, 11)}
-                            className="bg-background text-foreground [&_button]:text-foreground [&_button:hover]:bg-primary/10 [&_button:focus-visible]:ring-ring [&_day]:hover:bg-primary/10 [&_day_selected]:bg-primary [&_day_selected]:text-primary-foreground [&_day_disabled]:text-muted-foreground [&_button:focus-visible]:ring-2"
+                            modifiers={{ highlighted: highlightDates }}
+                            modifiersClassNames={{
+                                highlighted: cn(
+                                    `relative font-bold 
+                                    after:absolute 
+                                    after:bottom-1 
+                                    after:left-1/2 
+                                    after:-translate-x-1/2 
+                                    after:h-1 after:w-1 
+                                    after:rounded-full 
+                                    after:bg-primary`,
+                                ),
+                            }}
+                            className="bg-background text-foreground [&_button]:text-foreground [&_button:hover]:bg-primary/10 [&_button:focus-visible]:ring-ring [&_.rdp-day_selected]:bg-primary [&_.rdp-day_selected]:text-primary-foreground [&_.rdp-day_disabled]:text-muted-foreground [&_button:focus-visible]:ring-2"
                         />
                     </Popover.Content>
                 </Popover.Portal>
             </Popover.Root>
 
-            {label && <FloatingLabel label={label} isFocused={isFocused || open} hasValue={hasValue} />}
+            {label && <FloatingLabel label={label} isFocused={isFocused || open} hasValue={Boolean(value)} />}
         </div>
     );
 }

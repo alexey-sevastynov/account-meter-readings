@@ -45,6 +45,7 @@ export function CoffeeShopStatistics() {
     }, [dateRange, dispatch]);
 
     const isInitialLoading = dailyReportLoading || (!isAutoInitialized && !dailyReports.length);
+    const highlightDates = dailyReports.map((report) => new Date(report.date));
 
     return (
         <div className="flex flex-col gap-6 p-4">
@@ -54,7 +55,12 @@ export function CoffeeShopStatistics() {
                 {isInitialLoading ? (
                     <LoadingIndicator text="Завантаження звітів..." />
                 ) : (
-                    <RangeDatePicker value={dateRange} onChange={setDateRange} className="max-w-sm" />
+                    <RangeDatePicker
+                        value={dateRange}
+                        onChange={setDateRange}
+                        highlightDates={highlightDates}
+                        className="max-w-sm"
+                    />
                 )}
             </div>
 

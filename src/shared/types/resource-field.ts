@@ -11,4 +11,5 @@ export interface ResourceField<T extends FieldValues> {
     readonly?: boolean;
     placeholder?: string;
     options?: Option[];
+    highlightDates?: Date[];
 }

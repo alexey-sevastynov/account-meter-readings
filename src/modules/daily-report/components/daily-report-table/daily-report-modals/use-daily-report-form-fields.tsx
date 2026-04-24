@@ -9,6 +9,7 @@ import { ResourceField } from "@/shared/types/resource-field";
 export function useDailyReportFormFields() {
     const dispatch = useAppDispatch();
     const employees = useAppSelector((state) => state.employee.data);
+    const dailyReports = useAppSelector((state) => state.dailyReport.data);
 
     useEffect(() => {
         dispatch(getAllEmployees());
@@ -18,15 +19,23 @@ export function useDailyReportFormFields() {
         return employees.map((e) => ({ value: e._id, label: e.name }));
     }, [employees]);
 
+    const highlightDates = useMemo(() => {
+        return dailyReports.map((report) => new Date(report.date));
+    }, [dailyReports]);
+
     const fieldsWithDynamicOptions: ResourceField<DailyReport>[] = useMemo(() => {
         return dailyReportFormFields.map((field) => {
             if (field.name === "employee") {
                 return { ...field, options: employeeOptions };
             }
 
+            if (field.name === "date") {
+                return { ...field, highlightDates };
+            }
+
             return field;
         });
-    }, [employeeOptions]);
+    }, [employeeOptions, highlightDates]);
 
     return fieldsWithDynamicOptions;
 }

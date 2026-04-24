@@ -31,6 +31,7 @@ export function ResourceDateField<T extends FieldValues>({
                         onChange={(date) => {
                             controllerFieldState.field.onChange(formatDateToIsoDate(date));
                         }}
+                        highlightDates={field.highlightDates}
                         className={errorMessage ? "border-destructive" : undefined}
                     />
                     {errorMessage && <p className="text-destructive mt-1 text-sm">{errorMessage}</p>}
