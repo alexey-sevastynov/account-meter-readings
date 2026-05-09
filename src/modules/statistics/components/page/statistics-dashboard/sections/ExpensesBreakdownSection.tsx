@@ -1,12 +1,10 @@
 import { MetricCard } from "@/shared/ui/metric-card/MetricCard";
+import { ExpensesBreakdown } from "@/modules/statistics/types/expenses-breakdown";
 import { formatUah } from "@/shared/utils/currency";
 import { iconNames } from "@/shared/ui/icon/icon-name";
 
 interface ExpensesBreakdownSectionProps {
-    breakdown?: {
-        dailyExpenses: number;
-        monthlyExpensesApportioned: number;
-    };
+    breakdown?: ExpensesBreakdown;
 }
 
 export function ExpensesBreakdownSection({ breakdown }: ExpensesBreakdownSectionProps) {

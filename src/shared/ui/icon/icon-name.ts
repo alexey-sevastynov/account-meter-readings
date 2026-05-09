@@ -35,6 +35,7 @@ export const iconNames = {
     piggyBank: "piggyBank",
     pieChart: "pieChart",
     activity: "activity",
+    clipboardCheck: "clipboardCheck",
 } as const;
 
 export type IconName = (typeof iconNames)[keyof typeof iconNames];
