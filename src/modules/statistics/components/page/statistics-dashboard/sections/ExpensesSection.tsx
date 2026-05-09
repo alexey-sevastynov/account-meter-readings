@@ -1,6 +1,6 @@
 import { MetricCard } from "@/shared/ui/metric-card/MetricCard";
 import { formatUah } from "@/shared/utils/currency";
-import { Icon } from "@/shared/ui/icon/Icon";
+import { iconNames } from "@/shared/ui/icon/icon-name";
 
 interface ExpensesSectionProps {
     costOfGoods: number;
@@ -22,22 +22,22 @@ export function ExpensesSection({
                 <MetricCard
                     title="Собівартість товарів"
                     value={formatUah(costOfGoods)}
-                    icon={<Icon name="shoppingCart" />}
+                    iconName={iconNames.shoppingCart}
                 />
                 <MetricCard
                     title="Списання продуктів"
                     value={formatUah(productWriteOffs)}
-                    icon={<Icon name="trash2" />}
+                    iconName={iconNames.trash2}
                 />
                 <MetricCard
                     title="Комісія еквайрингу"
                     value={formatUah(acquiringFee)}
-                    icon={<Icon name="percent" />}
+                    iconName={iconNames.percent}
                 />
                 <MetricCard
-                    title="Загальні витрати"
+                    title="Операційні витрати"
                     value={formatUah(totalExpenses)}
-                    icon={<Icon name="trendingDown" />}
+                    iconName={iconNames.trendingDown}
                 />
             </div>
         </section>

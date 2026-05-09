@@ -26,6 +26,7 @@ import {
 import { createExpenseReportActionsColumn } from "@/modules/expense-report/configs/expense-report-actions";
 import { expenseReportColumns } from "@/modules/expense-report/configs/expense-report-columns";
 import { ExpenseReportModals } from "@/modules/expense-report/components/expense-report-table/expense-report-modals/ExpenseReportModals";
+import { textPositions } from "@/shared/ui/typography/text-position";
 
 interface ExpenseReportTableProps {
     data: ExpenseReport[];
@@ -72,7 +73,7 @@ export function ExpenseReportTable({ data, isLoading }: ExpenseReportTableProps)
 
     return (
         <div className="w-full">
-            <Title position="left">Звіти про витрати</Title>
+            <Title textPosition={textPositions.left}>Звіти про витрати</Title>
             <Text className="mt-1">Загальна кількість звітів: {data.length}</Text>
             <TableToolbox columns={reactTable.getAllColumns()} />
             <ExpenseReportModals

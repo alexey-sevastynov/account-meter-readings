@@ -19,6 +19,7 @@ import { Task } from "@/modules/task/types/task";
 import { createTableConfig } from "@/shared/lib/react-table/table-config";
 import { taskColumns } from "@/modules/task/configs/task-columns";
 import { taskActionsColumn } from "@/modules/task/configs/task-actions";
+import { textPositions } from "@/shared/ui/typography/text-position";
 
 interface TaskTableProps {
     data: Task[];
@@ -65,7 +66,7 @@ export function TaskTable({ data, isLoading }: TaskTableProps) {
 
     return (
         <div className="w-full">
-            <Title position="left">Coffee Shop</Title>
+            <Title textPosition={textPositions.left}>Coffee Shop</Title>
             <Text className="mt-1">Manage your tasks</Text>
             <TableToolbox columns={reactTable.getAllColumns()} />
             <Table

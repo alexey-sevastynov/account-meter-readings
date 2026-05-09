@@ -1,22 +1,26 @@
 import { ReactNode } from "react";
 import { cn } from "@/shared/lib/cn";
-import { TextPosition } from "@/shared/ui/typography/text-position";
+import { TextPosition, textPositions } from "@/shared/ui/typography/text-position";
+import { TextSize, textSizes } from "@/shared/ui/typography/text-size";
+import { TextWeight, textWeights } from "@/shared/ui/typography/text-weight";
 
 interface TextProps {
     children: ReactNode;
-    position?: TextPosition;
+    textPosition?: TextPosition;
+    textSize?: TextSize;
+    textWeight?: TextWeight;
     className?: string;
 }
 
-export function Text({ children, position = "left", className }: TextProps) {
+export function Text({
+    children,
+    textPosition = textPositions.left,
+    textSize = textSizes.md,
+    textWeight = textWeights.normal,
+    className,
+}: TextProps) {
     return (
-        <p
-            className={cn(
-                "text-foreground mb-4 text-base leading-relaxed",
-                className,
-                position && `text-${position}`,
-            )}
-        >
+        <p className={cn("text-foreground leading-relaxed", textSize, textWeight, textPosition, className)}>
             {children}
         </p>
     );

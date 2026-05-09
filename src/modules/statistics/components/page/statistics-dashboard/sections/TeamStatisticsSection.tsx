@@ -1,6 +1,6 @@
 import { MetricCard } from "@/shared/ui/metric-card/MetricCard";
 import { formatUah } from "@/shared/utils/currency";
-import { Icon } from "@/shared/ui/icon/Icon";
+import { iconNames } from "@/shared/ui/icon/icon-name";
 
 interface EmployeeStat {
     name: string;
@@ -25,18 +25,16 @@ export function TeamStatisticsSection({ employees }: TeamStatisticsSectionProps)
                     <MetricCard
                         key={emp.name}
                         title={`${emp.name} (${emp.shifts} зм.)`}
-                        value={
-                            <div className="flex flex-col">
-                                <span>{formatUah(emp.totalSalary)}</span>
-                                <span className="mt-1 text-[13px] font-normal text-gray-500">
-                                    База: {formatUah(emp.basicSalary)} | Бонуси:{" "}
-                                    <span className="font-medium text-emerald-600">
-                                        +{formatUah(emp.bonuses)}
-                                    </span>
+                        value={formatUah(emp.totalSalary)}
+                        description={
+                            <span className="mt-1 font-normal text-gray-500">
+                                База: {formatUah(emp.basicSalary)} | Бонуси:{" "}
+                                <span className="font-medium text-emerald-600">
+                                    +{formatUah(emp.bonuses)}
                                 </span>
-                            </div>
+                            </span>
                         }
-                        icon={<Icon name="users" />}
+                        iconName={iconNames.users}
                     />
                 ))}
             </div>

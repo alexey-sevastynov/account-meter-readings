@@ -24,6 +24,7 @@ import {
     initializePaginationState,
 } from "@/modules/employee/components/employee-table/employeeTable.funcs";
 import { EmployeeModals } from "@/modules/employee/components/employee-table/employee-modals/EmolyeeModals";
+import { textPositions } from "@/shared/ui/typography/text-position";
 
 interface EmployeeTableProps {
     data: Employee[];
@@ -67,7 +68,7 @@ export function EmployeeTable({ data, isLoading }: EmployeeTableProps) {
 
     return (
         <div className="w-full">
-            <Title position="left">Список працівників</Title>
+            <Title textPosition={textPositions.left}>Список працівників</Title>
             <Text className="mt-1">Загальна кількість працівників: {data.length}</Text>
             <TableToolbox columns={reactTable.getAllColumns()} />
             <EmployeeModals

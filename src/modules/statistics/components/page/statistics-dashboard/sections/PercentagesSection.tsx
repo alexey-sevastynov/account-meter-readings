@@ -1,7 +1,7 @@
 import { MetricCard } from "@/shared/ui/metric-card/MetricCard";
-import { Icon } from "@/shared/ui/icon/Icon";
 import { StatisticsPercentages } from "@/modules/statistics/types/statistics-percentages";
 import { formatPercent } from "@/shared/utils/number";
+import { iconNames } from "@/shared/ui/icon/icon-name";
 
 interface PercentagesSectionProps {
     percentages: StatisticsPercentages;
@@ -15,32 +15,32 @@ export function PercentagesSection({ percentages }: PercentagesSectionProps) {
                 <MetricCard
                     title="Частка комісій від загального прибутку"
                     value={formatPercent(percentages.acquiringPercent)}
-                    icon={<Icon name="pieChart" />}
+                    iconName={iconNames.activity}
                 />
                 <MetricCard
                     title="Частка готівки від загального прибутку"
                     value={formatPercent(percentages.cashPercent)}
-                    icon={<Icon name="activity" />}
+                    iconName={iconNames.activity}
                 />
                 <MetricCard
                     title="Частка терміналу від загального прибутку"
                     value={formatPercent(percentages.terminalPercent)}
-                    icon={<Icon name="activity" />}
+                    iconName={iconNames.activity}
                 />
                 <MetricCard
                     title="Собівартість продуктів від загального прибутку"
                     value={formatPercent(percentages.costPercent)}
-                    icon={<Icon name="activity" />}
+                    iconName={iconNames.activity}
                 />
                 <MetricCard
                     title="Частка списання від загального прибутку"
                     value={formatPercent(percentages.writeOffPercent)}
-                    icon={<Icon name="activity" />}
+                    iconName={iconNames.activity}
                 />
                 <MetricCard
                     title="Частка зарплат від загального прибутку"
                     value={formatPercent(percentages.salaryPercent)}
-                    icon={<Icon name="activity" />}
+                    iconName={iconNames.activity}
                 />
             </div>
         </section>

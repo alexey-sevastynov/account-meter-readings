@@ -26,6 +26,7 @@ import { TableToolbox } from "@/shared/ui/table-toolbox/TableToolbox";
 import { Table } from "@/shared/ui/table/Table";
 import { createTableConfig } from "@/shared/lib/react-table/table-config";
 import { TablePager } from "@/shared/ui/table-pager/TablePager";
+import { textPositions } from "@/shared/ui/typography/text-position";
 
 interface DailyReportTableProps {
     data: DailyReport[];
@@ -72,7 +73,7 @@ export function DailyReportTable({ data, isLoading }: DailyReportTableProps) {
 
     return (
         <div className="w-full">
-            <Title position="left">Щоденні звіти</Title>
+            <Title textPosition={textPositions.left}>Щоденні звіти</Title>
             <Text className="mt-1">Загальна кількість звітів: {data.length}</Text>
             <TableToolbox columns={reactTable.getAllColumns()} />
             <DailyReportModals

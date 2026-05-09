@@ -1,6 +1,6 @@
 import { MetricCard } from "@/shared/ui/metric-card/MetricCard";
 import { formatUah } from "@/shared/utils/currency";
-import { Icon } from "@/shared/ui/icon/Icon";
+import { iconNames } from "@/shared/ui/icon/icon-name";
 
 interface ExpensesBreakdownSectionProps {
     breakdown?: {
@@ -14,17 +14,19 @@ export function ExpensesBreakdownSection({ breakdown }: ExpensesBreakdownSection
 
     return (
         <section className="flex flex-col gap-3">
-            <h3 className="text-sm font-semibold tracking-wide text-gray-500 uppercase">Розбивка витрат</h3>
+            <h3 className="text-sm font-semibold tracking-wide text-gray-500 uppercase">
+                Розбивка операційних витрат
+            </h3>
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
                 <MetricCard
                     title="Щоденні витрати"
                     value={formatUah(breakdown.dailyExpenses)}
-                    icon={<Icon name="receiptText" />}
+                    iconName={iconNames.receiptText}
                 />
                 <MetricCard
                     title="Місячні витрати (пропорційно)"
                     value={formatUah(breakdown.monthlyExpensesApportioned)}
-                    icon={<Icon name="calendar" />}
+                    iconName={iconNames.calendar}
                 />
             </div>
         </section>

@@ -1,7 +1,6 @@
 import { MetricCard } from "@/shared/ui/metric-card/MetricCard";
 import { formatUah } from "@/shared/utils/currency";
-import { Icon } from "@/shared/ui/icon/Icon";
-import { iconSizes } from "@/shared/ui/icon/icon-size";
+import { iconNames } from "@/shared/ui/icon/icon-name";
 
 interface FinancialResultSectionProps {
     netProfit: number;
@@ -18,13 +17,13 @@ export function FinancialResultSection({ netProfit, netProfitAfterExpenses }: Fi
                 <MetricCard
                     title="Брудний прибуток"
                     value={formatUah(netProfit)}
-                    icon={<Icon name="wallet" size={iconSizes.large} className="text-emerald-500" />}
+                    iconName={iconNames.wallet}
                     className="border-emerald-200 bg-emerald-50"
                 />
                 <MetricCard
                     title="Чистий прибуток"
                     value={formatUah(netProfitAfterExpenses)}
-                    icon={<Icon name="piggyBank" size={iconSizes.large} className="text-emerald-600" />}
+                    iconName={iconNames.piggyBank}
                     className="border-emerald-300 bg-emerald-100"
                 />
             </div>

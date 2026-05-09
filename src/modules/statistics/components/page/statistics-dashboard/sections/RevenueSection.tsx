@@ -1,6 +1,6 @@
 import { MetricCard } from "@/shared/ui/metric-card/MetricCard";
 import { formatUah } from "@/shared/utils/currency";
-import { Icon } from "@/shared/ui/icon/Icon";
+import { iconNames } from "@/shared/ui/icon/icon-name";
 
 interface RevenueSectionProps {
     totalRevenue: number;
@@ -16,13 +16,13 @@ export function RevenueSection({ totalRevenue, cashRevenue, terminalRevenue }: R
                 <MetricCard
                     title="Загальна виручка"
                     value={formatUah(totalRevenue)}
-                    icon={<Icon name="dollarSign" />}
+                    iconName={iconNames.dollarSign}
                 />
-                <MetricCard title="Готівка" value={formatUah(cashRevenue)} icon={<Icon name="banknote" />} />
+                <MetricCard title="Готівка" value={formatUah(cashRevenue)} iconName={iconNames.banknote} />
                 <MetricCard
                     title="Термінал"
                     value={formatUah(terminalRevenue)}
-                    icon={<Icon name="creditCard" />}
+                    iconName={iconNames.creditCard}
                 />
             </div>
         </section>
