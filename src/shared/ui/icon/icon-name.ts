@@ -1,6 +1,10 @@
 export const iconNames = {
     eye: "eye",
     eyeOff: "eyeOff",
+    logOut: "logOut",
+    sun: "sun",
+    moon: "moon",
+    monitor: "monitor",
     chevronDown: "chevronDown",
     chevronsUpDown: "chevronsUpDown",
     chevronUp: "chevronUp",

@@ -11,9 +11,11 @@ import { iconNames } from "@/shared/ui/icon/icon-name";
 
 interface CoffeeShopLayoutProps {
     children: React.ReactNode;
+    userName?: string;
+    userRole?: string;
 }
 
-export function CoffeeShopLayout({ children }: CoffeeShopLayoutProps) {
+export function CoffeeShopLayout({ children, userName, userRole }: CoffeeShopLayoutProps) {
     const router = useRouter();
     const token = useAppSelector((state) => state.auth.token);
 
@@ -44,7 +46,7 @@ export function CoffeeShopLayout({ children }: CoffeeShopLayoutProps) {
                 logoIconName={iconNames.coffee}
             />
             <div className="flex-1 overflow-auto">
-                <Toolbar className="shrink-0" />
+                <Toolbar className="shrink-0" userName={userName} userRole={userRole} />
                 <main className="p-4">{children}</main>
             </div>
         </div>
