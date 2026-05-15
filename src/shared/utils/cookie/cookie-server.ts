@@ -4,9 +4,15 @@ import { cookies } from "next/headers";
 import { CookieKey } from "@/shared/utils/cookie/cookie-key";
 
 export async function getServerCookie(key: CookieKey) {
-    const cookieStore = cookies();
-    const cookieList = (await cookieStore).getAll() ?? [];
-    const cookie = cookieList.find((c) => c.name === key);
+    return getCookieValueByKey(key);
+}
 
-    return cookie?.value;
+async function getCookieStore() {
+    return cookies();
+}
+
+async function getCookieValueByKey(key: CookieKey) {
+    const cookieStore = await getCookieStore();
+
+    return cookieStore.get(key)?.value;
 }

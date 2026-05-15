@@ -10,9 +10,11 @@ import { redirectTo } from "@/shared/utils/navigation";
 
 interface AppLayoutProps {
     children: React.ReactNode;
+    userName?: string;
+    userRole?: string;
 }
 
-export function AppLayout({ children }: AppLayoutProps) {
+export function AppLayout({ children, userName, userRole }: AppLayoutProps) {
     const router = useRouter();
     const token = useAppSelector((state) => state.auth.token);
 
@@ -27,7 +29,7 @@ export function AppLayout({ children }: AppLayoutProps) {
             <Sidebar sidebarNavigationItems={[]} />
 
             <div className="flex flex-1 flex-col">
-                <Toolbar />
+                <Toolbar userName={userName} userRole={userRole} />
                 <main className="flex-1 p-4">{children}</main>
             </div>
         </div>

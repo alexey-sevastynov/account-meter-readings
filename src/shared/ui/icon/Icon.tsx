@@ -3,6 +3,10 @@ import { cn } from "@/shared/lib/cn";
 import {
     Eye,
     EyeOff,
+    LogOut,
+    Sun,
+    Moon,
+    Monitor,
     ChevronDown,
     ChevronsUpDown,
     ChevronUp,
@@ -55,6 +59,10 @@ interface IconComponentProps {
 const iconMap: Record<IconName, ComponentType<IconComponentProps>> = {
     eye: Eye,
     eyeOff: EyeOff,
+    logOut: LogOut,
+    sun: Sun,
+    moon: Moon,
+    monitor: Monitor,
     chevronDown: ChevronDown,
     chevronsUpDown: ChevronsUpDown,
     chevronUp: ChevronUp,

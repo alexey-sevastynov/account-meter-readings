@@ -1,12 +1,7 @@
 import { ThemeMode, themeModes } from "@/shared/context/theme-provider/theme-mode";
 import { getDarkSchemeMedia } from "@/shared/context/theme-provider/color-scheme-media";
 import { isBrowser } from "@/shared/lib/environments";
-import { getLocalStorageItem } from "@/shared/utils/local-storage";
-import { localStorageKeys } from "@/shared/enums/local-storage-key";
-
-export function isSystemTheme(theme: ThemeMode) {
-    return theme === themeModes.system;
-}
+import { isSystemTheme } from "@/shared/context/theme-provider/theme-mode-checks";
 
 export function applyThemeToDocument(theme: ThemeMode) {
     if (!isBrowser()) return;
@@ -19,15 +14,7 @@ export function applyThemeToDocument(theme: ThemeMode) {
     root.classList.add(resolved);
 }
 
-export function getInitialTheme(defaultTheme: ThemeMode): ThemeMode {
-    if (!isBrowser()) return defaultTheme;
-
-    const storedTheme = getLocalStorageItem<ThemeMode>(localStorageKeys.theme);
-
-    return storedTheme ?? defaultTheme;
-}
-
-export function getResolvedTheme(theme: ThemeMode) {
+function getResolvedTheme(theme: ThemeMode) {
     if (!isSystemTheme(theme)) return theme;
 
     if (!isBrowser()) return themeModes.light;

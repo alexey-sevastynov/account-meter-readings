@@ -1,11 +1,14 @@
 import { cn } from "@/shared/lib/cn";
 import { InvertedCorner } from "@/shared/layout/toolbar/inverted-corner/InvertedCorner";
+import { ToolbarAvatarMenu } from "@/shared/layout/toolbar/toolbar-avatar-menu/ToolbarAvatarMenu";
 
 interface ToolbarProps {
     className?: string;
+    userName?: string;
+    userRole?: string;
 }
 
-export function Toolbar({ className }: ToolbarProps) {
+export function Toolbar({ className, userName, userRole }: ToolbarProps) {
     return (
         <header
             className={cn(
@@ -14,6 +17,7 @@ export function Toolbar({ className }: ToolbarProps) {
             )}
         >
             <InvertedCorner className="absolute top-full left-0" fillColor="fill-sidebar" />
+            <ToolbarAvatarMenu userName={userName} userRole={userRole} />
         </header>
     );
 }

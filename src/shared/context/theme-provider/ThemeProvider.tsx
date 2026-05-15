@@ -1,11 +1,13 @@
 "use client";
 
 import { createContext, useContext, useEffect, useState, ReactNode } from "react";
+import { cookieKeys } from "@/shared/utils/cookie/cookie-key";
 import { localStorageKeys } from "@/shared/enums/local-storage-key";
 import { ThemeMode, themeModes } from "@/shared/context/theme-provider/theme-mode";
 import { VoidFunc } from "@/shared/types/getter-setter-functions";
 import { setLocalStorageItem } from "@/shared/utils/local-storage";
-import { getInitialTheme, applyThemeToDocument } from "@/shared/context/theme-provider/theme-provider.funcs";
+import { setCookie } from "@/shared/utils/cookie/cookie-client";
+import { applyThemeToDocument } from "@/shared/context/theme-provider/theme-provider.funcs";
 
 interface ThemeContextType {
     currentTheme: ThemeMode;
@@ -21,15 +23,16 @@ export function ThemeProvider({
     children: ReactNode;
     defaultTheme?: ThemeMode;
 }) {
-    const [currentTheme, setCurrentTheme] = useState<ThemeMode>(() => getInitialTheme(defaultTheme));
+    const [currentTheme, setCurrentTheme] = useState<ThemeMode>(defaultTheme);
 
     useEffect(() => {
         applyThemeToDocument(currentTheme);
+        setLocalStorageItem(localStorageKeys.theme, currentTheme);
+        setCookie(cookieKeys.theme, currentTheme);
     }, [currentTheme]);
 
     const setTheme = (newTheme: ThemeMode) => {
         setCurrentTheme(newTheme);
-        setLocalStorageItem(localStorageKeys.theme, newTheme);
     };
 
     return <ThemeContext.Provider value={{ currentTheme, setTheme }}>{children}</ThemeContext.Provider>;

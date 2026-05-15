@@ -33,29 +33,25 @@ const variants: Record<ButtonVariantKey, string> = {
     primary: `
         bg-primary text-primary-foreground
         hover:bg-primary/90
-        active:bg-primary/80
-    `,
+        active:bg-primary/80`,
     secondary: `
         bg-secondary text-secondary-foreground
         hover:bg-secondary/80
-        active:bg-secondary/70
-    `,
+        active:bg-secondary/70`,
     outline: `
         border border-border
         text-foreground
         hover:bg-accent
-        active:bg-accent/70
-    `,
+        active:bg-accent/70`,
     danger: `
         bg-destructive text-white
         hover:bg-destructive/90
         active:bg-destructive/80
-    `,
+        [&_svg]:text-white`,
     link: `
         bg-transparent text-primary
         hover:underline
-        active:opacity-70
-    `,
+        active:opacity-70`,
     icon: "bg-transparent",
 };
 
