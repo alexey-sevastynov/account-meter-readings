@@ -2,6 +2,7 @@ import { MetricCard } from "@/shared/ui/metric-card/MetricCard";
 import { StatisticsPercentages } from "@/modules/statistics/types/statistics-percentages";
 import { formatPercent } from "@/shared/utils/number";
 import { iconNames } from "@/shared/ui/icon/icon-name";
+import { Text } from "@/shared/ui/typography/text/Text";
 
 interface PercentagesSectionProps {
     percentages: StatisticsPercentages;
@@ -10,7 +11,7 @@ interface PercentagesSectionProps {
 export function PercentagesSection({ percentages }: PercentagesSectionProps) {
     return (
         <section className="flex flex-col gap-3">
-            <h3 className="text-sm font-semibold tracking-wide text-gray-500 uppercase">Відсотки</h3>
+            <Text uppercase>Відсотки</Text>
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
                 <MetricCard
                     title="Частка комісій від загального прибутку"

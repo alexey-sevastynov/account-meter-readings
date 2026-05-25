@@ -1,6 +1,7 @@
 import { MetricCard } from "@/shared/ui/metric-card/MetricCard";
 import { formatUah } from "@/shared/utils/currency";
 import { iconNames } from "@/shared/ui/icon/icon-name";
+import { Text } from "@/shared/ui/typography/text/Text";
 
 interface EmployeeStat {
     name: string;
@@ -19,7 +20,7 @@ export function TeamStatisticsSection({ employees }: TeamStatisticsSectionProps)
 
     return (
         <section className="flex flex-col gap-3">
-            <h3 className="text-sm font-semibold tracking-wide text-gray-500 uppercase">Команда</h3>
+            <Text uppercase>Команда</Text>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 {employees.map((emp) => (
                     <MetricCard

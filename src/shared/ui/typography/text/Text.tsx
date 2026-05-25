@@ -9,6 +9,7 @@ interface TextProps {
     textPosition?: TextPosition;
     textSize?: TextSize;
     textWeight?: TextWeight;
+    uppercase?: boolean;
     className?: string;
 }
 
@@ -17,10 +18,20 @@ export function Text({
     textPosition = textPositions.left,
     textSize = textSizes.md,
     textWeight = textWeights.normal,
+    uppercase = false,
     className,
 }: TextProps) {
     return (
-        <p className={cn("text-foreground leading-relaxed", textSize, textWeight, textPosition, className)}>
+        <p
+            className={cn(
+                "text-foreground leading-relaxed",
+                textSize,
+                textWeight,
+                textPosition,
+                uppercase && "uppercase",
+                className,
+            )}
+        >
             {children}
         </p>
     );

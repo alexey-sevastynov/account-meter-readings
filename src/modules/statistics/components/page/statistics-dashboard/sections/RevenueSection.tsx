@@ -1,6 +1,7 @@
 import { MetricCard } from "@/shared/ui/metric-card/MetricCard";
 import { formatUah } from "@/shared/utils/currency";
 import { iconNames } from "@/shared/ui/icon/icon-name";
+import { Text } from "@/shared/ui/typography/text/Text";
 
 interface RevenueSectionProps {
     totalRevenue: number;
@@ -11,7 +12,7 @@ interface RevenueSectionProps {
 export function RevenueSection({ totalRevenue, cashRevenue, terminalRevenue }: RevenueSectionProps) {
     return (
         <section className="flex flex-col gap-3">
-            <h3 className="text-sm font-semibold tracking-wide text-gray-500 uppercase">Виручка</h3>
+            <Text uppercase>Виручка</Text>
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
                 <MetricCard
                     title="Загальна виручка"

@@ -9,6 +9,7 @@ interface TitleProps {
     textPosition?: TextPosition;
     textSize?: TextSize;
     textWeight?: TextWeight;
+    uppercase?: boolean;
     className?: string;
 }
 
@@ -17,6 +18,7 @@ export function Title({
     textPosition = textPositions.center,
     textSize = textSizes.xxl,
     textWeight = textWeights.bold,
+    uppercase = false,
     className,
 }: TitleProps) {
     return (
@@ -26,6 +28,7 @@ export function Title({
                 textPosition,
                 textSize,
                 textWeight,
+                uppercase && "uppercase",
                 className,
             )}
         >

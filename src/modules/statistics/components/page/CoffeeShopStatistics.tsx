@@ -11,6 +11,8 @@ import { DateRange } from "@/shared/types/date-range/date-range-type";
 import { initializeDateRangeFromDailyReports } from "@/modules/statistics/components/page/coffeeShopStatistics.funcs";
 import { StatisticsDashboard } from "@/modules/statistics/components/page/statistics-dashboard/StatisticsDashboard";
 import { LoadingIndicator } from "@/shared/ui/loading-indicator/LoadingIndicator";
+import { textPositions } from "@/shared/ui/typography/text-position";
+import { Title } from "@/shared/ui/typography/title/Title";
 
 export function CoffeeShopStatistics() {
     const dispatch = useAppDispatch();
@@ -50,7 +52,7 @@ export function CoffeeShopStatistics() {
     return (
         <div className="flex flex-col gap-6 p-4">
             <div className="flex flex-col gap-4 rounded-xl border p-4 shadow-sm">
-                <h2 className="text-lg font-semibold text-gray-800">Статистика кав&apos;ярні</h2>
+                <Title textPosition={textPositions.left}>Статистика кав&apos;ярні</Title>
 
                 {isInitialLoading ? (
                     <LoadingIndicator text="Завантаження звітів..." />

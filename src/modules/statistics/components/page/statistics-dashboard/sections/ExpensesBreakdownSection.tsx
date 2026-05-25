@@ -2,6 +2,7 @@ import { MetricCard } from "@/shared/ui/metric-card/MetricCard";
 import { ExpensesBreakdown } from "@/modules/statistics/types/expenses-breakdown";
 import { formatUah } from "@/shared/utils/currency";
 import { iconNames } from "@/shared/ui/icon/icon-name";
+import { Text } from "@/shared/ui/typography/text/Text";
 
 interface ExpensesBreakdownSectionProps {
     breakdown?: ExpensesBreakdown;
@@ -12,9 +13,7 @@ export function ExpensesBreakdownSection({ breakdown }: ExpensesBreakdownSection
 
     return (
         <section className="flex flex-col gap-3">
-            <h3 className="text-sm font-semibold tracking-wide text-gray-500 uppercase">
-                Розбивка операційних витрат
-            </h3>
+            <Text uppercase>Розбивка операційних витрат</Text>
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
                 <MetricCard
                     title="Щоденні витрати"
