@@ -12,4 +12,6 @@ export interface ResourceField<T extends FieldValues> {
     placeholder?: string;
     options?: Option[];
     highlightDates?: Date[];
+    fromYear?: number;
+    toYear?: number;
 }

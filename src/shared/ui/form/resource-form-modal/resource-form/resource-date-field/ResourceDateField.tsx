@@ -31,6 +31,8 @@ export function ResourceDateField<T extends FieldValues>({
                         onChange={(date) => {
                             controllerFieldState.field.onChange(formatDateToIsoDate(date));
                         }}
+                        fromYear={field.fromYear}
+                        toYear={field.toYear}
                         highlightDates={field.highlightDates}
                         className={errorMessage ? "border-destructive" : undefined}
                     />

@@ -15,6 +15,10 @@ export function getTodayDate() {
     return format(new Date(), "yyyy-MM-dd");
 }
 
+export function getCurrentYear() {
+    return new Date().getFullYear();
+}
+
 export function isDateInRange(date: Date | null, dateRange: DateRange) {
     if (!dateRange.from && !dateRange.to) return true;
 

@@ -3,8 +3,10 @@ import { employerPositionKeys } from "@/modules/employee/enums/employer-position
 import { resourceFieldTypes } from "@/shared/enums/resource-field-type";
 import { ResourceField } from "@/shared/types/resource-field";
 import { createEnumOptions } from "@/shared/utils/create-enum-options";
+import { getCurrentYear } from "@/shared/utils/date";
 import { employeeProps } from "@/modules/employee/constants/employee-props";
 import { employeeLabels } from "@/modules/employee/constants/employee-labels";
+import { minEmployeeBirthDateYear } from "@/modules/employee/constants/employee-date";
 import { Employee } from "@/modules/employee/types/employee";
 
 export const employeeFormFields: ResourceField<Employee>[] = [
@@ -35,6 +37,8 @@ export const employeeFormFields: ResourceField<Employee>[] = [
         name: employeeProps.birthDate as keyof Employee,
         label: employeeLabels.birthDate,
         type: resourceFieldTypes.date,
+        fromYear: minEmployeeBirthDateYear,
+        toYear: getCurrentYear(),
     },
     {
         name: employeeProps.employmentStartDate as keyof Employee,
