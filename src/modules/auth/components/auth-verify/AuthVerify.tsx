@@ -37,23 +37,27 @@ export default function AuthVerify({ token }: AuthVerifyProps) {
         <>
             {status === verifyStatusKeys.pending && (
                 <div className="flex flex-col items-center space-y-4">
-                    <p className="text-gray-600">Verifying your email...</p>
+                    <p className="text-gray-600">Верифікація вашої електронної пошти...</p>
                 </div>
             )}
 
             {status === verifyStatusKeys.success && (
                 <div className="flex flex-col items-center space-y-6">
                     <div className="text-5xl">🎉</div>
-                    <p className="text-xl font-semibold text-green-600">Mail successfully verified!</p>
-                    <Button text="Move to Home page" onClick={goToHomePage} />
+                    <p className="text-xl font-semibold text-green-600">
+                        Електронна пошта успішно верифікована!
+                    </p>
+                    <Button text="Головна сторінка" onClick={goToHomePage} />
                 </div>
             )}
 
             {status === verifyStatusKeys.error && (
                 <div className="flex flex-col items-center space-y-6">
                     <div className="text-5xl">⚠️</div>
-                    <p className="text-xl font-semibold text-red-600">Mail verification error</p>
-                    <Button text="Move to Home page" onClick={goToHomePage} />
+                    <p className="text-xl font-semibold text-red-600">
+                        Помилка верифікації електронної пошти
+                    </p>
+                    <Button text="Головна сторінка" onClick={goToHomePage} />
                 </div>
             )}
         </>

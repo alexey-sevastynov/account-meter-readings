@@ -35,18 +35,18 @@ export function AuthFormSignUp() {
                 name="userName"
                 control={control}
                 errors={errors}
-                label="User Name"
+                label="Ім'я користувача"
                 type="text"
-                rules={{ required: "User name is required" }}
+                rules={{ required: "Ім'я користувача є обов'язковим" }}
                 placeholder="Your name"
             />
             <ValidatedInput
                 name="email"
                 control={control}
                 errors={errors}
-                label="Email"
+                label="Електронна пошта"
                 type="email"
-                rules={{ required: "Email is required" }}
+                rules={{ required: "Електронна пошта є обов'язковою" }}
                 placeholder="your@email.com"
             />
             <PasswordInput name="password" control={control} errors={errors} />
@@ -54,10 +54,10 @@ export function AuthFormSignUp() {
                 name="confirmPassword"
                 control={control}
                 errors={errors}
-                label="Confirm Password"
+                label="Підтвердження пароля"
                 rules={{
-                    required: "Confirm your password",
-                    validate: (value: string) => value === password || "Passwords do not match",
+                    required: "Підтвердіть ваш пароль",
+                    validate: (value: string) => value === password || "Паролі не співпадають",
                 }}
             />
             {errorMessage?.message && (
@@ -65,13 +65,13 @@ export function AuthFormSignUp() {
             )}
             {token && !errorMessage && (
                 <NotificationMessage
-                    message="Registration successful! Please check your email to confirm your account."
+                    message="Реєстрація успішна! Перевірте свою електронну пошту для підтвердження облікового запису."
                     type={notificationMessageKeys.info}
                     autoClose={0}
                 />
             )}
 
-            <Button text="Sign Up" type="submit" className="w-full" loading={isLoading} />
+            <Button text="Зареєструватися" type="submit" className="w-full" loading={isLoading} />
         </form>
     );
 }

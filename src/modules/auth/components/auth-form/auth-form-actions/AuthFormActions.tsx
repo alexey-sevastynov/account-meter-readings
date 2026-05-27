@@ -17,12 +17,12 @@ export function AuthFormActions({ authMode, toggleAuthMode }: AuthFormActionsPro
         <>
             {isSignInMode(authMode) && (
                 <div className="mt-2 text-right">
-                    <Link href={routeKeys.forgotPassword}>Forgot password?</Link>
+                    <Link href={routeKeys.forgotPassword}>Забули пароль?</Link>
                 </div>
             )}
 
-            <p className="mt-8 text-center text-gray-600">
-                {isSignInMode(authMode) ? "Don’t have an account?" : "Already have an account?"}
+            <p className="mt-8 text-center">
+                {isSignInMode(authMode) ? "Не маєте облікового запису?" : "Вже маєте обліковий запис?"}
                 <Button
                     className="w-full"
                     variant={buttonVariantKeys.link}

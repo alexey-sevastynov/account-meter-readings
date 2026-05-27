@@ -14,9 +14,9 @@ export function toggleAuthMode(setAuthMode: VoidFunc<AuthModeKey>, currentAuthMo
 }
 
 export function getAuthModeLabel(mode: AuthModeKey) {
-    if (isSignInMode(mode)) return "Sign In";
+    if (isSignInMode(mode)) return "Вхід";
 
-    if (isSignUpMode(mode)) return "Sign Up";
+    if (isSignUpMode(mode)) return "Реєстрація";
 
     return "";
 }

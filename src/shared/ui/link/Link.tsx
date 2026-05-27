@@ -14,18 +14,12 @@ const baseStyles =
     "text-sm transition-colors hover:underline focus:outline-none focus:ring-2 focus:ring-offset-2";
 
 const variants: Record<LinkVariantKey, string> = {
-    primary: "text-gray-900 hover:text-gray-700 focus:ring-gray-400",
-    secondary: "text-gray-500 hover:text-gray-700 focus:ring-gray-300",
-    underline: "text-gray-900 underline hover:text-gray-700 focus:ring-gray-400",
+    primary: "text-foreground",
+    secondary: "text-secondary-foreground",
+    underline: "text-foreground underline",
 };
 
-export function Link({
-    href,
-    children,
-    variant = linkVariantKeys.primary,
-    className,
-    ...props
-}: LinkProps) {
+export function Link({ href, children, variant = linkVariantKeys.primary, className, ...props }: LinkProps) {
     return (
         <NextLink href={href} {...props} className={cn(baseStyles, variants[variant], className)}>
             {children}

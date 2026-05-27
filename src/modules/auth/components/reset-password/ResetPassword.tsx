@@ -62,10 +62,10 @@ export function ResetPassword({ token }: ResetPasswordProps) {
                     name="confirmPassword"
                     control={control}
                     errors={errors}
-                    label="Confirm Password"
+                    label="Підтвердження пароля"
                     rules={{
-                        required: "Confirm your password",
-                        validate: (value: string) => value === password || "Passwords do not match",
+                        required: "Підтвердіть ваш пароль",
+                        validate: (value: string) => value === password || "Паролі не співпадають",
                     }}
                 />
                 {notificationMessage && (
@@ -73,7 +73,7 @@ export function ResetPassword({ token }: ResetPasswordProps) {
                 )}
                 {isNotificationSuccess(notificationTypeMessage) && (
                     <Button
-                        text="Go to sign in page"
+                        text="Увійти"
                         type="button"
                         variant={buttonVariantKeys.outline}
                         onClick={goToSignInPage}
@@ -82,7 +82,7 @@ export function ResetPassword({ token }: ResetPasswordProps) {
                 )}
                 {!isNotificationSuccess(notificationTypeMessage) && (
                     <Button
-                        text="Send reset link"
+                        text="Скинути пароль"
                         type="submit"
                         disabled={isLoading}
                         className="flex w-full items-center justify-center space-x-2"

@@ -16,15 +16,15 @@ interface PasswordInputProps<TFormValues extends FieldValues> {
 }
 
 const defaultRules = {
-    required: "Password is required",
-    minLength: { value: 8, message: "Min length 8" },
+    required: "Пароль є обов'язковим",
+    minLength: { value: 8, message: "Мінімальна довжина 8 символів" },
 };
 
 export function PasswordInput<TFormValues extends FieldValues>({
     name,
     control,
     errors,
-    label = "Password",
+    label = "Пароль",
     rules = defaultRules,
     placeholder = "••••••••",
 }: PasswordInputProps<TFormValues>) {

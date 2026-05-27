@@ -58,9 +58,9 @@ export function AuthFormSignIn() {
                 name="email"
                 control={control}
                 errors={errors}
-                label="Email"
+                label="Електронна пошта"
                 type="email"
-                rules={{ required: "Email is required" }}
+                rules={{ required: "Електронна пошта є обов'язковоюі" }}
                 placeholder="johndoe@example.com"
             />
 
@@ -72,16 +72,16 @@ export function AuthFormSignIn() {
 
             <div>
                 <Button
-                    text="Sign In"
+                    text="Увійти"
                     type="submit"
                     className="flex w-full items-center justify-center space-x-2"
                     loading={isLoading}
                 />
 
-                <Divider text="OR" className="py-2" />
+                <Divider text="АБО" className="py-2" />
 
                 <Button
-                    text="Continue as Guest"
+                    text="Продовжити як Гість"
                     variant={buttonVariantKeys.outline}
                     type="button"
                     className="flex w-full items-center justify-center space-x-2"

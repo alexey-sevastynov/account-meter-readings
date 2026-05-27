@@ -41,15 +41,15 @@ export function ForgotPassword() {
 
     return (
         <>
-            <Title className="text-black">Forgot Password</Title>
+            <Title>Забули пароль?</Title>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                 <ValidatedInput
                     name="email"
                     control={control}
                     errors={errors}
-                    label="Email"
+                    label="Електронна пошта"
                     type="email"
-                    rules={{ required: "Email is required" }}
+                    rules={{ required: "Електронна пошта є обов'язковою" }}
                     placeholder="johndoe@email.com"
                 />
                 {notificationMessage && (
@@ -57,14 +57,14 @@ export function ForgotPassword() {
                 )}
                 <div className="flex gap-3">
                     <Button
-                        text="Cancel"
+                        text="Скасувати"
                         type="button"
                         variant={buttonVariantKeys.outline}
                         onClick={goToSignInPage}
                         className="w-full"
                     />
                     <Button
-                        text="Send reset link"
+                        text="Скинути пароль"
                         type="submit"
                         disabled={isLoading}
                         className="flex w-full items-center justify-center space-x-2"
