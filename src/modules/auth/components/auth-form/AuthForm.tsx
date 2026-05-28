@@ -26,7 +26,7 @@ export function AuthForm() {
     return (
         <>
             <Title className="text-foreground">{getAuthModeLabel(authMode)}</Title>
-            {isSignInMode(authMode) ? <AuthFormSignIn /> : <AuthFormSignUp />}
+            {isSignInMode(authMode) ? <AuthFormSignIn authMode={authMode} /> : <AuthFormSignUp />}
             <AuthFormActions authMode={authMode} toggleAuthMode={onToggleAuthMode} />
         </>
     );

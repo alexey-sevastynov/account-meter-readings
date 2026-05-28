@@ -1,6 +1,7 @@
 "use client";
 
 import { ReactNode } from "react";
+import { AuthThemeModeSwitcher } from "@/shared//layout/auth-layout/AuthThemeModeSwitcher";
 
 interface AuthLayoutProps {
     children: ReactNode;
@@ -22,6 +23,7 @@ export function AuthLayout({ children }: AuthLayoutProps) {
             </video>
 
             <div className="bg-background text-foreground relative max-h-[calc(100vh-40px)] w-full max-w-md overflow-y-auto rounded-3xl border p-10 text-center shadow-2xl">
+                <AuthThemeModeSwitcher />
                 {children}
             </div>
         </div>

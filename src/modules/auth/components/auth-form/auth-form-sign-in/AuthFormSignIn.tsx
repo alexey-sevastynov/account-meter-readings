@@ -17,8 +17,11 @@ import { routeKeys } from "@/shared/constants/route-keys";
 import { SignInFormValues } from "@/modules/auth/types/sign-in-form-values";
 import { login } from "@/modules/auth/components/auth-form/auth-form-sign-in/authFormSignIn.funcs";
 import { signInAsGuest } from "@/modules/auth/model/thunks";
+import { Link } from "@/shared/ui/link/Link";
+import { isSignInMode } from "@/modules/auth/components/auth-form/AuthForm.funcs";
+import { AuthModeKey } from "@/modules/auth/enums/auth-mode-key";
 
-export function AuthFormSignIn() {
+export function AuthFormSignIn({ authMode }: { authMode: AuthModeKey }) {
     const dispatch = useAppDispatch();
     const router = useRouter();
     const errorMessage = useAppSelector((state) => state.auth.error);
@@ -68,6 +71,12 @@ export function AuthFormSignIn() {
 
             {errorMessage?.message && (
                 <NotificationMessage message={errorMessage.message} type={notificationMessageKeys.error} />
+            )}
+
+            {isSignInMode(authMode) && (
+                <div className="mt-2 text-right">
+                    <Link href={routeKeys.forgotPassword}>Забули пароль?</Link>
+                </div>
             )}
 
             <div>
