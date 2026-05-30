@@ -1,4 +1,4 @@
-import { MetricCard } from "@/shared/ui/metric-card/MetricCard";
+import { MetricCard } from "@/shared/ui/metrics/metric-card/MetricCard";
 import { StatisticsPercentages } from "@/modules/statistics/types/statistics-percentages";
 import { formatPercent } from "@/shared/utils/number";
 import { iconNames } from "@/shared/ui/icon/icon-name";

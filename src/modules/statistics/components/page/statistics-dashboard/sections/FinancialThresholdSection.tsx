@@ -1,5 +1,6 @@
 import { StatisticsPercentages } from "@/modules/statistics/types/statistics-percentages";
-import { ThresholdScaleCard } from "@/shared/ui/threshold-scale-card/ThresholdScaleCard";
+import { CenteredScaleCard, RangeZone } from "@/shared/ui/metrics/centered-scale-card/CenteredScaleCard";
+import { ThresholdScaleCard } from "@/shared/ui/metrics/threshold-scale-card/ThresholdScaleCard";
 import { Text } from "@/shared/ui/typography/text/Text";
 import { formatPercent } from "@/shared/utils/number";
 
@@ -20,9 +21,25 @@ export function FinancialMetricsSection({ percentages }: PercentagesSectionProps
         "Показує частку чистої ставки та бонусів барист у загальному виторгу. " +
         "Що вища каса кав'ярні, то вигіднішим стає цей відсоток для бізнесу.";
 
+    const rangeZoneInventoryNetAdjustment: RangeZone[] = [
+        { from: -4, to: -2, type: "critical" },
+        { from: -2, to: -1, type: "normal" },
+        { from: -1, to: 1, type: "ideal" },
+        { from: 1, to: 2, type: "normal" },
+        { from: 2, to: 4, type: "critical" },
+    ];
+
     return (
         <section className="flex flex-col gap-3">
             <Text uppercase>Фінансові метрики з порогами</Text>
+            <CenteredScaleCard
+                title="Відхилення інвентаризації"
+                value={formatPercent(percentages.inventoryNetAdjustmentPercent)}
+                currentValue={percentages.inventoryNetAdjustmentPercent}
+                minValue={-4}
+                maxValue={4}
+                zones={rangeZoneInventoryNetAdjustment}
+            />
             <ThresholdScaleCard
                 className="sm:col-span-2 lg:col-span-2"
                 title="Собівартість продуктів від виторгу (Food Cost)"

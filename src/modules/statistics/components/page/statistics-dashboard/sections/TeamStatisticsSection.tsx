@@ -1,4 +1,4 @@
-import { MetricCard } from "@/shared/ui/metric-card/MetricCard";
+import { MetricCard } from "@/shared/ui/metrics/metric-card/MetricCard";
 import { formatUah } from "@/shared/utils/currency";
 import { iconNames } from "@/shared/ui/icon/icon-name";
 import { Text } from "@/shared/ui/typography/text/Text";
