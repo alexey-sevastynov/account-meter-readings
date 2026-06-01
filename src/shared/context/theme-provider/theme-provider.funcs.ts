@@ -1,7 +1,6 @@
 import { ThemeMode, themeModes } from "@/shared/context/theme-provider/theme-mode";
-import { getDarkSchemeMedia } from "@/shared/context/theme-provider/color-scheme-media";
 import { isBrowser } from "@/shared/lib/environments";
-import { isSystemTheme } from "@/shared/context/theme-provider/theme-mode-checks";
+import { isSystemTheme, isSystemDark } from "@/shared/context/theme-provider/theme-mode-checks";
 
 export function applyThemeToDocument(theme: ThemeMode) {
     if (!isBrowser()) return;
@@ -17,9 +16,5 @@ export function applyThemeToDocument(theme: ThemeMode) {
 function getResolvedTheme(theme: ThemeMode) {
     if (!isSystemTheme(theme)) return theme;
 
-    if (!isBrowser()) return themeModes.light;
-
-    const isDarkThemeMode = getDarkSchemeMedia();
-
-    return isDarkThemeMode ? themeModes.dark : themeModes.light;
+    return isSystemDark() ? themeModes.dark : themeModes.light;
 }
