@@ -16,7 +16,7 @@ export function FloatingLabel({ label, isFocused, hasValue }: FloatingLabelProps
     return (
         <span className={cn(baseStyles, isFloating ? labelPositionFocused : labelPositionDefault)}>
             {isFloating && (
-                <span className="absolute inset-0 -z-10 rounded bg-[linear-gradient(to_top,var(--color-input)_50%,var(--color-background)_50%)]" />
+                <span className="bg-background absolute inset-0 -z-10 rounded bg-[linear-gradient(to_top,var(--color-input)_50%,var(--color-background)_50%)]" />
             )}
             {label}
         </span>
