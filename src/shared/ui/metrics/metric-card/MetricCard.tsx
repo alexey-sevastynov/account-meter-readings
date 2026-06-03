@@ -19,7 +19,10 @@ interface MetricCardProps {
 
 export function MetricCard({ title, value, iconName, description, className }: MetricCardProps) {
     return (
-        <div className={cn("rounded-xl border p-4 shadow-sm transition hover:shadow-md", className)}>
+        <div
+            className={cn("rounded-xl border p-4 shadow-sm transition hover:shadow-md", className)}
+            tabIndex={0}
+        >
             <div className="flex items-center justify-between gap-4">
                 <Text textSize={textSizes.sm}>{title}</Text>
                 <Icon

@@ -65,7 +65,10 @@ export function CenteredScaleCard({
     }, [clamped, zones, minValue, range]);
 
     return (
-        <div className={cn("rounded-xl border p-4 shadow-sm transition hover:shadow-md", className)}>
+        <div
+            className={cn("rounded-xl border p-4 shadow-sm transition hover:shadow-md", className)}
+            tabIndex={0}
+        >
             <div className="flex items-start justify-between gap-4">
                 <Text textSize={textSizes.sm}>{title}</Text>
 

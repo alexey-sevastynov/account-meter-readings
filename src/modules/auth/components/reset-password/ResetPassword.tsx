@@ -55,7 +55,7 @@ export function ResetPassword({ token }: ResetPasswordProps) {
 
     return (
         <>
-            <Title className="text-black">Reset Password</Title>
+            <Title>Скинути пароль</Title>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                 <PasswordInput name="password" control={control} errors={errors} />
                 <PasswordInput

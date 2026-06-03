@@ -1,21 +1,13 @@
-"use client";
-
-import { useEffect } from "react";
-import { useRouter } from "next/navigation";
-import { useAppSelector } from "@/shared/lib/redux/hooks/use-app-selector";
-import { redirectTo } from "@/shared/utils/navigation";
+import { SignInClient } from "@/app/(auth)/sign-in/SignInClient";
 import { routeKeys } from "@/shared/constants/route-keys";
-import { AuthForm } from "@/modules/auth/components/auth-form/AuthForm";
+import { createMetadata } from "@/shared/utils/seo/create-metadata";
 
-export default function SignInPage() {
-    const router = useRouter();
-    const token = useAppSelector((state) => state.auth.token);
+export const metadata = createMetadata({
+    title: "Вхід в систему",
+    noIndex: true,
+    canonicalPath: routeKeys.signIn,
+});
 
-    useEffect(() => {
-        if (token) {
-            redirectTo(router, routeKeys.home);
-        }
-    }, [token, router]);
-
-    return <AuthForm />;
+export default async function SignInPage() {
+    return <SignInClient />;
 }

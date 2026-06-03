@@ -38,7 +38,7 @@ export function CoffeeShopLayout({ children, userName, userRole }: CoffeeShopLay
                         label: "Аудит інвентаризації",
                     },
                     {
-                        href: routeKeys.expenseReport,
+                        href: routeKeys.expenseReports,
                         iconName: iconNames.wallet,
                         label: "Операційні витрати",
                     },
