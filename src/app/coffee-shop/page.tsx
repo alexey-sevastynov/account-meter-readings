@@ -3,6 +3,7 @@ import { createMetadata } from "@/shared/utils/seo/create-metadata";
 import { JsonLd } from "@/shared/ui/seo/JsonLd";
 import { generateResourceWorkspaceSchema } from "@/shared/utils/seo/shema/generate-resource-workspace";
 import { routeKeys } from "@/shared/constants/route-keys";
+import { BirthdayToastNotifier } from "@/modules/employee/components/birthday-toast-notifier/BirthdayToastNotifier";
 
 export const metadata = createMetadata({
     title: "Панель управління",
@@ -23,6 +24,7 @@ export default async function CoffeeShopPage() {
     return (
         <>
             <JsonLd schema={shopSchema} />
+            <BirthdayToastNotifier />
             <CoffeeShopStatistics />
         </>
     );

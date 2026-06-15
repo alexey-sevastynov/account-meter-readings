@@ -1,7 +1,8 @@
-import { toast } from "sonner";
+import { ReactNode } from "react";
+import { ExternalToast, toast } from "sonner";
 
 export const appToast = {
-    success: (message: string) => toast.success(message),
-    error: (message: string) => toast.error(message),
-    info: (message: string) => toast(message),
+    success: (message: ReactNode, options?: ExternalToast) => toast.success(message, options),
+    error: (message: ReactNode, options?: ExternalToast) => toast.error(message, options),
+    info: (message: ReactNode, options?: ExternalToast) => toast(message, options),
 };

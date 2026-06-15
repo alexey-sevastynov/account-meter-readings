@@ -42,6 +42,8 @@ import {
     PieChart,
     Activity,
     ClipboardCheck,
+    Cake,
+    Info,
 } from "lucide-react";
 import { IconColor, iconColors } from "@/shared/ui/icon/icon-color";
 import { IconName, iconNames } from "@/shared/ui/icon/icon-name";
@@ -98,6 +100,8 @@ const iconMap: Record<IconName, ComponentType<IconComponentProps>> = {
     pieChart: PieChart,
     activity: Activity,
     clipboardCheck: ClipboardCheck,
+    cake: Cake,
+    info: Info,
 } as const;
 
 interface IconProps {
