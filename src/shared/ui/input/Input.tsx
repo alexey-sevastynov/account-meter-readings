@@ -35,7 +35,7 @@ export function MRInput({
     const [isFocused, setIsFocused] = useState(false);
 
     const value = externalValue ?? internalValue;
-    const hasValue = Boolean(value);
+    const hasValue = value !== undefined && value !== "";
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (onChange) {

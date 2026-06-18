@@ -1,5 +1,5 @@
 import { Control, Controller, FieldErrors, FieldValues } from "react-hook-form";
-import { isNumberFieldType } from "@/shared/ui/form/resource-form-modal/resource-form/resource-input-field/resourceInputField.funcs";
+import { parseInputFieldValue } from "@/shared/ui/form/resource-form-modal/resource-form/resource-input-field/resourceInputField.funcs";
 import { ResourceField } from "@/shared/types/resource-field";
 import { MRInput } from "@/shared/ui/input/Input";
 
@@ -32,7 +32,7 @@ export function ResourceInputField<T extends FieldValues>({
                         value={controllerFieldState.field.value ?? ""}
                         onChange={(e) =>
                             controllerFieldState.field.onChange(
-                                isNumberFieldType(field.type) ? Number(e.target.value) : e.target.value,
+                                parseInputFieldValue(field.type, e.target.value),
                             )
                         }
                     />
