@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { cookieKeys } from "@/shared/utils/cookie/cookie-key";
 import { buildRoutePath } from "@/shared/utils/navigation";
 import { routeKeys } from "@/shared/constants/route-keys";
-import { userRoleKeys } from "@/modules/auth/enums/user-role-key";
+import { isAdmin } from "@/shared/utils/permissions";
 
 const redirectToSignInPath = buildRoutePath(routeKeys.signIn);
 const redirectToHomePath = buildRoutePath(routeKeys.home);
@@ -57,7 +57,6 @@ function shouldRedirectToHome(pathname: string, isVerifiedMail: boolean, token?:
 function canAccessCoffeeShop(pathname: string, isVerifiedMail: boolean, token?: string, userRole?: string) {
     const isCoffeeShopRoute = pathname.startsWith(routeKeys.coffeeShop);
     const isAuthenticated = Boolean(token);
-    const isAdmin = userRole === userRoleKeys.admin;
 
-    return !isCoffeeShopRoute || (isAuthenticated && isVerifiedMail && isAdmin);
+    return !isCoffeeShopRoute || (isAuthenticated && isVerifiedMail && isAdmin(userRole));
 }

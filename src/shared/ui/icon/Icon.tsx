@@ -44,6 +44,8 @@ import {
     ClipboardCheck,
     Cake,
     Info,
+    Vault,
+    Hexagon,
 } from "lucide-react";
 import { IconColor, iconColors } from "@/shared/ui/icon/icon-color";
 import { IconName, iconNames } from "@/shared/ui/icon/icon-name";
@@ -102,6 +104,8 @@ const iconMap: Record<IconName, ComponentType<IconComponentProps>> = {
     clipboardCheck: ClipboardCheck,
     cake: Cake,
     info: Info,
+    vault: Vault,
+    hexagon: Hexagon,
 } as const;
 
 interface IconProps {

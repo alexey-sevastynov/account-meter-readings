@@ -42,6 +42,8 @@ export const iconNames = {
     clipboardCheck: "clipboardCheck",
     cake: "cake",
     info: "info",
+    vault: "vault",
+    hexagon: "hexagon",
 } as const;
 
 export type IconName = (typeof iconNames)[keyof typeof iconNames];

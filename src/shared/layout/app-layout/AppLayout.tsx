@@ -1,37 +1,42 @@
 "use client";
 
-import { useEffect } from "react";
-import { useRouter } from "next/navigation";
 import { Sidebar } from "@/shared/layout/sidebar/Sidebar";
 import { Toolbar } from "@/shared/layout/toolbar/Toolbar";
 import { routeKeys } from "@/shared/constants/route-keys";
-import { useAppSelector } from "@/shared/lib/redux/hooks/use-app-selector";
-import { redirectTo } from "@/shared/utils/navigation";
+import { iconNames } from "@/shared/ui/icon/icon-name";
+import { isAdmin } from "@/shared/utils/permissions";
 
 interface AppLayoutProps {
     children: React.ReactNode;
-    userName?: string;
-    userRole?: string;
+    userName: string;
+    userRole: string;
 }
 
 export function AppLayout({ children, userName, userRole }: AppLayoutProps) {
-    const router = useRouter();
-    const token = useAppSelector((state) => state.auth.token);
-
-    useEffect(() => {
-        if (token) {
-            redirectTo(router, routeKeys.signIn);
-        }
-    }, [token, router]);
-
     return (
         <div className="bg-background flex min-h-screen w-full">
-            <Sidebar sidebarNavigationItems={[]} />
-
+            <Sidebar
+                sidebarNavigationItems={getSidebarNavigationItems(userRole)}
+                logoIconName={iconNames.hexagon}
+            />
             <div className="flex flex-1 flex-col">
                 <Toolbar userName={userName} userRole={userRole} />
                 <main className="flex-1 p-4">{children}</main>
             </div>
         </div>
     );
+}
+
+function getSidebarNavigationItems(userRole: string) {
+    if (isAdmin(userRole)) {
+        return [
+            {
+                href: routeKeys.coffeeShop,
+                iconName: iconNames.vault,
+                label: "Кавʼярня Кофеоль",
+            },
+        ];
+    }
+
+    return [];
 }

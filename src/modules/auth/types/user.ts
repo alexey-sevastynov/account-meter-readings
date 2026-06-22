@@ -1,5 +1,5 @@
 import { BaseResource } from "@/shared/types/base-resource";
-import { UserRoleKey } from "@/modules/auth/enums/user-role-key";
+import { UserRoleKey } from "@/shared/enums/user-role-key";
 import { UserStatusKey } from "@/modules/auth/enums/user-status-key";
 import { Address } from "@/modules/auth/types/address";
 
