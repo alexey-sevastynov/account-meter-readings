@@ -44,6 +44,12 @@ export const iconNames = {
     info: "info",
     vault: "vault",
     hexagon: "hexagon",
+    bookOpen: "bookOpen",
+    layers: "layers",
+    fileCode2: "fileCode2",
+    search: "search",
+    copy: "copy",
+    code: "code",
 } as const;
 
 export type IconName = (typeof iconNames)[keyof typeof iconNames];

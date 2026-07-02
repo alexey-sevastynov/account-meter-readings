@@ -11,12 +11,10 @@ interface HomeProps {
 export function Home({ userName }: HomeProps) {
     return (
         <div className="flex flex-col">
-            <div className="flex w-full flex-col rounded-2xl p-8">
-                <Title textPosition={textPositions.left}>
-                    Ласкаво просимо на головну сторінку, {userName ? userName : "Гість"}!
-                </Title>
-                <Text>Ви успішно ввійшли в систему.</Text>
-            </div>
+            <Title textPosition={textPositions.left}>
+                Ласкаво просимо на головну сторінку, {userName ? userName : "Гість"}!
+            </Title>
+            <Text>Ви успішно ввійшли в систему.</Text>
         </div>
     );
 }

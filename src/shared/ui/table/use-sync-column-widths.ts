@@ -44,5 +44,5 @@ export function useSyncColumnWidths({ enabled, headTableRef, bodyTableRef, data 
         }
 
         return () => observer.disconnect();
-    }, [enabled, data]);
+    }, [enabled, data, headTableRef, bodyTableRef]);
 }

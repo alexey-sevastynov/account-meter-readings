@@ -4,6 +4,10 @@ export function getRandomBadgeColor(value: string | number) {
     return badgeColors[index];
 }
 
+export function getSequentialBadgeColor(index: number) {
+    return badgeColors[index % badgeColors.length];
+}
+
 const badgeColors = [
     { bg: "bg-green-500/15 dark:bg-green-400/20", text: "text-green-700 dark:text-green-300" },
     { bg: "bg-blue-500/15 dark:bg-blue-400/20", text: "text-blue-700 dark:text-blue-300" },

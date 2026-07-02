@@ -3,21 +3,22 @@
 import { cn } from "@/shared/lib/cn";
 import * as AvatarPrimitive from "@radix-ui/react-avatar";
 import { getAvatarInitials } from "@/shared/ui/avatar/avatar.funcs";
+import { avatarSizes } from "@/shared/ui/avatar/avatar.metadata";
 
-interface AvatarProps {
+export interface AvatarProps {
     name?: string;
     src?: string;
-    size?: "sm" | "md" | "lg";
+    size?: keyof typeof avatarSizes;
     className?: string;
 }
 
 const avatarSizeMap = {
-    sm: "h-8 w-8 text-xs",
-    md: "h-10 w-10 text-sm",
-    lg: "h-14 w-14 text-base",
+    [avatarSizes.sm]: "h-8 w-8 text-xs",
+    [avatarSizes.md]: "h-10 w-10 text-sm",
+    [avatarSizes.lg]: "h-14 w-14 text-base",
 } as const;
 
-export function Avatar({ name, src, size = "md", className }: AvatarProps) {
+export function Avatar({ name, src, size = avatarSizes.md, className }: AvatarProps) {
     return (
         <AvatarPrimitive.Root
             className={cn(
