@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { cn } from "@/shared/lib/cn";
 import {
     NotificationMessageKey,
@@ -23,10 +23,10 @@ export function NotificationMessage({
     const [visible, setVisible] = useState(true);
     const [hovered, setHovered] = useState(false);
 
-    const handleClose = () => {
+    const handleClose = useCallback(() => {
         setVisible(false);
         onClose?.();
-    };
+    }, [onClose]);
 
     useEffect(() => {
         if (!autoClose) return;

@@ -29,14 +29,24 @@ export function AppLayout({ children, userName, userRole }: AppLayoutProps) {
 
 function getSidebarNavigationItems(userRole: string) {
     if (isAdmin(userRole)) {
-        return [
-            {
-                href: routeKeys.coffeeShop,
-                iconName: iconNames.vault,
-                label: "Кавʼярня Кофеоль",
-            },
-        ];
+        return [...commonNavigationItems, ...adminOnlyNavigationItems];
     }
 
-    return [];
+    return commonNavigationItems;
 }
+
+const commonNavigationItems = [
+    {
+        href: routeKeys.documentation,
+        iconName: iconNames.bookOpen,
+        label: "Документація",
+    },
+];
+
+const adminOnlyNavigationItems = [
+    {
+        href: routeKeys.coffeeShop,
+        iconName: iconNames.vault,
+        label: "Кавʼярня Кофеоль",
+    },
+];

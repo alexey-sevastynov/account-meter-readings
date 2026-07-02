@@ -21,7 +21,7 @@ interface ButtonIconOnly {
     iconColor?: IconColor;
 }
 
-type ButtonProps = (ButtonWithText | ButtonIconOnly) & {
+export type ButtonProps = (ButtonWithText | ButtonIconOnly) & {
     variant?: ButtonVariantKey;
     loading?: boolean;
 } & ButtonHTMLAttributes<HTMLButtonElement>;

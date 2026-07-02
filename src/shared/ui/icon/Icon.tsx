@@ -46,6 +46,12 @@ import {
     Info,
     Vault,
     Hexagon,
+    BookOpen,
+    Layers,
+    FileCode2,
+    Search,
+    Copy,
+    Code,
 } from "lucide-react";
 import { IconColor, iconColors } from "@/shared/ui/icon/icon-color";
 import { IconName, iconNames } from "@/shared/ui/icon/icon-name";
@@ -106,6 +112,12 @@ const iconMap: Record<IconName, ComponentType<IconComponentProps>> = {
     info: Info,
     vault: Vault,
     hexagon: Hexagon,
+    bookOpen: BookOpen,
+    layers: Layers,
+    fileCode2: FileCode2,
+    search: Search,
+    copy: Copy,
+    code: Code,
 } as const;
 
 interface IconProps {

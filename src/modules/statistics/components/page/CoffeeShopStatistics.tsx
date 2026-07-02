@@ -50,7 +50,7 @@ export function CoffeeShopStatistics() {
     const highlightDates = dailyReports.map((report) => new Date(report.date));
 
     return (
-        <div className="flex flex-col gap-6 p-4">
+        <div className="flex flex-col gap-6">
             <div className="flex flex-col gap-4 rounded-xl border p-4 shadow-sm">
                 <Title textPosition={textPositions.left}>Статистика кав&apos;ярні</Title>
 

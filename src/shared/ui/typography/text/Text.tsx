@@ -4,7 +4,7 @@ import { TextPosition, textPositions } from "@/shared/ui/typography/text-positio
 import { TextSize, textSizes } from "@/shared/ui/typography/text-size";
 import { TextWeight, textWeights } from "@/shared/ui/typography/text-weight";
 
-interface TextProps {
+export interface TextProps {
     children: ReactNode;
     textPosition?: TextPosition;
     textSize?: TextSize;

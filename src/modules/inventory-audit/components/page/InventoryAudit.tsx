@@ -16,9 +16,5 @@ export function InventoryAudit() {
         dispatch(getAllInventoryAudits());
     }, [dispatch]);
 
-    return (
-        <div className="p-0">
-            <InventoryAuditTable data={audits} isLoading={isLoadingAudits} />
-        </div>
-    );
+    return <InventoryAuditTable data={audits} isLoading={isLoadingAudits} />;
 }

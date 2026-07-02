@@ -4,7 +4,7 @@ import { cn } from "@/shared/lib/cn";
 import { TextSize, textSizes } from "@/shared/ui/typography/text-size";
 import { TextWeight, textWeights } from "@/shared/ui/typography/text-weight";
 
-interface TitleProps {
+export interface TitleProps {
     children: ReactNode;
     textPosition?: TextPosition;
     textSize?: TextSize;
