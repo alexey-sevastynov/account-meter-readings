@@ -35,7 +35,7 @@ export function StatisticsDashboard({ statisticsData }: StatisticsDashboardProps
                 acquiringFee={statisticsData.acquiringFee}
                 totalExpenses={statisticsData.totalExpenses}
             />
-            <ExpensesBreakdownSection breakdown={statisticsData.breakdown} />
+            <ExpensesBreakdownSection breakdown={statisticsData.expensesBreakdown} />
             <InventoryAuditSection inventoryAuditTotals={statisticsData.inventoryAuditTotals} />
             <TeamStatisticsSection employees={statisticsData.employees} />
             <PercentagesSection percentages={statisticsData.percentages} />
