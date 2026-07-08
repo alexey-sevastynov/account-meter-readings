@@ -41,9 +41,7 @@ export function ResourceFormModal<T extends FieldValues>({
 
     return (
         <>
-            {!isEditMode(formMode) && (
-                <Button text={addButtonLabel} onClick={() => setInternalOpen(true)} />
-            )}
+            {!isEditMode(formMode) && <Button text={addButtonLabel} onClick={() => setInternalOpen(true)} />}
 
             <ModalWindow
                 open={isOpen}
@@ -56,6 +54,7 @@ export function ResourceFormModal<T extends FieldValues>({
                 }}
                 title={isEditMode(formMode) ? editTitle : createTitle}
                 size="md"
+                closeOnOutsideClick={false}
             >
                 <ResourceForm<T>
                     fields={fields}

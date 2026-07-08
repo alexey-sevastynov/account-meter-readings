@@ -16,6 +16,7 @@ interface ModalWindowProps {
     children: ReactNode;
     footer?: ReactNode;
     size?: ModalWindowSize;
+    closeOnOutsideClick?: boolean;
 }
 
 export function ModalWindow({
@@ -26,6 +27,7 @@ export function ModalWindow({
     children,
     footer,
     size = modalWindowSizes.md,
+    closeOnOutsideClick = true,
 }: ModalWindowProps) {
     const sizeClasses = {
         sm: "max-w-md",
@@ -39,6 +41,11 @@ export function ModalWindow({
                 <DialogPrimitive.Overlay className="data-[state=open]:animate-in data-[state=closed]:animate-out fixed inset-0 z-50 bg-black/80" />
 
                 <DialogPrimitive.Content
+                    onPointerDownOutside={(event) => {
+                        if (!closeOnOutsideClick) {
+                            event.preventDefault();
+                        }
+                    }}
                     className={cn(
                         "fixed top-1/2 left-1/2 z-50 w-full -translate-x-1/2 -translate-y-1/2",
                         "bg-background border p-6 shadow-lg sm:rounded-lg",
