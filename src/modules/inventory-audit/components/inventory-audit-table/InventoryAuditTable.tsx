@@ -69,13 +69,17 @@ export function InventoryAuditTable({ data, isLoading }: InventoryAuditTableProp
         enableSorting: true,
         enableColumnResizing: true,
         columnResizeMode: "onChange",
+        meta: {
+            exportFileName: "inventory-audits",
+            exportSheetName: "Аудити інвентаризації",
+        },
     });
 
     return (
         <div className="w-full">
             <Title textPosition={textPositions.left}>Аудит інвентаризації</Title>
             <Text className="mt-1">Загальна кількість аудитів: {data.length}</Text>
-            <TableToolbox columns={reactTable.getAllColumns()} />
+            <TableToolbox reactTable={reactTable} />
             <InventoryAuditModals
                 editingAudit={editingAudit}
                 setEditingAudit={setEditingAudit}

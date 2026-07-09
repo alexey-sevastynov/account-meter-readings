@@ -7,4 +7,9 @@ declare module "@tanstack/react-table" {
         resourceFieldType: ResourceFieldType;
         filterable: boolean;
     }
+
+    interface TableMeta<TData extends RowData> {
+        exportFileName: string;
+        exportSheetName: string;
+    }
 }

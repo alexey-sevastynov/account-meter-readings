@@ -18,6 +18,14 @@ export function isArray(value: unknown): value is unknown[] {
     return Array.isArray(value);
 }
 
+export function isBoolean(value: unknown): value is boolean {
+    return typeof value === typeNames.boolean;
+}
+
+export function isDate(value: unknown): value is Date {
+    return value instanceof Date;
+}
+
 export function isEmptyObject(obj: unknown) {
     return isObject(obj) && !Array.isArray(obj) && Object.keys(obj).length === 0;
 }

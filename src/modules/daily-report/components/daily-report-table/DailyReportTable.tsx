@@ -69,13 +69,17 @@ export function DailyReportTable({ data, isLoading }: DailyReportTableProps) {
         enableSorting: true,
         enableColumnResizing: true,
         columnResizeMode: "onChange",
+        meta: {
+            exportFileName: "daily-reports",
+            exportSheetName: "Щоденні звіти",
+        },
     });
 
     return (
         <div className="w-full">
             <Title textPosition={textPositions.left}>Щоденні звіти</Title>
             <Text className="mt-1">Загальна кількість звітів: {data.length}</Text>
-            <TableToolbox columns={reactTable.getAllColumns()} />
+            <TableToolbox reactTable={reactTable} />
             <DailyReportModals
                 editingReport={editingReport}
                 setEditingReport={setEditingReport}

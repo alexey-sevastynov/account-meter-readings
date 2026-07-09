@@ -69,13 +69,17 @@ export function ExpenseReportTable({ data, isLoading }: ExpenseReportTableProps)
         enableSorting: true,
         enableColumnResizing: true,
         columnResizeMode: "onChange",
+        meta: {
+            exportFileName: "expense-reports",
+            exportSheetName: "Звіти про витрати",
+        },
     });
 
     return (
         <div className="w-full">
             <Title textPosition={textPositions.left}>Звіти про витрати</Title>
             <Text className="mt-1">Загальна кількість звітів: {data.length}</Text>
-            <TableToolbox columns={reactTable.getAllColumns()} />
+            <TableToolbox reactTable={reactTable} />
             <ExpenseReportModals
                 editingReport={editingReport}
                 setEditingReport={setEditingReport}

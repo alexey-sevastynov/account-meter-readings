@@ -62,13 +62,17 @@ export function TaskTable({ data, isLoading }: TaskTableProps) {
         enableSorting: true,
         enableColumnResizing: true,
         columnResizeMode: "onChange",
+        meta: {
+            exportFileName: "tasks",
+            exportSheetName: "Задачі",
+        },
     });
 
     return (
         <div className="w-full">
             <Title textPosition={textPositions.left}>Coffee Shop</Title>
             <Text className="mt-1">Manage your tasks</Text>
-            <TableToolbox columns={reactTable.getAllColumns()} />
+            <TableToolbox reactTable={reactTable} />
             <Table
                 config={createTableConfig({
                     reactTable: reactTable,

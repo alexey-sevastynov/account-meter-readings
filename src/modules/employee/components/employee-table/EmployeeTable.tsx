@@ -64,13 +64,17 @@ export function EmployeeTable({ data, isLoading }: EmployeeTableProps) {
         enableSorting: true,
         enableColumnResizing: true,
         columnResizeMode: "onChange",
+        meta: {
+            exportFileName: "employees",
+            exportSheetName: "Працівники",
+        },
     });
 
     return (
         <div className="w-full">
             <Title textPosition={textPositions.left}>Список працівників</Title>
             <Text className="mt-1">Загальна кількість працівників: {data.length}</Text>
-            <TableToolbox columns={reactTable.getAllColumns()} />
+            <TableToolbox reactTable={reactTable} />
             <EmployeeModals
                 editingEmployee={editingEmployee}
                 setEditingEmployee={setEditingEmployee}
