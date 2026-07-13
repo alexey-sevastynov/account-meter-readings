@@ -52,6 +52,7 @@ import {
     Search,
     Copy,
     Code,
+    Building2,
 } from "lucide-react";
 import { IconColor, iconColors } from "@/shared/ui/icon/icon-color";
 import { IconName, iconNames } from "@/shared/ui/icon/icon-name";
@@ -118,6 +119,7 @@ const iconMap: Record<IconName, ComponentType<IconComponentProps>> = {
     search: Search,
     copy: Copy,
     code: Code,
+    building2: Building2,
 } as const;
 
 interface IconProps {

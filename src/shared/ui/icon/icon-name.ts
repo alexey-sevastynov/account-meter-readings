@@ -50,6 +50,7 @@ export const iconNames = {
     search: "search",
     copy: "copy",
     code: "code",
+    building2: "building2",
 } as const;
 
 export type IconName = (typeof iconNames)[keyof typeof iconNames];

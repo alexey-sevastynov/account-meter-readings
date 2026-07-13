@@ -8,4 +8,5 @@ export const routeKeys = {
     dailyReports: "/coffee-shop/daily-reports",
     expenseReports: "/coffee-shop/expense-reports",
     inventoryAudits: "/coffee-shop/inventory-audits",
+    facilityExpenses: "/coffee-shop/facility-expenses",
 } as const;

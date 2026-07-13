@@ -11,4 +11,5 @@ export const apiEndpointNames = {
     expenseReport: "/coffee-shop/expense-reports",
     inventoryAudit: "/coffee-shop/inventory-audits",
     statistics: "/coffee-shop/statistics",
+    facilityExpense: "/coffee-shop/facility-expenses",
 } as const;

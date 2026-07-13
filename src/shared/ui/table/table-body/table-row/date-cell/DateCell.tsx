@@ -1,10 +1,11 @@
-import { CellContext } from "@tanstack/react-table";
 import { formatDateToShortDate } from "@/shared/utils/date";
+import { CellContext } from "@tanstack/react-table";
 
 interface DateCellProps<TData> {
     cellInfo: CellContext<TData, unknown>;
+    formatter?: (value: unknown) => string;
 }
 
-export function DateCell<TData>({ cellInfo }: DateCellProps<TData>) {
-    return <div className="w-full text-right">{formatDateToShortDate(cellInfo.getValue())}</div>;
+export function DateCell<TData>({ cellInfo, formatter = formatDateToShortDate }: DateCellProps<TData>) {
+    return <div className="w-full text-right">{formatter(cellInfo.getValue())}</div>;
 }

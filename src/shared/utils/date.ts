@@ -1,5 +1,7 @@
-import { endOfDay, format, startOfDay } from "date-fns";
+import { endOfDay, format as formatDateFns, startOfDay } from "date-fns";
 import { DateRange } from "@/shared/types/date-range/date-range-type";
+import { uk } from "date-fns/locale";
+import { capitalizeFirstLetter } from "@/shared/utils/string";
 
 const dateFormatStrings = {
     short: "dd.MM.yyyy",
@@ -7,6 +9,7 @@ const dateFormatStrings = {
     dateTime: "dd.MM.yyyy HH:mm",
     iso: "yyyy-MM-dd",
     isoDateTime: "yyyy-MM-dd'T'HH:mm:ss",
+    month: "LLLL yyyy",
 } as const;
 
 type DateFormatString = (typeof dateFormatStrings)[keyof typeof dateFormatStrings];
@@ -38,6 +41,18 @@ export function formatDateToShortDate(date: unknown) {
     return formatDate(date, dateFormatStrings.short);
 }
 
+export function formatDateToLongDate(date: unknown) {
+    return formatDate(date, dateFormatStrings.long);
+}
+
+export function formatDateToDateTime(date: unknown) {
+    return formatDate(date, dateFormatStrings.dateTime);
+}
+
+export function formatDateToMonth(date: unknown) {
+    return capitalizeFirstLetter(formatDate(date, dateFormatStrings.month));
+}
+
 function formatDate(value: unknown, dateFormatString: DateFormatString) {
     if (!value) return "";
 
@@ -56,4 +71,8 @@ function formatDate(value: unknown, dateFormatString: DateFormatString) {
     }
 
     return format(date, dateFormatString);
+}
+
+function format(date: Date, formatString: DateFormatString, locale = uk) {
+    return formatDateFns(date, formatString, { locale });
 }

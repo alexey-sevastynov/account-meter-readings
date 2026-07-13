@@ -9,6 +9,7 @@ interface CreateDateTableColumnOptions<TData extends RowData> {
     header: string;
     accessorFn?: (row: TData) => Date | null;
     filterable?: boolean;
+    formatter?: (date: unknown) => string;
 }
 
 // TODO: Make createTableColumn non-exported
@@ -33,7 +34,7 @@ export function createDateTableColumn<TData extends RowData>(options: CreateDate
         accessorKey: options.accessorKey,
         accessorFn: options.accessorFn,
         header: () => <div className="w-full text-right">{options.header}</div>,
-        cell: (cellInfo) => <DateCell cellInfo={cellInfo} />,
+        cell: (cellInfo) => <DateCell cellInfo={cellInfo} formatter={options.formatter} />,
         sortingFn: "datetime",
         filterFn: (row, columnId, filterValue: DateRange) => {
             const rowValue = row.getValue<Date | null>(columnId);

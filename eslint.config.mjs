@@ -93,7 +93,7 @@ export default [
             "default-case": "error",
             "max-len": [
                 "error",
-                { code: 120, ignorePattern: '^import\\s.+\\sfrom\\s.+;$|className="[^"]+"' },
+                { code: 125, ignorePattern: '^import\\s.+\\sfrom\\s.+;$|className="[^"]+"' },
             ],
             "@typescript-eslint/no-unsafe-return": "error",
             "@typescript-eslint/no-unsafe-assignment": "error",

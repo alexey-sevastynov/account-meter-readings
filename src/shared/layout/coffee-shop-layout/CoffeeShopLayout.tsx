@@ -29,6 +29,11 @@ export function CoffeeShopLayout({ children, userName, userRole }: CoffeeShopLay
                         iconName: iconNames.wallet,
                         label: "Операційні витрати",
                     },
+                    {
+                        href: routeKeys.facilityExpenses,
+                        iconName: iconNames.building2,
+                        label: "Витрати закладу",
+                    },
                 ]}
                 logoIconName={iconNames.coffee}
             />
