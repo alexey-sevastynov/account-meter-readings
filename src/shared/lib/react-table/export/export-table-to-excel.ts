@@ -52,11 +52,14 @@ function addWorksheetRows<TData>(
     table: Table<TData>,
     columns: Column<TData>[],
 ) {
-    table.getFilteredRowModel().rows.forEach((row) => {
+    table.getSortedRowModel().rows.forEach((row) => {
         const values: Record<string, unknown> = {};
 
         columns.forEach((column) => {
-            values[column.id] = formatCellValue(row.getValue(column.id));
+            const rawValue = row.getValue(column.id);
+            const exportFormatter = column.columnDef.meta?.exportFormatter;
+            values[column.id] =
+                exportFormatter !== undefined ? exportFormatter(rawValue) : formatCellValue(rawValue);
         });
 
         worksheet.addRow(values);

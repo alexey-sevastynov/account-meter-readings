@@ -19,11 +19,14 @@ export function createTableColumn<TData extends RowData, TValue = unknown>(
     const tableColumn: ColumnDef<TData, TValue> = {
         ...options,
         enableResizing: options.enableResizing ?? true,
-        meta: createMetaTableColumn(
-            options.meta?.label,
-            options.meta?.resourceFieldType,
-            options.meta?.filterable,
-        ),
+        meta: {
+            ...createMetaTableColumn(
+                options.meta?.label,
+                options.meta?.resourceFieldType,
+                options.meta?.filterable,
+            ),
+            ...options.meta,
+        },
     };
 
     return tableColumn;
@@ -45,6 +48,7 @@ export function createDateTableColumn<TData extends RowData>(options: CreateDate
             label: options.header,
             resourceFieldType: resourceFieldTypes.date,
             filterable: options.filterable ?? false,
+            exportFormatter: options.formatter,
         },
     });
 }
