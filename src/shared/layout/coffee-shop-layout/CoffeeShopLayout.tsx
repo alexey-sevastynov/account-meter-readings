@@ -18,7 +18,7 @@ export function CoffeeShopLayout({ children, userName, userRole }: CoffeeShopLay
                 sidebarNavigationItems={[
                     { href: routeKeys.coffeeShop, iconName: iconNames.dashboard, label: "Кавʼярня" },
                     { href: routeKeys.employees, iconName: iconNames.users, label: "Працівники" },
-                    { href: routeKeys.dailyReports, iconName: iconNames.receipt, label: "Витрати" },
+                    { href: routeKeys.dailyReports, iconName: iconNames.clipboardList, label: "Витрати" },
                     {
                         href: routeKeys.inventoryAudits,
                         iconName: iconNames.clipboardCheck,
@@ -33,6 +33,11 @@ export function CoffeeShopLayout({ children, userName, userRole }: CoffeeShopLay
                         href: routeKeys.facilityExpenses,
                         iconName: iconNames.building2,
                         label: "Витрати закладу",
+                    },
+                    {
+                        href: routeKeys.ownerWithdrawals,
+                        iconName: iconNames.handCoins,
+                        label: "Виведення коштів",
                     },
                 ]}
                 logoIconName={iconNames.coffee}

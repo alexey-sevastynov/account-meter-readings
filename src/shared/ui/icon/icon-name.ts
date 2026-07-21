@@ -51,6 +51,8 @@ export const iconNames = {
     copy: "copy",
     code: "code",
     building2: "building2",
+    handCoins: "handCoins",
+    clipboardList: "clipboardList",
 } as const;
 
 export type IconName = (typeof iconNames)[keyof typeof iconNames];

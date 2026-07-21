@@ -6,6 +6,7 @@ import dailyReportReducer from "@/modules/daily-report/model/daily-report-slice"
 import expenseReportReducer from "@/modules/expense-report/model/expense-report-slice";
 import facilityExpenseReducer from "@/modules/facility-expense/model/facility-expense-slice";
 import inventoryAuditReducer from "@/modules/inventory-audit/model/inventory-audit-slice";
+import ownerWithdrawalReducer from "@/modules/owner-withdrawal/model/owner-withdrawal-slice";
 import statisticsReducers from "@/modules/statistics/model/statistics-slice";
 import { toastMiddleware } from "@/toast-middleware";
 
@@ -18,6 +19,7 @@ export const store = configureStore({
         expenseReport: expenseReportReducer,
         facilityExpense: facilityExpenseReducer,
         inventoryAudit: inventoryAuditReducer,
+        ownerWithdrawal: ownerWithdrawalReducer,
         statistics: statisticsReducers,
     },
     middleware: (getDefaultMiddleware) =>

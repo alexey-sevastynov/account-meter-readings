@@ -53,6 +53,8 @@ import {
     Copy,
     Code,
     Building2,
+    HandCoins,
+    ClipboardList,
 } from "lucide-react";
 import { IconColor, iconColors } from "@/shared/ui/icon/icon-color";
 import { IconName, iconNames } from "@/shared/ui/icon/icon-name";
@@ -120,6 +122,8 @@ const iconMap: Record<IconName, ComponentType<IconComponentProps>> = {
     copy: Copy,
     code: Code,
     building2: Building2,
+    handCoins: HandCoins,
+    clipboardList: ClipboardList,
 } as const;
 
 interface IconProps {

@@ -12,4 +12,5 @@ export const apiEndpointNames = {
     inventoryAudit: "/coffee-shop/inventory-audits",
     statistics: "/coffee-shop/statistics",
     facilityExpense: "/coffee-shop/facility-expenses",
+    ownerWithdrawal: "/coffee-shop/owner-withdrawals",
 } as const;
