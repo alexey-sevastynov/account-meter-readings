@@ -3,6 +3,7 @@ import { ExpensesBreakdown } from "@/modules/statistics/types/expenses-breakdown
 import { StatisticsPercentages } from "@/modules/statistics/types/statistics-percentages";
 import { EmployeeStats } from "@/modules/statistics/types/employee-stats";
 import { InventoryAuditTotals } from "@/modules/statistics/types/inventory-audit-totals";
+import { OwnerWithdrawalSummary } from "@/modules/statistics/types/owner-withdrawal-summary";
 
 export interface CoffeeShopStatistics {
     period: DateRange;
@@ -21,4 +22,5 @@ export interface CoffeeShopStatistics {
     netProfitAfterExpenses: number;
     percentages: StatisticsPercentages;
     employees: EmployeeStats[];
+    ownerWithdrawals: OwnerWithdrawalSummary;
 }

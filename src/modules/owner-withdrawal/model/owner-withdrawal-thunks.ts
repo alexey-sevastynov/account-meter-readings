@@ -8,14 +8,14 @@ import { OwnerWithdrawal } from "@/modules/owner-withdrawal/types/owner-withdraw
 
 type CreateOwnerWithdrawalDto = Omit<OwnerWithdrawal, "_id">;
 
-export const getAllOwnerWithdrawals = createAsyncThunk<
-    OwnerWithdrawal[],
-    void,
-    { rejectValue: AxiosError }
->("allOwnerWithdrawals", async () => {
-    const allWithdrawals = await getAll<OwnerWithdrawal>(apiEndpointNames.ownerWithdrawal);
-    return allWithdrawals;
-});
+export const getAllOwnerWithdrawals = createAsyncThunk<OwnerWithdrawal[], void, { rejectValue: AxiosError }>(
+    "allOwnerWithdrawals",
+    async () => {
+        const allWithdrawals = await getAll<OwnerWithdrawal>(apiEndpointNames.ownerWithdrawal);
+
+        return allWithdrawals;
+    },
+);
 
 export const createOwnerWithdrawal = createAsyncThunk<
     OwnerWithdrawal,

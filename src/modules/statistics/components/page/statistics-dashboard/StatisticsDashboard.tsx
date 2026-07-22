@@ -4,6 +4,7 @@ import { RevenueSection } from "@/modules/statistics/components/page/statistics-
 import { ExpensesSection } from "@/modules/statistics/components/page/statistics-dashboard/sections/ExpensesSection";
 import { ExpensesBreakdownSection } from "@/modules/statistics/components/page/statistics-dashboard/sections/ExpensesBreakdownSection";
 import { InventoryAuditSection } from "@/modules/statistics/components/page/statistics-dashboard/sections/InventoryAuditSection";
+import { OwnerWithdrawalsSection } from "@/modules/statistics/components/page/statistics-dashboard/sections/OwnerWithdrawalsSection";
 import { TeamStatisticsSection } from "@/modules/statistics/components/page/statistics-dashboard/sections/TeamStatisticsSection";
 import { PercentagesSection } from "@/modules/statistics/components/page/statistics-dashboard/sections/PercentagesSection";
 import { CoffeeShopStatistics } from "@/modules/statistics/types/statistic-coffee-shop";
@@ -37,6 +38,7 @@ export function StatisticsDashboard({ statisticsData }: StatisticsDashboardProps
             />
             <ExpensesBreakdownSection breakdown={statisticsData.expensesBreakdown} />
             <InventoryAuditSection inventoryAuditTotals={statisticsData.inventoryAuditTotals} />
+            <OwnerWithdrawalsSection summary={statisticsData.ownerWithdrawals} />
             <TeamStatisticsSection employees={statisticsData.employees} />
             <PercentagesSection percentages={statisticsData.percentages} />
             <FinancialMetricsSection percentages={statisticsData.percentages} />
