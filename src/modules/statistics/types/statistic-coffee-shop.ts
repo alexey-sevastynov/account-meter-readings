@@ -4,6 +4,7 @@ import { StatisticsPercentages } from "@/modules/statistics/types/statistics-per
 import { EmployeeStats } from "@/modules/statistics/types/employee-stats";
 import { InventoryAuditTotals } from "@/modules/statistics/types/inventory-audit-totals";
 import { OwnerWithdrawalSummary } from "@/modules/statistics/types/owner-withdrawal-summary";
+import { FacilityExpenseSummary } from "@/modules/statistics/types/facility-expense-summary";
 
 export interface CoffeeShopStatistics {
     period: DateRange;
@@ -23,4 +24,5 @@ export interface CoffeeShopStatistics {
     percentages: StatisticsPercentages;
     employees: EmployeeStats[];
     ownerWithdrawals: OwnerWithdrawalSummary;
+    facilityExpense: FacilityExpenseSummary;
 }

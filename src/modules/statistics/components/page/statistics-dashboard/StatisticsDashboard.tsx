@@ -9,6 +9,7 @@ import { TeamStatisticsSection } from "@/modules/statistics/components/page/stat
 import { PercentagesSection } from "@/modules/statistics/components/page/statistics-dashboard/sections/PercentagesSection";
 import { CoffeeShopStatistics } from "@/modules/statistics/types/statistic-coffee-shop";
 import { FinancialMetricsSection } from "@/modules/statistics/components/page/statistics-dashboard/sections/FinancialThresholdSection";
+import { FacilityExpenseSection } from "@/modules/statistics/components/page/statistics-dashboard/sections/FacilityExpenseSection";
 
 interface StatisticsDashboardProps {
     statisticsData: CoffeeShopStatistics;
@@ -39,6 +40,7 @@ export function StatisticsDashboard({ statisticsData }: StatisticsDashboardProps
             <ExpensesBreakdownSection breakdown={statisticsData.expensesBreakdown} />
             <InventoryAuditSection inventoryAuditTotals={statisticsData.inventoryAuditTotals} />
             <OwnerWithdrawalsSection summary={statisticsData.ownerWithdrawals} />
+            <FacilityExpenseSection facilityExpenseSummary={statisticsData.facilityExpense} />
             <TeamStatisticsSection employees={statisticsData.employees} />
             <PercentagesSection percentages={statisticsData.percentages} />
             <FinancialMetricsSection percentages={statisticsData.percentages} />
