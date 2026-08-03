@@ -1,7 +1,5 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { resourceFieldTypes } from "@/shared/enums/resource-field-type";
-import { NumberCell } from "@/shared/ui/table/table-body/table-row/number-cell/NumberCell";
-import { NumberFooterCell } from "@/shared/ui/table/table-footer/number-footer-cell/NumberFooterCell";
 import {
     createDateTableColumn,
     createTableColumn,
@@ -9,6 +7,8 @@ import {
 import { InventoryAudit } from "@/modules/inventory-audit/types/inventory-audit";
 import { inventoryAuditProps } from "@/modules/inventory-audit/constants/inventory-audit-props";
 import { inventoryAuditLabels } from "@/modules/inventory-audit/constants/inventory-audit-labels";
+import { CurrencyCell } from "@/shared/ui/table/table-body/table-row/currency-cell/CurrencyCell";
+import { CurrencyFooterCell } from "@/shared/ui/table/table-footer/currency-footer-cell/CurrencyFooterCell";
 
 export const inventoryAuditColumns: ColumnDef<InventoryAudit>[] = [
     createTableColumn<InventoryAudit>({
@@ -23,8 +23,8 @@ export const inventoryAuditColumns: ColumnDef<InventoryAudit>[] = [
     createTableColumn({
         accessorKey: inventoryAuditProps.shortageAmount,
         header: () => <div className="w-full text-right">{inventoryAuditLabels.shortageAmount}</div>,
-        cell: (cellInfo) => <NumberCell cellInfo={cellInfo} />,
-        footer: (props) => <NumberFooterCell {...props} />,
+        cell: (cellInfo) => <CurrencyCell cellInfo={cellInfo} />,
+        footer: (props) => <CurrencyFooterCell {...props} />,
         meta: {
             label: inventoryAuditLabels.shortageAmount,
             resourceFieldType: resourceFieldTypes.number,
@@ -34,8 +34,8 @@ export const inventoryAuditColumns: ColumnDef<InventoryAudit>[] = [
     createTableColumn({
         accessorKey: inventoryAuditProps.surplusAmount,
         header: () => <div className="w-full text-right">{inventoryAuditLabels.surplusAmount}</div>,
-        cell: (cellInfo) => <NumberCell cellInfo={cellInfo} />,
-        footer: (props) => <NumberFooterCell {...props} />,
+        cell: (cellInfo) => <CurrencyCell cellInfo={cellInfo} />,
+        footer: (props) => <CurrencyFooterCell {...props} />,
         meta: {
             label: inventoryAuditLabels.surplusAmount,
             resourceFieldType: resourceFieldTypes.number,

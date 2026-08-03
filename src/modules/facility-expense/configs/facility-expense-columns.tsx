@@ -1,7 +1,5 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { resourceFieldTypes } from "@/shared/enums/resource-field-type";
-import { NumberCell } from "@/shared/ui/table/table-body/table-row/number-cell/NumberCell";
-import { NumberFooterCell } from "@/shared/ui/table/table-footer/number-footer-cell/NumberFooterCell";
 import {
     createDateTableColumn,
     createTableColumn,
@@ -10,6 +8,8 @@ import { FacilityExpense } from "@/modules/facility-expense/types/facility-expen
 import { facilityExpenseProps } from "@/modules/facility-expense/constants/facility-expense-props";
 import { facilityExpenseLabels } from "@/modules/facility-expense/constants/facility-expense-labels";
 import { formatDateToMonth } from "@/shared/utils/date";
+import { CurrencyFooterCell } from "@/shared/ui/table/table-footer/currency-footer-cell/CurrencyFooterCell";
+import { CurrencyCell } from "@/shared/ui/table/table-body/table-row/currency-cell/CurrencyCell";
 
 export const facilityExpenseColumns: ColumnDef<FacilityExpense>[] = [
     createTableColumn<FacilityExpense>({
@@ -24,8 +24,8 @@ export const facilityExpenseColumns: ColumnDef<FacilityExpense>[] = [
     createTableColumn({
         accessorKey: facilityExpenseProps.amount,
         header: () => <div className="w-full text-right">{facilityExpenseLabels.amount}</div>,
-        cell: (cellInfo) => <NumberCell cellInfo={cellInfo} />,
-        footer: (props) => <NumberFooterCell {...props} />,
+        cell: (cellInfo) => <CurrencyCell cellInfo={cellInfo} />,
+        footer: (props) => <CurrencyFooterCell {...props} />,
         meta: {
             label: facilityExpenseLabels.amount,
             resourceFieldType: resourceFieldTypes.number,

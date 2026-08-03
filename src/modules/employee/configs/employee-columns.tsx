@@ -1,6 +1,5 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { resourceFieldTypes } from "@/shared/enums/resource-field-type";
-import { NumberCell } from "@/shared/ui/table/table-body/table-row/number-cell/NumberCell";
 import { BooleanCell } from "@/shared/ui/table/table-body/table-row/boolean-cell/BooleanCell";
 import { BadgeCell } from "@/shared/ui/table/table-body/table-row/badge-cell/BadgeCell";
 import { AvatarCell } from "@/shared/ui/table/table-body/table-row/avatar-cell/AvatarCell";
@@ -12,6 +11,7 @@ import { Employee } from "@/modules/employee/types/employee";
 import { employeeProps } from "@/modules/employee/constants/employee-props";
 import { employeeLabels } from "@/modules/employee/constants/employee-labels";
 import { employerPositionLabels } from "@/modules/employee/constants/employer-position-labels";
+import { CurrencyCell } from "@/shared/ui/table/table-body/table-row/currency-cell/CurrencyCell";
 
 export const employeeColumns: ColumnDef<Employee>[] = [
     createTableColumn({
@@ -44,7 +44,7 @@ export const employeeColumns: ColumnDef<Employee>[] = [
     createTableColumn({
         accessorKey: employeeProps.fixedSalary,
         header: () => <div className="w-full text-right">{employeeLabels.fixedSalary}</div>,
-        cell: (cellInfo) => <NumberCell cellInfo={cellInfo} />,
+        cell: (cellInfo) => <CurrencyCell cellInfo={cellInfo} />,
         filterFn: "weakEquals",
         meta: {
             label: employeeLabels.fixedSalary,

@@ -1,7 +1,5 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { resourceFieldTypes } from "@/shared/enums/resource-field-type";
-import { NumberCell } from "@/shared/ui/table/table-body/table-row/number-cell/NumberCell";
-import { NumberFooterCell } from "@/shared/ui/table/table-footer/number-footer-cell/NumberFooterCell";
 import { BadgeCell } from "@/shared/ui/table/table-body/table-row/badge-cell/BadgeCell";
 import {
     createDateTableColumn,
@@ -11,6 +9,8 @@ import { ExpenseReport } from "@/modules/expense-report/types/expense-report";
 import { expenseReportProps } from "@/modules/expense-report/constants/expense-report-props";
 import { expenseReportLabels } from "@/modules/expense-report/constants/expense-report-labels";
 import { expenseReportTypeLabels } from "@/modules/expense-report/constants/expense-report-type-labels";
+import { CurrencyCell } from "@/shared/ui/table/table-body/table-row/currency-cell/CurrencyCell";
+import { CurrencyFooterCell } from "@/shared/ui/table/table-footer/currency-footer-cell/CurrencyFooterCell";
 
 export const expenseReportColumns: ColumnDef<ExpenseReport>[] = [
     createTableColumn<ExpenseReport>({
@@ -35,8 +35,8 @@ export const expenseReportColumns: ColumnDef<ExpenseReport>[] = [
     createTableColumn({
         accessorKey: expenseReportProps.amount,
         header: () => <div className="w-full text-right">{expenseReportLabels.amount}</div>,
-        cell: (cellInfo) => <NumberCell cellInfo={cellInfo} />,
-        footer: (props) => <NumberFooterCell {...props} />,
+        cell: (cellInfo) => <CurrencyCell cellInfo={cellInfo} />,
+        footer: (props) => <CurrencyFooterCell {...props} />,
         meta: {
             label: expenseReportLabels.amount,
             resourceFieldType: resourceFieldTypes.number,

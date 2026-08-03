@@ -1,7 +1,5 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { resourceFieldTypes } from "@/shared/enums/resource-field-type";
-import { NumberCell } from "@/shared/ui/table/table-body/table-row/number-cell/NumberCell";
-import { NumberFooterCell } from "@/shared/ui/table/table-footer/number-footer-cell/NumberFooterCell";
 import {
     createDateTableColumn,
     createTableColumn,
@@ -9,6 +7,8 @@ import {
 import { OwnerWithdrawal } from "@/modules/owner-withdrawal/types/owner-withdrawal";
 import { ownerWithdrawalLabels } from "@/modules/owner-withdrawal/constants/owner-withdrawal-labels";
 import { ownerWithdrawalProps } from "@/modules/owner-withdrawal/constants/owner-withdrawal-props";
+import { CurrencyFooterCell } from "@/shared/ui/table/table-footer/currency-footer-cell/CurrencyFooterCell";
+import { CurrencyCell } from "@/shared/ui/table/table-body/table-row/currency-cell/CurrencyCell";
 
 export const ownerWithdrawalColumns: ColumnDef<OwnerWithdrawal>[] = [
     createDateTableColumn<OwnerWithdrawal>({
@@ -20,8 +20,8 @@ export const ownerWithdrawalColumns: ColumnDef<OwnerWithdrawal>[] = [
     createTableColumn({
         accessorKey: ownerWithdrawalProps.amount,
         header: () => <div className="w-full text-right">{ownerWithdrawalLabels.amount}</div>,
-        cell: (cellInfo) => <NumberCell cellInfo={cellInfo} />,
-        footer: (props) => <NumberFooterCell {...props} />,
+        cell: (cellInfo) => <CurrencyCell cellInfo={cellInfo} />,
+        footer: (props) => <CurrencyFooterCell {...props} />,
         meta: {
             label: ownerWithdrawalLabels.amount,
             resourceFieldType: resourceFieldTypes.number,
