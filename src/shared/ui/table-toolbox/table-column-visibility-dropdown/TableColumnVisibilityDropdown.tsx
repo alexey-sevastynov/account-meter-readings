@@ -29,7 +29,7 @@ export function TableColumnVisibilityDropdown<TData>({
             </DropdownTrigger>
 
             <DropdownContent className="w-80">
-                <div className="border-b border-gray-200 p-4">
+                <div className="border-b p-4">
                     <Text>Виберіть колонки для відображення</Text>
                 </div>
 
@@ -51,7 +51,7 @@ export function TableColumnVisibilityDropdown<TData>({
                     })}
                 </div>
 
-                <div className="flex gap-2 border-t border-gray-200 p-3">
+                <div className="flex gap-2 border-t p-3">
                     <Button
                         text="Показати всі"
                         onClick={() => toggleableColumns.forEach((col) => col.toggleVisibility(true))}

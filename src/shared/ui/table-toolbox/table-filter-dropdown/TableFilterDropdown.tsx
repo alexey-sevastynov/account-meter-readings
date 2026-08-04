@@ -44,7 +44,7 @@ export function TableFilterDropdown<TData>({ columns, className }: TableFilterDr
             </DropdownTrigger>
 
             <DropdownContent className="max-h-[80vh] w-80 overflow-y-auto">
-                <div className="sticky top-0 z-10 border-b border-gray-200 bg-white p-4">
+                <div className="sticky top-0 z-10 border-b p-4">
                     <div className="flex items-center justify-between">
                         <Text>Фільтри</Text>
                     </div>
@@ -59,7 +59,7 @@ export function TableFilterDropdown<TData>({ columns, className }: TableFilterDr
                     ))}
                 </div>
 
-                <div className="sticky bottom-0 border-t border-gray-200 bg-white p-3">
+                <div className="sticky bottom-0 border-t p-3">
                     <Button
                         className="w-full"
                         text="Скинути всі фільтри"

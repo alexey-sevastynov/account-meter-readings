@@ -17,7 +17,7 @@ export function DateFilterColumn<TData>({ column }: { column: Column<TData> }) {
     };
 
     return (
-        <div className="relative space-y-2 border-t border-gray-100 pt-4 first:border-0 first:pt-0">
+        <div className="relative space-y-2 border-t pt-4 first:border-0 first:pt-0">
             <div className="mb-2">
                 <Text className="text-sm font-medium text-gray-700">{columnName}</Text>
             </div>
