@@ -53,6 +53,7 @@ export const iconNames = {
     building2: "building2",
     handCoins: "handCoins",
     clipboardList: "clipboardList",
+    plus: "plus",
 } as const;
 
 export type IconName = (typeof iconNames)[keyof typeof iconNames];

@@ -5,6 +5,7 @@ import { buttonVariantKeys } from "@/shared/ui/button/button-variant-keys";
 import { iconNames } from "@/shared/ui/icon/icon-name";
 import { Text } from "@/shared/ui/typography/text/Text";
 import { Dropdown, DropdownTrigger, DropdownContent } from "@/shared/ui/dropdown/Dropdown";
+import { iconColors } from "@/shared/ui/icon/icon-color";
 
 interface TableColumnVisibilityDropdownProps<TData> {
     columns: Column<TData>[];
@@ -25,6 +26,8 @@ export function TableColumnVisibilityDropdown<TData>({
                     text={`Колонки (${visibleCount}/${toggleableColumns.length})`}
                     iconName={iconNames.settings}
                     className="w-full"
+                    iconColor={iconColors.primary}
+                    variant={buttonVariantKeys.secondary}
                 />
             </DropdownTrigger>
 

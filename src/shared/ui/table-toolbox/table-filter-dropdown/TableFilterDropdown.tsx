@@ -11,6 +11,8 @@ import {
 } from "@/shared/ui/table-toolbox/table-filter-dropdown/tableFilterDropdown.funcs";
 import { InputFilterColumn } from "@/shared/ui/table-toolbox/table-filter-dropdown/input-filter-column/InputFilterColumn";
 import { DateFilterColumn } from "@/shared/ui/table-toolbox/table-filter-dropdown/date-filter-column/DateFilterColumn";
+import { buttonVariantKeys } from "@/shared/ui/button/button-variant-keys";
+import { iconColors } from "@/shared/ui/icon/icon-color";
 
 interface TableFilterDropdownProps<TData> {
     columns: Column<TData>[];
@@ -34,7 +36,12 @@ export function TableFilterDropdown<TData>({ columns, className }: TableFilterDr
         <Dropdown className={cn("relative", className)}>
             <DropdownTrigger>
                 <div className="relative inline-flex items-center">
-                    <Button text="Фільтри" iconName={iconNames.filter} />
+                    <Button
+                        text="Фільтри"
+                        iconName={iconNames.filter}
+                        iconColor={iconColors.primary}
+                        variant={buttonVariantKeys.secondary}
+                    />
                     {activeFiltersCount > 0 && (
                         <span className="absolute -top-1 -right-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-red-600 text-xs font-medium text-white">
                             {activeFiltersCount}

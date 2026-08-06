@@ -11,6 +11,7 @@ import {
     executeModalClose,
     isEditMode,
 } from "@/shared/ui/form/resource-form-modal/resourceFormModal.funcs";
+import { iconNames } from "@/shared/ui/icon/icon-name";
 
 interface ResourceFormModalProps<T extends FieldValues> {
     fields: ResourceField<T>[];
@@ -41,7 +42,13 @@ export function ResourceFormModal<T extends FieldValues>({
 
     return (
         <>
-            {!isEditMode(formMode) && <Button text={addButtonLabel} onClick={() => setInternalOpen(true)} />}
+            {!isEditMode(formMode) && (
+                <Button
+                    iconName={iconNames.plus}
+                    text={addButtonLabel}
+                    onClick={() => setInternalOpen(true)}
+                />
+            )}
 
             <ModalWindow
                 open={isOpen}
