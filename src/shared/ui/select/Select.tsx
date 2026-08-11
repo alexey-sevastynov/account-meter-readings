@@ -50,7 +50,9 @@ export function Select({
                     onFocus={() => setIsFocused(true)}
                     onBlur={() => setIsFocused(false)}
                 >
-                    <SelectPrimitive.Value placeholder={placeholder} />
+                    <span className="mr-2 w-full truncate text-left">
+                        <SelectPrimitive.Value placeholder={placeholder} />
+                    </span>
                     <SelectPrimitive.Icon>
                         <ChevronDown className="h-4 w-4" />
                     </SelectPrimitive.Icon>

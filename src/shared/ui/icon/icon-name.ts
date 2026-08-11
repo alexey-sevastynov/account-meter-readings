@@ -54,6 +54,7 @@ export const iconNames = {
     handCoins: "handCoins",
     clipboardList: "clipboardList",
     plus: "plus",
+    crown: "crown",
 } as const;
 
 export type IconName = (typeof iconNames)[keyof typeof iconNames];

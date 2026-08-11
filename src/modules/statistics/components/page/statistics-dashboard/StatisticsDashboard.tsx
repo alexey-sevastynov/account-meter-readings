@@ -5,7 +5,7 @@ import { ExpensesSection } from "@/modules/statistics/components/page/statistics
 import { ExpensesBreakdownSection } from "@/modules/statistics/components/page/statistics-dashboard/sections/ExpensesBreakdownSection";
 import { InventoryAuditSection } from "@/modules/statistics/components/page/statistics-dashboard/sections/InventoryAuditSection";
 import { OwnerWithdrawalsSection } from "@/modules/statistics/components/page/statistics-dashboard/sections/OwnerWithdrawalsSection";
-import { TeamStatisticsSection } from "@/modules/statistics/components/page/statistics-dashboard/sections/TeamStatisticsSection";
+import { TeamStatisticsSection } from "@/modules/statistics/components/page/statistics-dashboard/sections/team-statistics-section/TeamStatisticsSection";
 import { PercentagesSection } from "@/modules/statistics/components/page/statistics-dashboard/sections/PercentagesSection";
 import { CoffeeShopStatistics } from "@/modules/statistics/types/statistic-coffee-shop";
 import { FinancialMetricsSection } from "@/modules/statistics/components/page/statistics-dashboard/sections/FinancialThresholdSection";
