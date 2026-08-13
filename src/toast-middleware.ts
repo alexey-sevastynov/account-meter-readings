@@ -1,6 +1,8 @@
 import { Middleware, UnknownAction } from "@reduxjs/toolkit";
 import { appToast } from "@/shared/lib/toast";
 
+const mutationActionKeywords = ["create", "update", "delete"] as const;
+
 export const toastMiddleware: Middleware = () => (next) => (action) => {
     const { type } = action as UnknownAction;
 
@@ -13,7 +15,11 @@ export const toastMiddleware: Middleware = () => (next) => (action) => {
     }
 
     if (type.endsWith("/rejected")) {
-        appToast.error("Сталася помилка");
+        const isMutationAction = mutationActionKeywords.some((keyword) => type.includes(keyword));
+
+        if (isMutationAction) {
+            appToast.error("Сталася помилка");
+        }
     }
 
     return next(action);

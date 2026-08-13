@@ -17,6 +17,7 @@ export function BirthdayToastNotifier() {
     const employees = useAppSelector((state) => state.employee.data);
     const isLoadingEmployees = useAppSelector((state) => state.employee.loading);
     const shownToastIds = useRef<Set<string>>(new Set());
+    const hasRequestedEmployees = useRef(false);
     const today = useMemo(() => new Date(), []);
     const tomorrow = useMemo(() => {
         const date = new Date(today);
@@ -28,8 +29,9 @@ export function BirthdayToastNotifier() {
     const todayKey = useMemo(() => getTodayDate(), []);
 
     useEffect(() => {
-        if (employees.length || isLoadingEmployees) return;
+        if (hasRequestedEmployees.current || employees.length || isLoadingEmployees) return;
 
+        hasRequestedEmployees.current = true;
         dispatch(getAllEmployees());
     }, [dispatch, employees.length, isLoadingEmployees]);
 
