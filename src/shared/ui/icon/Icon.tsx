@@ -57,6 +57,8 @@ import {
     ClipboardList,
     Plus,
     Crown,
+    Package,
+    RefreshCw,
 } from "lucide-react";
 import { IconColor, iconColors } from "@/shared/ui/icon/icon-color";
 import { IconName, iconNames } from "@/shared/ui/icon/icon-name";
@@ -128,6 +130,8 @@ const iconMap: Record<IconName, ComponentType<IconComponentProps>> = {
     clipboardList: ClipboardList,
     plus: Plus,
     crown: Crown,
+    package: Package,
+    refreshCw: RefreshCw,
 } as const;
 
 interface IconProps {

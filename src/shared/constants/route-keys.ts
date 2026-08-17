@@ -10,4 +10,5 @@ export const routeKeys = {
     inventoryAudits: "/coffee-shop/inventory-audits",
     facilityExpenses: "/coffee-shop/facility-expenses",
     ownerWithdrawals: "/coffee-shop/owner-withdrawals",
+    kavappInventory: "/coffee-shop/kavapp-inventory",
 } as const;

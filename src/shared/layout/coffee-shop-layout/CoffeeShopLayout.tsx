@@ -39,6 +39,11 @@ export function CoffeeShopLayout({ children, userName, userRole }: CoffeeShopLay
                         iconName: iconNames.handCoins,
                         label: "Виведення коштів",
                     },
+                    {
+                        href: routeKeys.kavappInventory,
+                        iconName: iconNames.package,
+                        label: "Kavapp інвентаризація",
+                    },
                 ]}
                 logoIconName={iconNames.coffee}
             />

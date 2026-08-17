@@ -8,6 +8,7 @@ import facilityExpenseReducer from "@/modules/facility-expense/model/facility-ex
 import inventoryAuditReducer from "@/modules/inventory-audit/model/inventory-audit-slice";
 import ownerWithdrawalReducer from "@/modules/owner-withdrawal/model/owner-withdrawal-slice";
 import statisticsReducers from "@/modules/statistics/model/statistics-slice";
+import kavappInventoryReducer from "@/modules/kavapp-inventory/model/kavapp-inventory-slice";
 import { toastMiddleware } from "@/toast-middleware";
 
 export const store = configureStore({
@@ -21,6 +22,7 @@ export const store = configureStore({
         inventoryAudit: inventoryAuditReducer,
         ownerWithdrawal: ownerWithdrawalReducer,
         statistics: statisticsReducers,
+        kavappInventory: kavappInventoryReducer,
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({

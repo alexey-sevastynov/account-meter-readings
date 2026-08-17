@@ -13,4 +13,7 @@ export const apiEndpointNames = {
     statistics: "/coffee-shop/statistics",
     facilityExpense: "/coffee-shop/facility-expenses",
     ownerWithdrawal: "/coffee-shop/owner-withdrawals",
+    kavappInventory: "/coffee-shop/kavapp/inventory",
+    kavappSync: "/coffee-shop/kavapp/sync",
+    kavappSnapshotsLatest: "/coffee-shop/kavapp/snapshots/latest",
 } as const;

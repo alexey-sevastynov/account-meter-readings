@@ -55,6 +55,8 @@ export const iconNames = {
     clipboardList: "clipboardList",
     plus: "plus",
     crown: "crown",
+    package: "package",
+    refreshCw: "refreshCw",
 } as const;
 
 export type IconName = (typeof iconNames)[keyof typeof iconNames];
