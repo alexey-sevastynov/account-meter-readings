@@ -7,7 +7,7 @@ import { Button } from "@/shared/ui/button/Button";
 import { Title } from "@/shared/ui/typography/title/Title";
 import { PasswordInput } from "@/shared/ui/password-input/PasswordInput";
 import { buttonVariantKeys } from "@/shared/ui/button/button-variant-keys";
-import { redirectTo } from "@/shared/utils/navigation";
+import { replaceRoute } from "@/shared/utils/navigation";
 import { NotificationMessageKey } from "@/shared/ui/notification-message/notification-message-key";
 import { NotificationMessage } from "@/shared/ui/notification-message/notification-message";
 import {
@@ -50,7 +50,7 @@ export function ResetPassword({ token }: ResetPasswordProps) {
     };
 
     const goToSignInPage = () => {
-        redirectTo(router, routeKeys.signIn);
+        replaceRoute(router, routeKeys.signIn);
     };
 
     return (

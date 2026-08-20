@@ -4,6 +4,7 @@ import { Sidebar } from "@/shared/layout/sidebar/Sidebar";
 import { Toolbar } from "@/shared/layout/toolbar/Toolbar";
 import { routeKeys } from "@/shared/constants/route-keys";
 import { iconNames } from "@/shared/ui/icon/icon-name";
+import { iconColors } from "@/shared/ui/icon/icon-color";
 
 interface CoffeeShopLayoutProps {
     children: React.ReactNode;
@@ -42,6 +43,7 @@ export function CoffeeShopLayout({ children, userName, userRole }: CoffeeShopLay
                     {
                         href: routeKeys.kavappInventory,
                         iconName: iconNames.package,
+                        iconColor: iconColors.destructive,
                         label: "Kavapp інвентаризація",
                     },
                 ]}

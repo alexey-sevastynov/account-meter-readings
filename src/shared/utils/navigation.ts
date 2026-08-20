@@ -3,10 +3,14 @@ import { routeKeys } from "@/shared/constants/route-keys";
 
 type RouteKey = (typeof routeKeys)[keyof typeof routeKeys];
 
-export function redirectTo(router: AppRouterInstance, path: string) {
+export function replaceRoute(router: AppRouterInstance, path: string) {
     const targetPath = path === routeKeys.home ? buildRoutePath(routeKeys.home) : path;
 
     router.replace(targetPath);
+}
+
+export function navigateTo(router: AppRouterInstance, path: string) {
+    router.push(path);
 }
 
 export function buildRoutePath(first: RouteKey, ...rest: RouteKey[]) {

@@ -5,3 +5,5 @@ export const kavappInventoryUnitLabels = {
     [kavappInventoryUnitKeys.gram]: "грам",
     [kavappInventoryUnitKeys.milliliter]: "мілілітрів",
 } as const;
+
+export type KavappInventoryUnit = (typeof kavappInventoryUnitKeys)[keyof typeof kavappInventoryUnitKeys];

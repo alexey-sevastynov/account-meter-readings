@@ -8,7 +8,7 @@ export const kavappInventoryLabels: KavappInventoryItemLabels = {
     name: "Назва",
     type: "Тип",
     itemcount: "Кількість",
-    units: "Одиниці",
+    units: "Одиниця вимірювання",
     itemPrice: "Ціна собівартості",
     itemsCost: "Сума собівартості",
     id: "Id",

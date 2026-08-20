@@ -11,4 +11,5 @@ export const routeKeys = {
     facilityExpenses: "/coffee-shop/facility-expenses",
     ownerWithdrawals: "/coffee-shop/owner-withdrawals",
     kavappInventory: "/coffee-shop/kavapp-inventory",
+    kavappInventoryAlertRules: "/coffee-shop/kavapp-inventory/alert-rules",
 } as const;

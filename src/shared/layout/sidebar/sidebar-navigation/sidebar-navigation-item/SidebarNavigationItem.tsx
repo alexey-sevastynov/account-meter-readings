@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 import { Icon } from "@/shared/ui/icon/Icon";
 import { Link } from "@/shared/ui/link/Link";
 import { cn } from "@/shared/lib/cn";
-import { iconColors } from "@/shared/ui/icon/icon-color";
+import { IconColor } from "@/shared/ui/icon/icon-color";
 import { iconSizes } from "@/shared/ui/icon/icon-size";
 import { iconStrokeWidths } from "@/shared/ui/icon/icon-stroke-width";
 import { IconName } from "@/shared/ui/icon/icon-name";
@@ -13,6 +13,7 @@ export interface SidebarNavigationItem {
     href: string;
     iconName: IconName;
     label: string;
+    iconColor?: IconColor;
 }
 
 interface SidebarNavigationItemProps {
@@ -36,7 +37,7 @@ export function SidebarNavigationItem({ sidebarNavigationItem }: SidebarNavigati
                 <Icon
                     className="group-hover:text-primary"
                     name={sidebarNavigationItem.iconName}
-                    color={iconColors.primary}
+                    color={sidebarNavigationItem.iconColor}
                     size={iconSizes.large}
                     strokeWidth={iconStrokeWidths.thick}
                 />

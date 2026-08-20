@@ -25,6 +25,7 @@ export function ResourceSelectField<T extends FieldValues>({
             render={(controllerFieldState) => (
                 <div>
                     <Select
+                        label={field.label}
                         options={field.options || []}
                         value={controllerFieldState.field.value}
                         onValueChange={controllerFieldState.field.onChange}

@@ -9,7 +9,7 @@ import { NotificationMessage } from "@/shared/ui/notification-message/notificati
 import { NotificationMessageKey } from "@/shared/ui/notification-message/notification-message-key";
 import { buttonVariantKeys } from "@/shared/ui/button/button-variant-keys";
 import { useRouter } from "next/navigation";
-import { redirectTo } from "@/shared/utils/navigation";
+import { replaceRoute } from "@/shared/utils/navigation";
 import { sendResetRequest } from "@/modules/auth/components/forgot-password/authForgotPassword.funcs";
 import { routeKeys } from "@/shared/constants/route-keys";
 
@@ -36,7 +36,7 @@ export function ForgotPassword() {
     };
 
     const goToSignInPage = () => {
-        redirectTo(router, routeKeys.signIn);
+        replaceRoute(router, routeKeys.signIn);
     };
 
     return (

@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { VerifyStatusKey, verifyStatusKeys } from "@/modules/auth/enums/verify-status-key";
 import { getInitialVerifyStatus, verifyEmail } from "@/modules/auth/components/auth-verify/authVerify.funcs";
 import { Button } from "@/shared/ui/button/Button";
-import { redirectTo } from "@/shared/utils/navigation";
+import { replaceRoute } from "@/shared/utils/navigation";
 import { routeKeys } from "@/shared/constants/route-keys";
 
 interface AuthVerifyProps {
@@ -30,7 +30,7 @@ export default function AuthVerify({ token }: AuthVerifyProps) {
     }, [token]);
 
     const goToHomePage = () => {
-        redirectTo(router, routeKeys.home);
+        replaceRoute(router, routeKeys.home);
     };
 
     return (

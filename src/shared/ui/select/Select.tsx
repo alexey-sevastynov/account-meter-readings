@@ -9,6 +9,7 @@ import { FloatingLabel } from "@/shared/ui/input/FloatingLabel";
 interface SelectOption {
     value: string;
     label: string;
+    disabled?: boolean;
 }
 
 interface MRSelectProps
@@ -74,6 +75,7 @@ export function Select({
                                 <SelectPrimitive.Item
                                     key={opt.value}
                                     value={opt.value}
+                                    disabled={opt.disabled}
                                     className={cn(
                                         "relative flex items-center",
                                         "cursor-pointer select-none",
@@ -81,6 +83,7 @@ export function Select({
                                         "text-sm",
                                         "focus:bg-primary focus:text-primary-foreground",
                                         "data-[highlighted]:bg-primary data-[highlighted]:text-primary-foreground",
+                                        "data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
 
                                         className,
                                     )}

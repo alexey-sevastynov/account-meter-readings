@@ -4,6 +4,13 @@ import {
     KavappInventoryResponse,
     KavappInventorySnapshot,
 } from "@/modules/kavapp-inventory/types/kavapp-inventory-response";
+import { KavappCatalogItem } from "@/modules/kavapp-inventory/types/kavapp-catalog-item";
+
+export async function fetchKavappCatalog() {
+    const { data } = await apiClient.get<KavappCatalogItem[]>(apiEndpointNames.kavappCatalog);
+
+    return data;
+}
 
 export async function fetchKavappInventory(pointId?: string) {
     const params = pointId ? { params: { pointId } } : undefined;

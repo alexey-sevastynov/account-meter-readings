@@ -2,11 +2,13 @@ import { cn } from "@/shared/lib/cn";
 import { Logo } from "@/shared/layout/sidebar/logo/Logo";
 import { IconName } from "@/shared/ui/icon/icon-name";
 import { SidebarNavigation } from "@/shared/layout/sidebar/sidebar-navigation/SidebarNavigation";
+import { IconColor } from "@/shared/ui/icon/icon-color";
 
 interface SidebarNavigationItem {
     href: string;
     iconName: IconName;
     label: string;
+    iconColor?: IconColor;
 }
 
 interface SidebarProps {

@@ -9,8 +9,7 @@ import { NotificationMessage } from "@/shared/ui/notification-message/notificati
 import { notificationMessageKeys } from "@/shared/ui/notification-message/notification-message-key";
 import { ValidatedInput } from "@/shared/ui/validated-input/ValidatedInput";
 import { PasswordInput } from "@/shared/ui/password-input/PasswordInput";
-import { redirectTo } from "@/shared/utils/navigation";
-import { timing } from "@/shared/constants/timing";
+import { replaceRoute } from "@/shared/utils/navigation";
 import { buttonVariantKeys } from "@/shared/ui/button/button-variant-keys";
 import { Divider } from "@/shared/ui/divider/Divider";
 import { routeKeys } from "@/shared/constants/route-keys";
@@ -37,13 +36,7 @@ export function AuthFormSignIn({ authMode }: { authMode: AuthModeKey }) {
         const response = await login(dispatch, data);
 
         if (response.meta.requestStatus === "fulfilled") {
-            // TODO: Temporarily added a delay before redirecting
-            // to ensure cookies are saved and middleware works correctly.
-            // This should be properly handled later via server-side redirect
-            // or guaranteed cookie setting.
-            await new Promise((resolve) => setTimeout(resolve, timing.fiveSecondsInMilliseconds));
-
-            redirectTo(router, routeKeys.home);
+            replaceRoute(router, routeKeys.home);
         }
     };
 
@@ -51,7 +44,7 @@ export function AuthFormSignIn({ authMode }: { authMode: AuthModeKey }) {
         const response = await dispatch(signInAsGuest());
 
         if (response.meta.requestStatus === "fulfilled") {
-            redirectTo(router, routeKeys.home);
+            replaceRoute(router, routeKeys.home);
         }
     };
 
@@ -63,7 +56,7 @@ export function AuthFormSignIn({ authMode }: { authMode: AuthModeKey }) {
                 errors={errors}
                 label="Електронна пошта"
                 type="email"
-                rules={{ required: "Електронна пошта є обов'язковоюі" }}
+                rules={{ required: "Електронна пошта є обов'язковою" }}
                 placeholder="johndoe@example.com"
             />
 

@@ -7,7 +7,7 @@ import { kavappInventoryLabels } from "@/modules/kavapp-inventory/constants/kava
 import { CurrencyCell } from "@/shared/ui/table/table-body/table-row/currency-cell/CurrencyCell";
 import { NumberCell } from "@/shared/ui/table/table-body/table-row/number-cell/NumberCell";
 import { CurrencyFooterCell } from "@/shared/ui/table/table-footer/currency-footer-cell/CurrencyFooterCell";
-import { kavappInventoryUnitLabels } from "@/modules/kavapp-inventory/constants/kavapp-inventory-uni-labels";
+import { kavappInventoryUnitLabels } from "@/modules/kavapp-inventory/constants/kavapp-inventory-unit-labels";
 
 export const kavappInventoryColumns: ColumnDef<KavappInventoryItem>[] = [
     createTableColumn<KavappInventoryItem>({

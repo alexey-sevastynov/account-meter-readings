@@ -8,7 +8,7 @@ import { useAppSelector } from "@/shared/lib/redux/hooks/use-app-selector";
 import { ToolbarAvatarMenuTrigger } from "@/shared/layout/toolbar/toolbar-avatar-menu/ToolbarAvatarMenuTrigger";
 import { ToolbarAvatarMenuUserInfo } from "@/shared/layout/toolbar/toolbar-avatar-menu/ToolbarAvatarMenuUserInfo";
 import { ToolbarThemeModeSwitcher } from "@/shared/layout/toolbar/toolbar-theme-mode-switcher/ToolbarThemeModeSwitcher";
-import { redirectTo } from "@/shared/utils/navigation";
+import { replaceRoute } from "@/shared/utils/navigation";
 import { Dropdown, DropdownContent, DropdownTrigger } from "@/shared/ui/dropdown/Dropdown";
 import { iconNames } from "@/shared/ui/icon/icon-name";
 import { Button } from "@/shared/ui/button/Button";
@@ -26,7 +26,7 @@ export function ToolbarAvatarMenu({ userName, userRole }: ToolbarAvatarMenuProps
 
     const onLogout = () => {
         dispatch(signOut());
-        redirectTo(router, routeKeys.signIn);
+        replaceRoute(router, routeKeys.signIn);
     };
 
     return (
